@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uncensored Researcher | End-Times news updates  and insightful articles</title>
+    
+    <!-- Essential Meta Tags -->
+    <meta name="description" content="Uncensored Researcher | Unbiased news updates  and insightful articles. Explore a complete collection of prophecy news, analysis, and Bible study resources">
+    <meta name="keywords" content="research, analysis, bible prophecy, end times, sunday law, seventh day adventist, ellen white, adventisty">
+    <meta name="author" content="Uncensored Researcher">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Global news, analysis, and study resources">
+    <meta property="og:description" content="Unbiased news updates  and insightful articles on global biblical events">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.uncensored-researcher.com/">
+    <meta property="og:image" content="https://www.uncensored-researcher.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Uncensored Researcher">
+     
+    <!-- Additional Meta Tags -->
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon"  href="images/icon.png">
+    <link rel="icon" type="image/png"  href="images/icon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Uncensored Researcher",
+      "url": "https://www.uncensored-researcher.com/",
+      "description": "Unbiased news updates  and insightful articles on global biblical events.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Uncensored Researcher",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.drivanresearch.com/images/icon.png"
+        }
+      }
+    }
+    </script>
+
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #8a2be2;
+            --accent-glow: rgba(138, 43, 226, 0.4);
+            --text: #f0f0f0;
+            --text-dim: #a0a0a0;
+            --highlight: #ff6b6b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+      
+        nav.scrolled {
+            background-color: rgba(10, 10, 10, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1px;
+            margin-left: 20px;
+        }
+        
+        .hamburger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .hamburger.active {
+            background: var(--accent);
+        }
+        
+        .hamburger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before,
+        .hamburger span::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before {
+            top: -8px;
+        }
+        
+        .hamburger span::after {
+            top: 8px;
+        }
+        
+        .hamburger.active span {
+            background: transparent;
+        }
+        
+        .hamburger.active span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        
+        .hamburger.active span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--secondary);
+            padding: 100px 30px 30px;
+            transition: all 0.5s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 20px;
+        }
+        
+        .nav-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent);
+            padding-left: 10px;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/227.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -2;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(10, 10, 10, 1.9) 0%, rgba(10, 10, 10, 0.7) 40%, transparent 100%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+         /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            padding: 5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .article-card {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 2.5rem;
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .article-date {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        /* Recent Articles */
+        /* Recent Articles */
+        .recent-articles {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .recent-article-card {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .recent-article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .recent-article-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .recent-article-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .recent-article-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recent-article-description {
+            font-size: 0.95rem;
+            color: #aaa;
+            margin-bottom: 1rem;
+        }
+
+        .recent-article-date {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .view-all-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+
+
+        
+        /* Explanation Section */
+        .explanation-section {
+            padding: 6rem 0;
+            background: var(--secondary);
+        }
+        
+        .explanation-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .explanation-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .explanation-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .explanation-text {
+            flex: 1;
+        }
+        
+        .explanation-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .explanation-text p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .explanation-text a {
+            color: var(--highlight);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .explanation-text a:hover {
+            color: var(--accent);
+        }
+        
+        .watch-video-btn {
+            margin-top: 2rem;
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        .watch-video-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        
+        /* Glassmorphic Section */
+        .glass-section {
+            padding: 5rem 0;
+            position: relative;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .glass-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/21.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            filter: blur(3px);
+            z-index: -2;
+        }
+        
+        .glass-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.7);
+            z-index: -1;
+        }
+        
+        .glass-content {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .glass-text {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .glass-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .highlight {
+            color: var(--highlight);
+            font-weight: 600;
+        }
+        
+        /* Book Section */
+        .book-recommendation {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .book-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .book-image {
+            width: 200px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .book-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .book-description {
+            color: var(--light-gray);
+            margin-bottom: 30px;
+        }
+
+
+        .download-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--accent-glow);
+            color: rgba(20, 30, 25, 0.7);
+        }
+
+         .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-description {
+            margin-bottom: 2rem;
+            color: var(--accent-light);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light-content);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--highlight);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+        }
+
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container  {
+                        flex-direction: column;
+                        padding: 0 15px;
+                }
+
+            .article-content {
+                  padding: 5px;
+                }
+
+            .explanation-content {
+                flex-direction: column;
+            }
+            
+            .glass-content {
+                flex-direction: column;
+            }
+            
+            .book-card {
+                flex-direction: column;
+            }
+            
+            .book-image {
+                max-width: 100%;
+            }
+
+.glass-text {
+   padding: 10px;
+}
+
+.glass-text p {
+    margin-top: 20px;
+}
+
+        }
+        
+        @media (max-width: 768px) {   
+               .container  {
+                        flex-direction: column;
+                        padding: 0 15px;
+                }
+ 
+               .article-content {
+                  padding: 1px;
+                }
+
+      
+            .main-article h2 {
+                font-size: 1.7rem;
+            }
+            
+            .main-article p {
+                font-size: 1rem;
+            }
+            
+            .article-card {
+                flex-direction: column;
+            }
+            
+            .article-image {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+.glass-text {
+   padding: 10px;
+}
+
+.glass-text p {
+    margin-top: 20px;
+}
+
+
+        }
+        
+        @media (max-width: 576px) {
+               .container  {
+                        flex-direction: column;
+                        padding: 0 15px;
+                }
+ 
+              .article-content {
+                  padding: 1px;
+                }
+
+
+            .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-align: center;
+            padding: 0 1rem;
+            margin-top: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+            
+            
+            .hero-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .hero-text {
+                max-width: 100%;
+            }
+            
+            .main-article h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .nav-menu {
+                width: 250px;
+            }
+            
+            .site-title {
+                font-size: 1.3rem;
+            }
+            
+            .hamburger {
+                width: 45px;
+                height: 45px;
+            }
+            .glass-text {
+   padding: 10px;
+}
+
+.glass-text p {
+    margin-top: 20px;
+}
+
+
+        }
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+    </style>
+<style>
+/* Responsive Design */
+        @media (max-width: 768px) {
+ 
+            .recent-article-card {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .recent-article-image {
+                width: 80px;
+                height: 80px;
+                align-self: flex-start;
+            }
+            
+            .recent-article-description {
+                width: 100%;
+            }
+            .recent-article-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .recent-article-card {
+                flex-direction: row;
+                gap: 1rem;
+            }
+           
+            .recent-article-image {
+                width: 70px;
+                height: 70px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+
+            .recent-article-card {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .recent-article-image {
+                width: 100%;
+                height: 150px;
+                align-self: center;
+            }           
+        }
+    </style>
+
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <a href="#" class="site-title">Uncensored Researcher</a>
+        <div class="hamburger">
+            <span></span>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="news/">News Updates</a></li>
+                <li><a href="more/">More</a></li>
+                <li><a href="contact/">About & Contact</a></li>
+                <li><a href="journals/">Audio Journals</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Research, News & Resources</h1>
+                <p><i>"God has always given men warning of coming judgments. Those who had faith in His message for their time, and who acted out their faith in obedience to His commandments, escaped the judgments that fell upon the disobedient and unbelieving." [LDE 13.1]</i></p>
+                <a href="#main1" class="cta-button">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="container">
+        <div class="featured-article" id="main1">
+            <div class="article-card">
+                <img src="images/digital id.jpg" alt="Featured Article" class="article-image">
+                <div class="article-content">
+                    <span class="article-tag">News Update</span>
+                    <h2 class="article-title">Elon Musk Speaks On The Dangers of Digital ID</h2>
+                    <span class="article-date">October 2025</span>
+                    <p class="article-excerpt"> With a recent announcement on the <a href="https://youtu.be/nTGnUa7Ng7g" style="color: #8a2be2">mandatory digital ID</a> by the UK Prime Minister, Elon Musk just recently spoke on the dangers of adopting digital ID with a concern for privacy and control.</p>
+                    <a href="https://youtu.be/RHCUV7bAAB4" class="cta-button">Watch Video</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            
+            <!-- Recent Articles -->
+    <section class="recent-articles">
+
+        
+        <div class="recent-article-card">
+            <img src="images/nig-persecution.jpg" alt="Nigerian Christian Persecution" class="recent-article-image">
+            <div class="recent-article-content">
+                <h3 class="recent-article-title">Christians in Nigeria are being persecuted | 15 Nigerian Christians Massacred by Terrorists</h3>
+                <span class="recent-article-date">October, 2025</span>
+                <p class="recent-article-description">  <a href="https://youtu.be/s8iN35ZsuMY" style="color: #8a2be2; text-decoration: none;">Nigerian Christians face persecution from radical Islamist groups</a> . Another 15 Christians were reportedly slaughtered in Nigeria by Fulani terrorists in Barkin-Ladi and Bokkos counties in Plateau State on October 14th.</p>
+                <a href="https://youtu.be/F7m3CvF06to" class="cta-button">Watch News</a>
+            </div>
+        </div>
+
+
+        <div class="recent-article-card">
+            <img src="images/gpterotica.jpg" alt="Tech innovation" class="recent-article-image">
+            <div class="recent-article-content">
+                <h3 class="recent-article-title">Open AI announces Chat GPT 'Adult Mode' (erotica) for verified adult users</h3>
+                <span class="recent-article-date">October 2025</span>
+                <p class="recent-article-description">OpenAI plans to allow a wider range of content, including erotica, on its popular chatbot ChatGPT as part of its push to "treat adult users like adults", says its boss Sam Altman.</p>
+                <a href="https://apnews.com/article/ai-erotica-chatgpt-openai-sam-altman-d52e00cedf34a8120af7af66981da295" class="cta-button">Read More</a>
+            </div>
+        </div>
+
+
+        <div class="view-all-container">
+            <a href="news/" class="cta-button">View All News Updates</a>
+        </div>
+    </section>
+
+
+
+    <!-- Explanation Section -->
+    <section class="explanation-section">
+        <div class="container">
+            <div class="explanation-content">
+                <div class="explanation-image">
+                    <img src="images/motb1.jpg" alt="Mark Of The Beast">
+                </div>
+                <div class="explanation-text">
+                    <h2>What is the Mark of the Beast?</h2>
+                    <p>The mark of the beast is probably one of few Bible topics that the whole world knows about, and yet there are so few people who actually know the truth about what the mark of the beast actually is. Below are <b>articles & videos</b> I've attached, explaining explicitly from the bible what the mark of the beast actually is, and a <b>video</b> unmasking all there is to know.</p>
+                    <p> <a href="http://www.end-times-prophecy.org/the-whore-of-babylon.html" style="margin-right: 25px; text-decoration: none;"<i class="fas fa-newspaper"> 1</i></a>
+                     <a href="http://www.end-times-prophecy.org/666-the-mark-of-the-beast.html" style="margin-right: 25px; text-decoration: none;"<i class="fas fa-newspaper"> 2</i></a>
+                     <a href="https://www.youtube.com/watch?v=awRm0eGx644" style="margin-right: 25px; text-decoration: none;"<i class="fas fa-newspaper"> 3</i></a>
+                     <a href="http://www.end-times-prophecy.org/ellen-white-pope-sabbath.html" style="margin-right: 25px; text-decoration: none;"<i class="fas fa-newspaper"> 4</i></a>
+                     <a href="http://www.end-times-prophecy.org/mark-of-beast.html" style="margin-right: 25px; text-decoration: none;"<i class="fas fa-newspaper"> 5</i></a>
+                     <a href="http://www.end-times-prophecy.org/the-sabbath-day-bible.html" style="margin-right: 25px; text-decoration: none;"<i class="fas fa-newspaper"> 6</i></a>
+                     <a href="http://www.end-times-prophecy.org/saturn-day-7th-sabbath.html" style="margin-right: 25px; text-decoration: none;"<i class="fas fa-newspaper"> 7</i></a>
+</p>                   
+                    <a href="https://www.youtube.com/watch?v=4y3tDILQFhE&t=5s" class="watch-video-btn">Watch Full Video</a>
+                </div>
+            </div>
+        </div>
+
+ <p>&nbsp</p>
+ <p>&nbsp</p>
+<p>&nbsp</p>
+ <p>&nbsp</p>
+ <p>&nbsp</p>
+<p>&nbsp</p>
+
+        <div class="container">
+            <div class="explanation-content">
+                <div class="explanation-image">
+                    <img src="images/20.jpg" alt="The Sabbath">
+                </div>
+                <div class="explanation-text">
+                    <h2>The Truth about God's holy day..</h2>
+                    <p>Many people believe that the seventh day Sabbath was instituted at Sinai. <u><i>Genesis 2:2-3 ...'And on the seventh day God ended his work which he had made; and he rested <b>on the seventh day</b> from all his work which he had made. And God blessed the seventh day, and sanctified it: because that in it he had rested from all his work which God created and made."</i></u> The seventh day Sabbath was instituted at creation and already in existence before God gave the 10 commandments.</p>                 
+                    <a href="https://www.youtube.com/watch?v=ZFsoAJ-ruLk" class="watch-video-btn">Watch Video</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Glassmorphic Section -->
+    <section class="glass-section">
+            <h2 style="text-align:center; font-size:30px;">Important Things You Need To Look At</h2> 
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+            <p>&nbsp</p>
+        <div class="container">
+            <div class="glass-content">
+                <div class="glass-text">
+                    <p>The pursuit of knowledge requires questioning everything. <span class="highlight">Established narratives often obscure more than they reveal.</span> By examining primary sources directly, we bypass the interpretive layers that can distort understanding.</p>
+                    <p>Our platform aggregates research from disparate fields, creating unexpected connections between seemingly unrelated data points. <span class="highlight">Patterns emerge when information is presented without predetermined conclusions.</span></p>
+                    <p>This <a href="#" style="color: #8a2be2">methodology</a> has revealed correlations that challenge conventional wisdom in fields ranging from urban planning to cognitive psychology. The most significant insights often come from allowing the audience to discover relationships themselves.</p>
+                    <p>We've documented cases where this approach has led to breakthroughs in understanding complex systems. <span class="highlight">When people are given <a href="#">raw data</a> instead of conclusions, they often see patterns that experts miss.</span></p>
+                </div>
+                <div class="glass-text">
+                    <p>The digital age has created both information abundance and interpretation scarcity. <span class="highlight">We're drowning in analysis but starving for raw data.</span> Our platform addresses this imbalance by prioritizing evidence over opinion.</p>
+                    <p>Each dataset we present undergoes rigorous verification but no interpretive framing. We include conflicting data points and contradictory findings because reality is rarely consistent.</p>
+                    <p>This approach has been praised by educators who use our materials to teach critical thinking. <span class="highlight">Students exposed to unfiltered information develop stronger analytical skills</span> than those who only consume pre-digested content.</p>
+                    <p>The future of informed citizenship depends on access to primary sources. As interpretation becomes increasingly commodified, the ability to analyze raw data becomes an essential skill for navigating modern society.</p>
+                </div>
+            </div>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+        </div>
+    </section>
+
+
+<p style="text-align: center; margin: 2rem 0; padding: 1rem; background: rgba(138, 43, 226, 0.1); border-radius: 8px; border-left: 3px solid #8a2be2; font-size: 0.9rem;">
+    <strong>Are you a member of the Seventh Day Adventist church?</strong> 
+    <a href="articles/sda/" style="color: #8a2be2; text-decoration: none; font-weight: 600; margin-left: 0.5rem;">
+        Please Visit This Page →
+    </a>
+</p>
+
+
+    <!-- Book recommendation section -->
+    <section class="book-recommendation">
+        <div class="container">
+            <h2 class="section-title">Recommended Book</h2>
+            <div class="book-card">
+                <img src="images/gc.jpg" alt="Book cover" class="book-image">
+                <h3 class="book-title">The Great Controversy (EGW)</h3>
+                <p class="book-description">I highly recommend you to read this book. Majority of the things written in here have happened and are happening with accuracy. Events that are soon to happen are all written in here.</p>
+                <a href="https://media2.egwwritings.org/pdf/en_GC.pdf" class="download-btn">Download Book</a>
+            </div>
+        </div>
+    </section>
+
+
+     <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Uncensored Researcher</div>
+            <p class="footer-description">Unbiased news updates  and insightful articles on global biblical events.</p>
+            <div class="social-links">
+                <a href="#"><i class="fas fa-home"></i></a>
+                <a href="news/"><i class="fas fa-newspaper"></i></a>
+                <a href="more/"><i class="fas fa-ellipsis-h"></i></a>
+                <a href="contact/"><i class="fas fa-envelope"></i></a>
+                <a href="journals/"><i class="fas fa-volume-up"></i></a>        
+
+            </div>
+            <p class="copyright">&copy; 2025 Uncensored Researcher</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+        
+        menuOverlay.addEventListener('click', function() {
+            this.classList.remove('active');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+        
+        // Add subtle parallax effect to hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('.hero-bg');
+            heroBg.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
+        });
+
+         // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+    </script>
+</body>
+</html>

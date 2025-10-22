@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Uncensored Researcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #8a2be2;
+            --accent-glow: rgba(138, 43, 226, 0.4);
+            --text: #f0f0f0;
+            --text-dim: #a0a0a0;
+            --highlight: #ff6b6b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+      
+        nav.scrolled {
+            background-color: rgba(10, 10, 10, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1px;
+            margin-left: 20px;
+        }
+        
+        .hamburger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .hamburger.active {
+            background: var(--accent);
+        }
+        
+        .hamburger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before,
+        .hamburger span::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before {
+            top: -8px;
+        }
+        
+        .hamburger span::after {
+            top: 8px;
+        }
+        
+        .hamburger.active span {
+            background: transparent;
+        }
+        
+        .hamburger.active span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        
+        .hamburger.active span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--secondary);
+            padding: 100px 30px 30px;
+            transition: all 0.5s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 20px;
+        }
+        
+        .nav-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent);
+            padding-left: 10px;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 120px 2rem 60px;
+            text-align: center;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
+    url('../images/25.jpg') center/cover no-repeat;
+  color: #fff; 
+}
+
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        /* Quote Section */
+        .quote-section {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent);
+            position: absolute;
+            opacity: 0.5;
+        }
+        
+        .quote::before {
+            top: -20px;
+            left: -20px;
+        }
+        
+        .quote::after {
+            bottom: -40px;
+            right: -20px;
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        /* Contact Info Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .contact-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .email-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        
+        .email-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+        
+        .profile-image {
+            flex: 1;
+            max-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .profile-text {
+            flex: 2;
+        }
+        
+        .profile-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .profile-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .mindset-list {
+            list-style-type: none;
+        }
+        
+        .mindset-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .mindset-list li::before {
+            content: '•';
+            color: var(--accent);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+        
+/* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-description {
+            margin-bottom: 2rem;
+            color: var(--accent-light);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light-content);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--highlight);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+        }
+
+
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .profile-section {
+                flex-direction: column;
+            }
+            
+            .profile-image {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .quote {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-card {
+                min-width: 100%;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .page-header {
+                padding: 100px 1rem 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-menu {
+                width: 250px;
+            }
+            
+            .site-title {
+                font-size: 1.3rem;
+            }
+            
+            .hamburger {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .quote-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .quote {
+                font-size: 1.2rem;
+            }
+        }
+
+ 
+        /* Principles Section */
+        .principles-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .principle-card {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .principle-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .principle-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .principle-description {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        
+        
+    </style>
+
+<style>
+@keyframes pulseColor {
+  0%   { background-color: pink; }
+  50%  { background-color: gold; }
+  100% { background-color: red; }
+}
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <a href="../" class="site-title">Uncensored Researcher</a>
+        <div class="hamburger">
+            <span></span>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="../news/">News Updates</a></li>
+                <li><a href="../more/">More</a></li>
+                <li><a href="../contact/">About & Contact</a></li>
+                <li><a href="../journals/">Audio Journals</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay"></div>
+    </nav>
+
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1 class="page-title">Contact & About</h1>
+        <p class="page-subtitle">The pursuit of truth requires open channels of communication and unfiltered information exchange.</p>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="content-section">
+        <!-- Quote Section -->
+        <div class="quote-section">
+            <p class="quote">Call to your fellow watchmen, crying, “The morning cometh, and also the night.” It is no time now to relax our efforts, to become dull and spiritless, no time to hide our light under a bushel, to speak smooth things, to prophesy deceit. Every power is to be employed for God. </p>
+            <p class="quote-author">- Manuscript 152, 1897.</p>
+        </div>
+
+    <!-- Principles Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Foundational Principles</h2>
+            <p style="margin-bottom: 2rem; line-height: 1.6; text-align: center;">
+               These are the few of many principles I believe as a Christian. <a href="https://www.judgmenthour.org/1889_SDA_Fundamental_Principles.pdf" style="text-decoration: none;"> Click here- </a> to view all. </a></p>
+            <div class="principles-container">
+                <div class="principle-card">
+                    <div class="principle-number">1</div>
+                    <h3 class="principle-title">The 7th Day Sabbath</h3>
+                    <p class="principle-description">After creating the heaven and earth, God rested on the 7th day [our Saturday] and made it holy. The sabbath is part of the 10 commandments - Exodus 20:8</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number">2</div>
+                    <h3 class="principle-title">The 2nd Coming of Jesus</h3>
+                    <p class="principle-description">The Lord Jesus is soon to come to take His children homee. We are waiting and watching for Him for this world will pass. Luke 19:13.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-number" 
+     style="background: pink; 
+            animation: pulseColor 1s infinite alternate;">
+  3
+</div>
+                    <h3 class="principle-title">The Literal Son of God</h3>
+                    <p class="principle-description">Proverbs 8:22. John 3:16. Matthew 3:17. Proverbs 30:4. Ephisians 1:3.  Jesus is the biological Son of God, begotten NOT created. <a href="https://www.end-times-prophecy.org/jesus-son-of-god.html" style="text-decoration: none;">Read More</a></p>
+                </div>
+            
+
+        </div>
+    </section>
+
+
+        
+        <h2 class="section-title">The Essential Need for Truth In A World drowning In Lies.</h2>
+        
+        <p style="margin-bottom: 2rem; line-height: 1.6; text-align: center;">
+          It is the purpose of this site to bring various important truths that are essential to our salvation. In a world full of misleading information and biased content, it is difficult to find authentic sources of information to read, study and learn without drowning in false or deceptive information. 
+        </p>
+        
+        <div class="quote-section">
+            <p class="quote"> The way to heaven is through Jesus Christ. He is the light that lighteneth every man that cometh into the world. <b>He has given us most precious truths....</b> Christ withheld no truths essential to our salvation. Those things that are revealed are for us and our children,...We are not to allow our attention to be diverted from the proclamation of the message given us....</p>
+            <p class="quote-author">- WI Messanger July 1, 1912</p>
+        </div>
+                
+        <!-- Contact Info Section -->
+        <h2 class="section-title">Share Information Directly</h2>
+        
+        <div class="contact-info">
+            <div class="contact-card">
+                <h3>Information Submission</h3>
+                <p>If you have information, research, data that you believe deserves broader visibility, we encourage you to share it directly with us.</p>
+                
+                <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                    <li>Bible, SOP and SDA Pioneers writings</li>
+                    <li>Current world events happening </li>
+                    <li>Bible prophecy and fulfilment</li>
+                    <li style="color: red;"> No unrelated content</li>
+                </ul>
+                <a href="mailto:uncensored-researcher@gmail.com" class="email-link">Submit Information</a>
+            </div>
+            
+            <div class="contact-card">
+                <h3>General Inquiries</h3>
+                <p>If you have questions or anything specific you would like to know, please use the same general contact email.</p>
+                <p>I will strive to respond to all legitimate submissions within a few days, though response times may vary depending on the complexity of the question and current research load.</p>
+               
+            </div>
+        </div>
+        
+       
+
+     <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Uncensored Researcher</div>
+            <p class="footer-description">Unbiased news updates  and insightful articles on global biblical events.</p>
+            <div class="social-links">
+                <a href="../"><i class="fas fa-home"></i></a>
+                <a href="../news/"><i class="fas fa-newspaper"></i></a>
+                <a href="../more/"><i class="fas fa-ellipsis-h"></i></a>
+                <a href="../contact/"><i class="fas fa-envelope"></i></a>
+                <a href="../journals/"><i class="fas fa-volume-up"></i></a>        
+
+            </div>
+            <p class="copyright">&copy; 2025 Uncensored Researcher</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // Navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+        
+        menuOverlay.addEventListener('click', function() {
+            this.classList.remove('active');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
