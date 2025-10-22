@@ -31,7 +31,7 @@
       "@type": "xxxPodcst/News/xxEDIT",
       "headline": "The Future of Evidence-Based Research",
       "description": "Exploring how evidence-based practices must evolve to maintain integrity in an era dominated by big data, AI-generated content, and confirmation bias.",
-      "image": "https://www.drevansresearch.com/images/article-og-image.jpg",
+      "image": "https://uncensored-researcher.github.io/uncensored/images/og-image.jpg",
       "author": {
         "@type": "Person",
         "name": "Ucensored Researcher"
