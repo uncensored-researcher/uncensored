@@ -3,659 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monthly Research Reflections | Dr. Evan Research</title>
+    <title>News Publisher with Scrolling Ticker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Base Styles */
         :root {
-            --primary: #0a0a0a;
-            --secondary: #1a1a1a;
-            --accent: #8a2be2;
-            --accent-glow: rgba(138, 43, 226, 0.4);
-            --text: #f0f0f0;
-            --text-dim: #a0a0a0;
-            --highlight: #ff6b6b;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --light-text: #f5f5f5;
+            --accent: #8b0000;
+            --accent-light: #b30000;
+            --glass-bg: rgba(15, 15, 15, 0.7);
+            --highlight: #ffd700;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background-color: var(--primary);
-            color: var(--text);
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
             overflow-x: hidden;
-            line-height: 1.7;
         }
-        
-        /* Navigation */
-        .nav-container {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-      
-        nav.scrolled {
-            background-color: rgba(10, 10, 10, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text);
+
+        a {
             text-decoration: none;
-            letter-spacing: 1px;
-            margin-left: 20px;
+            color: inherit;
         }
-        
-        .hamburger {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 0 20px var(--accent-glow);
-            transition: all 0.3s ease;
+
+        /* News Ticker Styles */
+        .ticker-container {
             position: relative;
-            z-index: 1001;
-        }
-        
-        .hamburger.active {
-            background: var(--accent);
-        }
-        
-        .hamburger:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px var(--accent-glow);
-        }
-        
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger span::before,
-        .hamburger span::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 2px;
-            background: var(--text);
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger span::before {
-            top: -8px;
-        }
-        
-        .hamburger span::after {
-            top: 8px;
-        }
-        
-        .hamburger.active span {
-            background: transparent;
-        }
-        
-        .hamburger.active span::before {
-            transform: rotate(45deg);
-            top: 0;
-        }
-        
-        .hamburger.active span::after {
-            transform: rotate(-45deg);
-            top: 0;
-        }
-        
-        .nav-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100vh;
-            background: var(--secondary);
-            padding: 100px 30px 30px;
-            transition: all 0.5s ease;
-            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-        
-        .nav-menu.active {
-            right: 0;
-        }
-        
-        .nav-menu ul {
-            list-style: none;
-        }
-        
-        .nav-menu li {
-            margin-bottom: 20px;
-        }
-        
-        .nav-menu a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            display: block;
-            padding: 10px 0;
-            transition: all 0.3s ease;
+            background-color: var(--darker-bg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            padding: 12px 0;
+            margin-bottom: 2rem;
         }
-        
-        .nav-menu a:hover {
-            color: var(--accent);
-            padding-left: 10px;
-        }
-        
-        .menu-overlay {
-            position: fixed;
-            top: 0;
+
+        .ticker-label {
+            position: absolute;
             left: 0;
-            width: 100%;
+            top: 0;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            z-index: 10;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
         }
-        
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
+
+        .ticker-content {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker-scroll 60s linear infinite;
         }
-        
-        /* Article Header */
-        .article-header {
-            padding: 140px 2rem 60px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--secondary) 0%, rgba(26, 26, 26, 0.8) 100%);
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 30px;
+            font-size: 1.1rem;
             position: relative;
+        }
+
+        .ticker-item:not(:last-child):after {
+            content: "•";
+            position: absolute;
+            right: -10px;
+            color: var(--accent);
+        }
+
+        .ticker-item a {
+            transition: color 0.3s ease;
+        }
+
+        .ticker-item a:hover {
+            color: var(--accent);
+        }
+
+        .breaking-news {
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        @keyframes ticker-scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Pause on hover */
+        .ticker-container:hover .ticker-content {
+            animation-play-state: paused;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
             overflow: hidden;
         }
-        
-        .article-header::before {
-            content: '';
+
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center;
+            background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
-            opacity: 0.2;
+            background-position: center;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.7), transparent);
             z-index: -1;
         }
-        
-        .article-title {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .article-meta {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
-        
-        .article-tags {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-        
-        .tag {
-            background: rgba(138, 43, 226, 0.2);
-            color: var(--accent);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        
-        /* Audio Player */
-        .audio-section {
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            background: rgba(20, 30, 25, 0.7);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .audio-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .audio-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-        
-        .audio-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
-        .audio-player {
-            width: 100%;
-            margin-bottom: 1rem;
-        }
-        
-        .audio-info {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-        
-        .audio-download {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        
-        /* Main Content Container */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        /* Article Content */
-        .article-content {
-            padding: 3rem 0;
-        }
-        
-        .article-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .article-content h2 {
-            font-size: 1.8rem;
-            margin: 3rem 0 1.5rem;
-            color: var(--accent);
-        }
-        
-        .article-content h3 {
-            font-size: 1.4rem;
-            margin: 2.5rem 0 1.2rem;
-        }
-        
-        .article-content blockquote {
-            border-left: 4px solid var(--accent);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--text-dim);
-        }
-        
-        .article-content ul, .article-content ol {
-            margin: 1.5rem 0;
-            padding-left: 2rem;
-        }
-        
-        .article-content li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .article-image {
-            width: 100%;
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .image-caption {
-            text-align: center;
-            color: var(--text-dim);
-            font-style: italic;
-            margin-top: -1rem;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-        }
-        
-        .highlight-box {
-            background: rgba(138, 43, 226, 0.1);
-            border-left: 4px solid var(--accent);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .conclusion {
-            background: rgba(20, 30, 25, 0.7);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 3rem 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--secondary);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
 
-        .footer-content {
+        .hero-content {
             max-width: 600px;
-            margin: 0 auto;
+            margin-left: 10%;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
         }
 
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            letter-spacing: 2px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .footer-description {
-            margin-bottom: 2rem;
-            color: var(--text-dim);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            color: var(--text);
+        .hero p {
             font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 30px;
+            font-weight: bold;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .social-links a:hover {
-            color: var(--highlight);
+        .cta-button:hover {
+            background-color: var(--accent-light);
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
         }
 
-        .copyright {
-            font-size: 0.9rem;
-            color: var(--text-dim);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         /* Responsive Design */
         @media (max-width: 768px) {
-            .article-title {
-                font-size: 2.2rem;
+            .ticker-label {
+                position: relative;
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
             }
             
-            .article-header {
-                padding: 120px 1rem 40px;
+            .ticker-container {
+                padding-top: 0;
             }
             
-            .article-meta {
-                flex-direction: column;
-                gap: 0.5rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .nav-menu {
-                width: 250px;
-            }
-            
-            .site-title {
-                font-size: 1.3rem;
-            }
-            
-            .hamburger {
-                width: 45px;
-                height: 45px;
+            .hero-content {
+                margin-left: 5%;
             }
         }
-        
-        @media (max-width: 576px) {
-            .article-title {
-                font-size: 1.8rem;
+
+        @media (max-width: 480px) {
+            .ticker-item {
+                font-size: 1rem;
+                padding: 0 15px;
             }
             
-            .article-content h2 {
-                font-size: 1.5rem;
-            }
-            
-            .article-content h3 {
-                font-size: 1.3rem;
+            .hero h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <a href="index.html" class="site-title">Dr. Evan Research</a>
-        <div class="hamburger">
-            <span></span>
-        </div>
-        <div class="nav-menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="news.html">Articles</a></li>
-                <li><a href="more.html">More</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="menu-overlay"></div>
-    </nav>
-
-    <!-- Article Header -->
-    <section class="article-header">
-        <h1 class="article-title">October 2023 Research Reflections: Data Interpretation Challenges</h1>
-        <div class="article-meta">
-            <span><i class="far fa-calendar"></i> October 31, 2023</span>
-            <span><i class="far fa-clock"></i> 45 min read</span>
-            <span><i class="far fa-comments"></i> Research Journal</span>
-        </div>
-        <div class="article-tags">
-            <span class="tag">Data Interpretation</span>
-            <span class="tag">Research Methodology</span>
-            <span class="tag">Cognitive Biases</span>
-            <span class="tag">Monthly Reflection</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Unfiltered Perspectives in a World of Noise</h1>
+            <p>Presenting information as it is, so you can form your own educated conclusions without bias or agenda.</p>
+            <a href="#" class="cta-button">Explore Insights</a>
         </div>
     </section>
 
-    <!-- Audio Player Section -->
-    <section class="container">
-        <div class="audio-section">
-            <div class="audio-header">
-                <div class="audio-icon">
-                    <i class="fas fa-headphones"></i>
-                </div>
-                <h3 class="audio-title">Listen to this month's research reflection</h3>
+    <!-- Scrolling News Ticker -->
+    <div class="ticker-container">
+        <div class="ticker-label">Breaking News</div>
+        <div class="ticker-content">
+            <div class="ticker-item">
+                <span class="breaking-news">BREAKING:</span>
+                <a href="#">Global Summit Reaches Historic Climate Agreement After Marathon Negotiations</a>
             </div>
-            <audio controls class="audio-player">
-                <source src="audio/october-2023-reflection.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="audio-info">
-                <span>Duration: 42:15</span>
-                <span>File size: 38.7 MB</span>
+            <div class="ticker-item">
+                <span class="breaking-news">JUST IN:</span>
+                <a href="#">Tech Giant Announces Revolutionary AI Breakthrough in Medical Diagnostics</a>
             </div>
-            <div class="audio-download">
-                <a href="#" class="download-btn">Download Audio File</a>
+            <div class="ticker-item">
+                <span class="breaking-news">EXCLUSIVE:</span>
+                <a href="#">New Study Reveals Surprising Economic Trends in Post-Pandemic Recovery</a>
+            </div>
+            <div class="ticker-item">
+                <span class="breaking-news">UPDATE:</span>
+                <a href="#">Central Banks Coordinate Unprecedented Response to Currency Volatility</a>
+            </div>
+            <div class="ticker-item">
+                <span class="breaking-news">ANALYSIS:</span>
+                <a href="#">Experts Debate Implications of Recent Political Shifts in European Union</a>
+            </div>
+            <!-- Duplicate content for seamless loop -->
+            <div class="ticker-item">
+                <span class="breaking-news">BREAKING:</span>
+                <a href="#">Global Summit Reaches Historic Climate Agreement After Marathon Negotiations</a>
+            </div>
+            <div class="ticker-item">
+                <span class="breaking-news">JUST IN:</span>
+                <a href="#">Tech Giant Announces Revolutionary AI Breakthrough in Medical Diagnostics</a>
+            </div>
+            <div class="ticker-item">
+                <span class="breaking-news">EXCLUSIVE:</span>
+                <a href="#">New Study Reveals Surprising Economic Trends in Post-Pandemic Recovery</a>
+            </div>
+            <div class="ticker-item">
+                <span class="breaking-news">UPDATE:</span>
+                <a href="#">Central Banks Coordinate Unprecedented Response to Currency Volatility</a>
+            </div>
+            <div class="ticker-item">
+                <span class="breaking-news">ANALYSIS:</span>
+                <a href="#">Experts Debate Implications of Recent Political Shifts in European Union</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Article Content -->
-    <section class="container">
-        <article class="article-content">
-            <p>October has been a month of significant challenges and breakthroughs in our research methodology. As we've delved deeper into complex datasets, I've noticed recurring patterns in how we interpret—and sometimes misinterpret—the information before us.</p>
-            
-            <p>This month's reflection focuses on the cognitive traps that even experienced researchers fall into when faced with ambiguous or contradictory data. I'll share some personal experiences from our lab, along with strategies we've developed to mitigate these biases.</p>
-            
-            <h2>The Confirmation Bias Conundrum</h2>
-            
-            <p>Early in the month, we encountered a dataset that seemed to perfectly confirm our hypothesis about neural network optimization. The initial results were so compelling that we nearly published our findings prematurely.</p>
-            
-            <div class="highlight-box">
-                <p><strong>Key Insight:</strong> The more a dataset appears to confirm our expectations, the more rigorously we should question it. Confirmation bias operates most powerfully when we think we've found exactly what we were looking for.</p>
-            </div>
-            
-            <p>It was only when one of our junior researchers—unburdened by our theoretical framework—noticed an anomaly in the control group data that we realized our oversight. The "perfect" results were actually an artifact of our experimental design, not evidence for our hypothesis.</p>
-            
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Data visualization showing patterns" class="article-image">
-            <p class="image-caption">Visualization of the dataset that initially seemed to confirm our hypothesis</p>
-            
-            <h2>Methodological Adjustments</h2>
-            
-            <p>This experience led us to implement several changes in our research process:</p>
-            
-            <ul>
-                <li><strong>Blind analysis:</strong> We now have team members analyze datasets without knowing the hypothesis being tested.</li>
-                <li><strong>Adversarial review:</strong> We assign someone to actively try to disprove each finding.</li>
-                <li><strong>Pre-registration:</strong> We document our methods and analysis plans before examining the data.</li>
-            </ul>
-            
-            <p>These changes have already yielded benefits. In a subsequent study on algorithmic fairness, our blind analysis revealed a subtle bias that we would have otherwise missed.</p>
-            
-            <h2>Emerging Patterns in Complex Systems</h2>
-            
-            <p>As we've expanded our work into more complex systems, I've noticed an interesting phenomenon: the clearer a pattern appears in visualization, the more likely we are to overinterpret it.</p>
-            
-            <blockquote>
-                "The human brain is a pattern-recognition machine, but it's notoriously bad at distinguishing meaningful patterns from random noise. Our evolutionary history has trained us to err on the side of seeing patterns where none exist—it's safer to assume the rustling grass contains a predator than to assume it's just the wind."
-            </blockquote>
-            
-            <p>This month, we developed a new statistical threshold for pattern identification that accounts for this cognitive tendency. By requiring stronger evidence before declaring a pattern "meaningful," we've reduced our false positive rate by 23%.</p>
-            
-            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Statistical analysis visualization" class="article-image">
-            <p class="image-caption">New visualization technique helping distinguish meaningful patterns from noise</p>
-            
-            <h2>Collaborative Insights</h2>
-            
-            <p>One of the most valuable developments this month has been our collaboration with the psychology department. Their expertise in cognitive biases has provided fresh perspectives on our data interpretation challenges.</p>
-            
-            <p>Through a series of joint workshops, we've identified several domain-specific biases that affect computational research:</p>
-            
-            <ol>
-                <li><strong>Algorithmic anthropomorphism:</strong> Attributing human-like reasoning to computational processes</li>
-                <li><strong>Data beauty bias:</strong> Preferring aesthetically pleasing visualizations over accurate ones</li>
-                <li><strong>Complexity equating significance:</strong> Assuming that more complex models are inherently better</li>
-            </ol>
-            
-            <p>Addressing these biases has already improved our model selection process and interpretation framework.</p>
-            
-            <div class="conclusion">
-                <h2>Monthly Takeaways</h2>
-                <p>As October concludes, I'm reminded that research is as much about understanding our own cognitive processes as it is about understanding the external world. The tools we've developed this month—both methodological and psychological—will serve us well in the coming research cycles.</p>
-                
-                <p>Looking ahead to November, we'll be applying these refined approaches to our work on explainable AI and continuing our collaboration with cognitive scientists. The intersection of human cognition and machine intelligence remains fertile ground for discovery.</p>
-            </div>
-            
-            <p><em>This audio reflection was recorded on October 31, 2023, summarizing one month of research activities, challenges, and insights.</em></p>
-        </article>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">Dr. Evan Research</div>
-            <p class="footer-description">Presenting information, not conclusions. Empowering critical thinking through unfiltered perspectives.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p class="copyright">&copy; 2023 Dr. Evan Research. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Rest of your content would go here -->
+    <div style="padding: 2rem; text-align: center;">
+        <h2>Your Content Continues Here</h2>
+        <p style="margin-top: 1rem;">The rest of your page content would follow after the scrolling ticker.</p>
+    </div>
 
     <script>
-        // Navigation functionality
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        const menuOverlay = document.querySelector('.menu-overlay');
-        
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-        });
-        
-        menuOverlay.addEventListener('click', function() {
-            this.classList.remove('active');
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-            });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-        
-        // Audio player enhancement
-        const audioPlayer = document.querySelector('audio');
-        if (audioPlayer) {
-            audioPlayer.addEventListener('play', function() {
-                console.log('Audio reflection started');
+        // Optional JavaScript for enhanced functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tickerContainer = document.querySelector('.ticker-container');
+            const tickerContent = document.querySelector('.ticker-content');
+            
+            // Pause ticker on hover
+            tickerContainer.addEventListener('mouseenter', function() {
+                tickerContent.style.animationPlayState = 'paused';
             });
             
-            audioPlayer.addEventListener('ended', function() {
-                console.log('Audio reflection completed');
+            tickerContainer.addEventListener('mouseleave', function() {
+                tickerContent.style.animationPlayState = 'running';
             });
-        }
+            
+            // Clicking on a ticker item
+            const tickerItems = document.querySelectorAll('.ticker-item a');
+            tickerItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('In a real implementation, this would navigate to the full article: ' + this.textContent);
+                });
+            });
+        });
     </script>
 </body>
 </html>
