@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audio Journals Archive | Uncensored Researcher</title>
+    <title>Articles | Uncensored Researcher</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="../images/icon.png">
     <style>
@@ -198,9 +198,10 @@
             text-align: center;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
-    url('https://d13kjxnqnhcmn2.cloudfront.net/AcuCustom/Sitename/DAM/054/Best_podcasts_-_Main_1.png') center/cover no-repeat;
+    url('../images/open-book.jpg') center/cover no-repeat;
              color: #fff; 
 }
+
 
         
         .page-title {
@@ -245,36 +246,36 @@
             background: var(--accent);
         }
         
-        /* Journals Grid - Horizontal Layout */
-        .journals-grid {
+        /* Articles Grid - Horizontal Layout */
+        .articles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
             gap: 1.5rem;
         }
         
-        .journal-card {
+        .article-card {
             background: rgba(20, 30, 25, 0.7);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
-            height: 260px;
+            height: 210px;
         }
         
-        .journal-card:hover {
+        .article-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
         }
         
-        .journal-image {
+        .article-image {
             width: 150px;
             height: 100%;
             object-fit: cover;
             flex-shrink: 0;
         }
         
-        .journal-content {
+        .article-content {
             padding: 1.2rem;
             flex: 1;
             display: flex;
@@ -282,7 +283,7 @@
             justify-content: space-between;
         }
         
-        .journal-meta {
+        .article-meta {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.8rem;
@@ -290,25 +291,25 @@
             color: var(--text-dim);
         }
         
-        .journal-date {
+        .article-date {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .journal-duration {
+        .article-read-time {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
         
-        .journal-title {
+        .article-title {
             font-size: 1.1rem;
             margin-bottom: 0.8rem;
             line-height: 1.3;
         }
         
-        .journal-description {
+        .article-description {
             color: var(--text-dim);
             line-height: 1.4;
             font-size: 0.9rem;
@@ -319,7 +320,7 @@
             overflow: hidden;
         }
         
-        .journal-tags {
+        .article-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -334,7 +335,7 @@
             font-size: 0.75rem;
         }
         
-        .listen-btn {
+        .read-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -351,12 +352,146 @@
             width: fit-content;
         }
         
-        .listen-btn:hover {
+        .read-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 20px var(--accent-glow);
         }
         
-    /* Footer */
+        /* Category Filters */
+        .filter-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .page-header {
+                padding: 100px 1rem 40px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-menu {
+                width: 250px;
+            }
+            
+            .site-title {
+                font-size: 1.3rem;
+            }
+            
+            .hamburger {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-card {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .article-image {
+                width: 100%;
+                height: 120px;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 200px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 0;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+<style>
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--accent, #8a2be2);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px var(--accent-glow, rgba(138, 43, 226, 0.4));
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px var(--accent-glow, rgba(138, 43, 226, 0.6));
+        background: var(--highlight, #ff6b6b);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .back-to-top {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+
+      /* Footer */
         footer {
             background-color: var(--darker-bg);
             padding: 3rem 2rem;
@@ -402,113 +537,7 @@
             font-size: 0.9rem;
             color: var(--accent-light);
         }
-
-
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .page-header {
-                padding: 100px 1rem 40px;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .nav-menu {
-                width: 250px;
-            }
-            
-            .site-title {
-                font-size: 1.3rem;
-            }
-            
-            .hamburger {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .journals-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .journal-card {
-                flex-direction: column;
-                height: auto;
-            }
-            
-            .journal-image {
-                width: 100%;
-                height: 120px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .section {
-                padding: 3rem 0;
-            }
-            
-            .journals-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (min-width: 1200px) {
-            .journals-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
-
-<style>
-    .back-to-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--accent, #8a2be2);
-        color: white;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        box-shadow: 0 4px 15px var(--accent-glow, rgba(138, 43, 226, 0.4));
-        transition: all 0.3s ease;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
-    }
-
-    .back-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .back-to-top:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px var(--accent-glow, rgba(138, 43, 226, 0.6));
-        background: var(--highlight, #ff6b6b);
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-        .back-to-top {
-            bottom: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-        }
-    }
 </style>
-
 </head>
 <body>
     <!-- Navigation -->
@@ -529,104 +558,141 @@
         <div class="menu-overlay"></div>
     </nav>
 
-
     <!-- Page Header -->
     <section class="page-header">
-        <h1 class="page-title">Audio Journals</h1>
-        <p class="page-subtitle">Timely reflections, thoughtful insights, and unfiltered perspectives from Uncensored Researcher.</p>
+        <h1 class="page-title">Articles</h1>
+        <p class="page-subtitle">Published articles, essays  and studies on end time events, present truth, bible prophecy and more.</p>
     </section>
 
     <!-- Main Content -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title">Recent Journals</h2>
+            <!-- Category Filters -->
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">All Articles</button>
+                <button class="filter-btn" data-filter="Godhead">The Godhead</button>
+                <button class="filter-btn" data-filter="news">World News</button>
+                <button class="filter-btn" data-filter="prophecy">Bible Prophecy</button>
+                <button class="filter-btn" data-filter="health">Health</button>
+            </div>
             
-            <!-- Journals Grid -->
-            <div class="journals-grid">
+            <!-- Articles Grid -->
+            <div class="articles-grid">
                 
-                <!-- Journal 1 -->
-                <div class="journal-card">
-                    <img src="../../images/episode1.jpg" alt="Data Visualization" class="journal-image">
-                    <div class="journal-content">
-                        <div>
-                            <div class="journal-meta">
-                                <div class="journal-date">
-                                    <i class="far fa-calendar"></i>
-                                    October 5, 2025
-                                </div>
-                                <div class="journal-duration">
-                                    <i class="far fa-clock"></i>
-                                    42 min
-                                </div>
+                <!-- Article 1 -->
+                <div class="article-card" data-category="Godhead">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Research Methodology" class="article-image">
+                    <div class="article-content">
+                        <div>                            
+                            <h3 class="article-title">The Framework of Modern Research Methodology</h3>
+                            <p class="article-description">Exploring the evolution of research methodologies and their impact on scientific discovery in the digital age.</p>
+                            <div class="article-tags">
+                                <span class="tag">methodology</span>
+                                <span class="tag">research</span>
                             </div>
-                            <h3 class="journal-title">September 2025 Recap: Data Interpretation & Critical Thinking</h3>
-                            <p class="journal-description">Exploring cognitive biases in research and strategies for maintaining objectivity when analyzing complex information.</p>
-                            <div class="journal-tags">
+                        </div>
+                        <a href="article-research-methodology.html" class="read-btn">
+                            <i class="fas fa-book-open"></i>
+                            Read Article
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article 2 -->
+                <div class="article-card" data-category="news">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Data Analysis" class="article-image">
+                    <div class="article-content">
+                        <div>
+                            
+                            <h3 class="article-title">Quantitative Analysis in Social Sciences</h3>
+                            <p class="article-description">A comprehensive look at statistical methods and their application in modern social science research.</p>
+                            <div class="article-tags">
+                                <span class="tag">analysis</span>
+                                <span class="tag">research</span>
+                            </div>
+                        </div>
+                        <a href="article-quantitative-analysis.html" class="read-btn">
+                            <i class="fas fa-book-open"></i>
+                            Read Article
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article 3 -->
+                <div class="article-card" data-category="prophecy">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Critical Thinking" class="article-image">
+                    <div class="article-content">
+                        <div>
+                           
+                            <h3 class="article-title">Cognitive Biases in Research Interpretation</h3>
+                            <p class="article-description">How unconscious biases affect data interpretation and strategies for maintaining objectivity.</p>
+                            <div class="article-tags">
+                                <span class="tag">critical-thinking</span>
+                                <span class="tag">methodology</span>
+                            </div>
+                        </div>
+                        <a href="article-cognitive-biases.html" class="read-btn">
+                            <i class="fas fa-book-open"></i>
+                            Read Article
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Article 4 -->
+                <div class="article-card" data-category="health">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Research Paper" class="article-image">
+                    <div class="article-content">
+                        <div>
+                            
+                            <h3 class="article-title">The Replication Crisis: Causes and Solutions</h3>
+                            <p class="article-description">Examining the factors behind the replication crisis in scientific research and proposed methodologies for improvement.</p>
+                            <div class="article-tags">
                                 <span class="tag">research</span>
                                 <span class="tag">methodology</span>
                             </div>
                         </div>
-                        <a href="audio-journal-sep-2025.html" class="listen-btn">
-                            <i class="fas fa-play-circle"></i>
-                            Listen Now
+                        <a href="article-replication-crisis.html" class="read-btn">
+                            <i class="fas fa-book-open"></i>
+                            Read Article
                         </a>
                     </div>
                 </div>
                 
-                <!-- Journal 2 -->
-                <div class="journal-card">
-                    <img src="../images/episode1.jpg" alt="Statistical Analysis" class="journal-image">
-                    <div class="journal-content">
+                <!-- Article 5 -->
+                <div class="article-card" data-category="Godhead">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Data Visualization" class="article-image">
+                    <div class="article-content">
                         <div>
-                            <div class="journal-meta">
-                                <div class="journal-date">
-                                    <i class="far fa-calendar"></i>
-                                    October 25, 2025
-                                </div>
-                                <div class="journal-duration">
-                                    <i class="far fa-clock"></i>
-                                    28 min
-                                </div>
-                            </div>
-                            <h3 class="journal-title">Episode 1 |  Last Day Events | Bible Prophecy fast fulfilling </h3>
-                            <p class="journal-description">Thoughts on the fast fulfilling of bible prophecies. Understanding what we need to do in these final hours.</p>
-                            <div class="journal-tags">
-                                <span class="tag">bible prophecy</span>
-                                <span class="tag">end-times</span>
+                            
+                            <h3 class="article-title">Effective Data Visualization Techniques</h3>
+                            <p class="article-description">Best practices for creating clear, accurate, and impactful data visualizations in research publications.</p>
+                            <div class="article-tags">
+                                <span class="tag">analysis</span>
+                                <span class="tag">research</span>
                             </div>
                         </div>
-                        <a href="episode1/" class="listen-btn">
-                            <i class="fas fa-play-circle"></i>
-                            Listen Now
+                        <a href="article-data-visualization.html" class="read-btn">
+                            <i class="fas fa-book-open"></i>
+                            Read Article
                         </a>
                     </div>
                 </div>
                 
-                <!-- Journal 3 -->
-                <div class="journal-card">
-                    <img src="../images/logo3.jpg" alt="Research Notes" class="journal-image">
-                    <div class="journal-content">
+                <!-- Article 6 -->
+                <div class="article-card" data-category="Godhead">
+                    <img src="../images/trinity1.jpg" alt="Trinity False Doctrine" class="article-image">
+                    <div class="article-content">
                         <div>
-                            <div class="journal-meta">
-                                <div class="journal-date">
-                                    <i class="far fa-calendar"></i>
-                                    October 22, 2025
-                                </div>
-                                <div class="journal-duration">
-                                    <i class="far fa-clock"></i>
-                                    3 min
-                                </div>
-                            </div>
-                            <h3 class="journal-title">Why I Started Audio Journaling.</h3>
-                            <p class="journal-description">Reasons Why I started making these solo podcasts and purpose of this site.</p>
-                            <div class="journal-tags">
-                                <span class="tag">introduction</span>
-                                <span class="tag">truth seeker</span>
+                         <h3 class="article-title">A WARNING to the Adventist Family!</h3>
+                            <p class="article-description">A solemn Warning to the Seventh Day Adventist church. Dangerous doctrine ALERT.</p>
+                            <div class="article-tags">
+                                <span class="tag">One True God</span>
+                                <span class="tag">SDA Church</span>
                             </div>
                         </div>
-                        <a href="intro/" class="listen-btn">
-                            <i class="fas fa-play-circle"></i>
-                            Listen Now
+                        <a href="sda/" class="read-btn">
+                            <i class="fas fa-book-open"></i>
+                            Read Article
                         </a>
                     </div>
                 </div>
@@ -635,7 +701,7 @@
         </div>
     </section>
 
-     <!-- Footer -->
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Uncensored Researcher</div>
@@ -695,8 +761,30 @@
                 nav.classList.remove('scrolled');
             }
         });
+        
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const articleCards = document.querySelectorAll('.article-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter articles
+                const filter = this.getAttribute('data-filter');
+                
+                articleCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
     </script>
-
 
 <script>
     // Back to Top functionality
@@ -719,6 +807,7 @@
         });
     });
 </script>
+
 
 </body>
 </html>

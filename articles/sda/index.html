@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <!-- Essential Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,15 +85,10 @@
             background-color: var(--primary);
             color: var(--text);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
+            
         /* Authentication Section */
         .auth-section {
             min-height: 100vh;
@@ -435,6 +433,10 @@
             }
         }
 
+       
+
+ 
+        
         /* Navigation */
         .nav-container {
             position: fixed;
@@ -460,6 +462,15 @@
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1px;
+            margin-left: 20px;
         }
         
         .hamburger {
@@ -586,6 +597,7 @@
             opacity: 1;
             visibility: visible;
         }
+
     </style>
 
 <style>
@@ -631,6 +643,56 @@
             height: 45px;
         }
     }
+
+       
+ /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-description {
+            margin-bottom: 2rem;
+            color: var(--accent-light);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light-content);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--highlight);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+        }
+
+
 </style>
 
 </head>
@@ -638,8 +700,8 @@
 
 
     <!-- Navigation -->
-    <nav class="nav-container" id="navigation">
-        
+    <nav class="nav-container">
+        <a href="../../" class="site-title">Uncensored Researcher</a>
         <div class="hamburger">
             <span></span>
         </div>
@@ -654,6 +716,7 @@
         </div>
         <div class="menu-overlay"></div>
     </nav>
+
 
 
 <p>&nbsp</p>
@@ -1007,6 +1070,26 @@ had wrought together in the creation of the earth and every living thing upon it
         </div>
     </section>
 
+
+ <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Uncensored Researcher</div>
+            <p class="footer-description">Unbiased news updates  and insightful articles on global biblical events.</p>
+            <div class="social-links">
+                <a href="../../"><i class="fas fa-home"></i></a>
+                <a href="../../news/"><i class="fas fa-newspaper"></i></a>
+                <a href="../../more/"><i class="fas fa-ellipsis-h"></i></a>
+                <a href="../../contact/"><i class="fas fa-envelope"></i></a>
+                <a href="../../journals/"><i class="fas fa-volume-up"></i></a>        
+
+            </div>
+            <p class="copyright">&copy; 2025 Uncensored Researcher</p>
+        </div>
+    </footer>
+
+
+
 <!-- Back to Top Button -->
 <button id="backToTop" class="back-to-top" aria-label="Back to top">
     <i class="fas fa-arrow-up"></i>
@@ -1109,14 +1192,7 @@ had wrought together in the creation of the earth and every living thing upon it
             });
         });
         
-        // Add subtle parallax effect to hero background
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const heroBg = document.querySelector('.hero-bg');
-            heroBg.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
-        });
-
-         // Header scroll effect
+        // Header scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
