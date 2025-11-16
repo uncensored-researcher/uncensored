@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Dr. Evan Research</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #8a2be2;
+            --accent-glow: rgba(138, 43, 226, 0.4);
+            --text: #f0f0f0;
+            --text-dim: #a0a0a0;
+            --highlight: #ff6b6b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1px;
+            margin-left: 20px;
+        }
+        
+        .hamburger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .hamburger.active {
+            background: var(--accent);
+        }
+        
+        .hamburger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before,
+        .hamburger span::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before {
+            top: -8px;
+        }
+        
+        .hamburger span::after {
+            top: 8px;
+        }
+        
+        .hamburger.active span {
+            background: transparent;
+        }
+        
+        .hamburger.active span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        
+        .hamburger.active span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--secondary);
+            padding: 100px 30px 30px;
+            transition: all 0.5s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 20px;
+        }
+        
+        .nav-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent);
+            padding-left: 10px;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+        
+        .hero-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        
+        /* Featured Articles Section */
+        .featured-articles2 {
+            padding: 5rem 0;
+            background: var(--secondary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .articles-grid2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .article-card2 {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card2:hover {
+            transform: translateY(-5px);
+        }
+        
+        .article-card-image2 {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .article-card-content2 {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-card-meta2 {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+        
+        .article-card-title2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .article-card-excerpt2 {
+            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+            font-size: 0.9rem;
+            flex: 1;
+        }
+        
+        .article-card-link2 {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .article-card-link2:hover {
+            color: var(--highlight);
+        }
+        
+        .view-all-btn-container2 {
+            text-align: center;
+        }
+        
+        .view-all-btn2 {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .view-all-btn2:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        /* Quotes Section */
+        .quotes-section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quotes-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .quote-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .quote-slide.active {
+            opacity: 1;
+        }
+        
+        .quote-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .quote-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .quote-text {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            font-style: italic;
+        }
+        
+        .quote-author {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+        
+        .quote-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .quote-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-dim);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quote-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-description {
+            margin-bottom: 2rem;
+            color: var(--text-dim);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--highlight);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .articles-grid2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .articles-grid2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .article-card-image2 {
+                height: 200px;
+            }
+            
+            .quote-text {
+                font-size: 1.4rem;
+            }
+            
+            .nav-menu {
+                width: 250px;
+            }
+            
+            .site-title {
+                font-size: 1.3rem;
+            }
+            
+            .hamburger {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 0 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .quotes-container {
+                height: 400px;
+            }
+            
+            .quote-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <a href="index.html" class="site-title">Dr. Evan Research</a>
+        <div class="hamburger">
+            <span></span>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">Articles</a></li>
+                <li><a href="more.html">More</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Evidence-Based Research in the Information Age</h1>
+            <p class="hero-subtitle">Presenting information, not conclusions. Empowering critical thinking through unfiltered perspectives and rigorous methodology.</p>
+            <a href="news.html" class="hero-btn">Explore Our Research</a>
+        </div>
+    </section>
+
+    <!-- Featured Articles Section -->
+    <section class="featured-articles2">
+        <div class="container">
+            <h2 class="section-title">Featured Articles</h2>
+            <div class="articles-grid2">
+                <div class="article-card2">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Data visualization" class="article-card-image2">
+                    <div class="article-card-content2">
+                        <div class="article-card-meta2">
+                            <span>October 15, 2023</span>
+                            <span>Research Methodology</span>
+                        </div>
+                        <h3 class="article-card-title2">The Future of Evidence-Based Research in an Age of Information Overload</h3>
+                        <p class="article-card-excerpt2">Exploring how evidence-based practices must evolve to maintain integrity and utility in an era dominated by big data, AI-generated content, and confirmation bias.</p>
+                        <a href="article.html" class="article-card-link2">Read More →</a>
+                    </div>
+                </div>
+                
+                <div class="article-card2">
+                    <img src="https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Statistical analysis" class="article-card-image2">
+                    <div class="article-card-content2">
+                        <div class="article-card-meta2">
+                            <span>September 28, 2023</span>
+                            <span>Statistics</span>
+                        </div>
+                        <h3 class="article-card-title2">Beyond P-Values: Rethinking Statistical Significance</h3>
+                        <p class="article-card-excerpt2">Exploring the limitations of traditional statistical measures and emerging alternatives for research evaluation in complex data environments.</p>
+                        <a href="#" class="article-card-link2">Read More →</a>
+                    </div>
+                </div>
+                
+                <div class="article-card2">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Open data concept" class="article-card-image2">
+                    <div class="article-card-content2">
+                        <div class="article-card-meta2">
+                            <span>September 12, 2023</span>
+                            <span>Open Science</span>
+                        </div>
+                        <h3 class="article-card-title2">The Open Science Movement: Progress and Challenges</h3>
+                        <p class="article-card-excerpt2">Assessing how open data, code, and methodology are transforming research practices across disciplines and the barriers to wider adoption.</p>
+                        <a href="#" class="article-card-link2">Read More →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all-btn-container2">
+                <a href="news.html" class="view-all-btn2">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="quotes-section">
+        <div class="container">
+            <h2 class="section-title">Words of Wisdom</h2>
+            <div class="quotes-container">
+                <div class="quote-slide active" style="background-image: url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="quote-content">
+                        <p class="quote-text">"The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge."</p>
+                        <p class="quote-author">- Stephen Hawking</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="quote-content">
+                        <p class="quote-text">"It is the mark of an educated mind to be able to entertain a thought without accepting it."</p>
+                        <p class="quote-author">- Aristotle</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="quote-content">
+                        <p class="quote-text">"The first principle is that you must not fool yourself — and you are the easiest person to fool."</p>
+                        <p class="quote-author">- Richard Feynman</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="quote-content">
+                        <p class="quote-text">"The important thing is not to stop questioning. Curiosity has its own reason for existing."</p>
+                        <p class="quote-author">- Albert Einstein</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="quote-content">
+                        <p class="quote-text">"Extraordinary claims require extraordinary evidence."</p>
+                        <p class="quote-author">- Carl Sagan</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quote-nav">
+                <div class="quote-dot active" data-index="0"></div>
+                <div class="quote-dot" data-index="1"></div>
+                <div class="quote-dot" data-index="2"></div>
+                <div class="quote-dot" data-index="3"></div>
+                <div class="quote-dot" data-index="4"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Dr. Evan Research</div>
+            <p class="footer-description">Presenting information, not conclusions. Empowering critical thinking through unfiltered perspectives.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2023 Dr. Evan Research. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+        
+        menuOverlay.addEventListener('click', function() {
+            this.classList.remove('active');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+        
+        // Quotes rotation functionality
+        const quoteSlides = document.querySelectorAll('.quote-slide');
+        const quoteDots = document.querySelectorAll('.quote-dot');
+        let currentQuoteIndex = 0;
+        
+        function showQuote(index) {
+            // Hide all slides
+            quoteSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            quoteDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show selected slide and activate corresponding dot
+            quoteSlides[index].classList.add('active');
+            quoteDots[index].classList.add('active');
+            
+            currentQuoteIndex = index;
+        }
+        
+        // Add click event to dots
+        quoteDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showQuote(index);
+                // Reset auto-rotation timer
+                clearInterval(rotationInterval);
+                startRotation();
+            });
+        });
+        
+        // Auto-rotation function
+        function rotateQuotes() {
+            let nextIndex = (currentQuoteIndex + 1) % quoteSlides.length;
+            showQuote(nextIndex);
+        }
+        
+        // Start auto-rotation
+        let rotationInterval = setInterval(rotateQuotes, 9000);
+        
+        function startRotation() {
+            rotationInterval = setInterval(rotateQuotes, 9000);
+        }
+    </script>
+</body>
+</html>

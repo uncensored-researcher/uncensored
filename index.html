@@ -53,6 +53,649 @@
       }
     }
     </script>
+<style>
+                /* Short Study Section */
+      .short-study2 {
+    position: relative;
+    padding: 5rem 0;
+    background: url('images/jesus2.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 1;
+    color: white; /* makes text pop on dark overlay */
+}
+
+.short-study2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8); /* dark overlay */
+    backdrop-filter: blur(5px); /* blur effect */
+    z-index: -1;
+}
+
+       
+        
+        .container2 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .study-content2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .study-text2 {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .study-title2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .study-meta2 {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        .study-description2 p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .study-highlights2 {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--highlight);
+        }
+        
+        .study-highlights2 h4 {
+            margin-bottom: 1rem;
+            color: var(--highlight);
+        }
+        
+        .study-highlights2 ul {
+            padding-left: 1.5rem;
+        }
+        
+        .study-highlights2 li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .study-methodology2 {
+            margin: 1.5rem 0;
+        }
+        
+        .methodology-grid2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .methodology-item2 {
+            background: rgba(138, 43, 226, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .methodology-item2 h5 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .study-image2 {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .study-image2 img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption2 {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .video-container2 {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-container2 iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .study-conclusion2 {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 3px solid var(--accent);
+        }
+        
+        .study-conclusion2 h4 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .study-tags2 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .tag2 {
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .study-content2 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .methodology-grid2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title2 {
+                font-size: 1.8rem;
+            }
+            
+            .study-title2 {
+                font-size: 1.5rem;
+            }
+            
+            .study-meta2 {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .short-study2 {
+                padding: 3rem 0;
+            }
+            
+            .container2 {
+                padding: 0 1rem;
+            }
+            
+            .section-title2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Recommended Book Section */
+        .featured-book2 {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-book2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/egwbooks2.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .featured-book2::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--accent-glow);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: pulse2 8s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        @keyframes pulse2 {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.5;
+            }
+        }
+        
+        .container2 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .book-feature2 {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            background: rgba(20, 10, 30, 0.7);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-feature2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .book-feature2:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .book-feature2:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(138, 43, 226, 0.3);
+        }
+        
+        .book-cover2 {
+            flex: 0 0 280px;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .book-image2 {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease;
+            transform: rotateY(-5deg) rotateX(5deg);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .book-feature2:hover .book-image2 {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+            box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        
+        .book-badge2 {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--highlight);
+            color: var(--primary);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            z-index: 2;
+            animation: bounce2 2s infinite;
+        }
+        
+        @keyframes bounce2 {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .book-info2 {
+            flex: 1;
+        }
+        
+        .book-title2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .book-author2 {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .book-description2 {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+        
+        .book-highlights2 {
+            margin-bottom: 2.5rem;
+        }
+        
+        .highlight-item2 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-icon2 {
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .book-actions2 {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .action-btn2 {
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .primary-btn2 {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+        
+        .primary-btn2:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--accent-glow);
+        }
+        
+        .secondary-btn2 {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        
+        .secondary-btn2:hover {
+            background: rgba(138, 43, 226, 0.1);
+        }
+        
+        /* Articles Gateway Section */
+        .articles-gateway2 {
+            padding: 4rem 0;
+            background: var(--primary);
+        }
+        
+        .gateway-container2 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .gateway-header2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .gateway-title2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .gateway-subtitle2 {
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .gateway-grid2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .gateway-card2 {
+            background: var(--secondary);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .gateway-card2:hover {
+            transform: translateY(-5px);
+            border-left: 3px solid var(--accent);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gateway-card-title2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .gateway-card-meta2 {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .gateway-card-link2 {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .gateway-card-link2:hover {
+            gap: 1rem;
+            color: var(--highlight);
+        }
+        
+        .gateway-footer2 {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .gateway-btn2 {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .gateway-btn2:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .book-feature2 {
+                flex-direction: column;
+                text-align: center;
+                gap: 2.5rem;
+            }
+            
+            .book-cover2 {
+                flex: 0 0 auto;
+            }
+            
+            .gateway-grid2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title2 {
+                font-size: 2rem;
+            }
+            
+            .book-title2 {
+                font-size: 1.8rem;
+            }
+            
+            .book-actions2 {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn2 {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .gateway-grid2 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .featured-book2 {
+                padding: 4rem 0;
+            }
+            
+            .book-feature2 {
+                padding: 2rem;
+            }
+            
+            .book-image2 {
+                height: 350px;
+            }
+            
+            .container2, .gateway-container2 {
+                padding: 0 1rem;
+            }
+        }
+</style>
+
 </head>
 <body>
     <!-- Navigation -->
@@ -89,41 +732,100 @@
 
 
 
-    <!-- Featured Article -->
-    <section class="container">
-        <div class="featured-article" id="main1">
-            <div class="article-card">
-                <img src="images/digital id.jpg" alt="Featured Article" class="article-image">
-                <div class="article-content">
-                    <span class="article-tag">News Update</span>
-                    <h2 class="article-title">Elon Musk Speaks On The Dangers of Digital ID</h2>
-                    <span class="article-date">October 2025</span>
-                    <p class="article-excerpt"> With a recent announcement on the <a href="https://youtu.be/nTGnUa7Ng7g" style="color: #8a2be2">mandatory digital ID</a> by the UK Prime Minister, Elon Musk just recently spoke on the dangers of adopting digital ID with a concern for privacy and control.</p>
-                    <a href="https://youtu.be/RHCUV7bAAB4" class="cta-button">Watch Video</a>
+    <!-- Featured Articles Section -->
+    <section class="featured-articles2">
+        <div class="container">
+            <div class="articles-grid2">
+                <div class="article-card2">
+                    <img src="images/kingandpope.jpg" alt="The King of England Meets Pope Leo" class="article-image">
+                    <div class="article-card-content2">
+                        <div class="article-card-meta2">
+                            <span>October, 2025</span>
+                        </div>
+                        <h3 class="article-card-title2">The joining of hands between the Catholic church and the Church of England</h3>
+                        <p class="article-card-excerpt2">The Royal Family X (formerly Twitter) post,<a href="https://x.com/RoyalFamily/status/1981332118044049916" style="color: #8a2be2; text-decoration: none;"> "The joining of hands between the Catholic Church and Church of England, in a <b>celebration of ecumenism.</b>"</a>.</p>
+                        <a href="https://youtu.be/3FvfqlqOPVw" class="article-card-link2">Watch News →</a>
+                    </div>
                 </div>
+                
+                <div class="article-card2">
+                   <img src="images/nig-persecution.jpg" alt="Nigerian Christian Persecution" class="article-image">
+                    <div class="article-card-content2">
+                        <div class="article-card-meta2">
+                            <span>October, 2025</span>
+                        </div>
+                        <h3 class="article-card-title2">Christians in Nigeria are being persecuted</h3>
+                        <p class="article-card-excerpt2"> <a href="https://youtu.be/s8iN35ZsuMY" style="color: #8a2be2; text-decoration: none;">Nigerian Christians face persecution from radical Islamist groups</a> . Another 15 Christians were reportedly slaughtered in Nigeria by Fulani terrorists in Barkin-Ladi and Bokkos counties in Plateau State on October 14th..</p>
+                        <a href="https://youtu.be/F7m3CvF06to" class="article-card-link2">Watch News →</a>
+                    </div>
+                </div>
+                
+                <div class="article-card2">
+                    <img src="images/digital id.jpg" alt="Digital ID" class="article-image">
+                    <div class="article-card-content2">
+                        <div class="article-card-meta2">
+                            <span>October, 2025</span>
+                        </div>
+                        <h3 class="article-card-title2">Elon Musk Speaks On The Dangers of Digital ID</h3>
+                        <p class="article-card-excerpt2"> With a recent announcement on the <a href="https://youtu.be/nTGnUa7Ng7g" style="color: #8a2be2; text-decoration: none;">mandatory digital ID</a> by the UK Prime Minister, Elon Musk just recently spoke on the dangers of adopting digital ID with a concern for privacy and control.</p>
+                        <a href="https://youtu.be/RHCUV7bAAB4" class="article-card-link2">Watch Video →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all-btn-container2">
+                <a href="news/" class="view-all-btn2">View All Articles</a>
             </div>
         </div>
     </section>
 
-            
-            <!-- Recent Articles -->
-    <section class="recent-articles">
-
-        
-        <div class="recent-article-card">
-            <img src="images/nig-persecution.jpg" alt="Nigerian Christian Persecution" class="recent-article-image">
-            <div class="recent-article-content">
-                <h3 class="recent-article-title">Christians in Nigeria are being persecuted | 15 Nigerian Christians Massacred by Terrorists</h3>
-                <span class="recent-article-date">October, 2025</span>
-                <p class="recent-article-description">  <a href="https://youtu.be/s8iN35ZsuMY" style="color: #8a2be2; text-decoration: none;">Nigerian Christians face persecution from radical Islamist groups</a> . Another 15 Christians were reportedly slaughtered in Nigeria by Fulani terrorists in Barkin-Ladi and Bokkos counties in Plateau State on October 14th.</p>
-                <a href="https://youtu.be/F7m3CvF06to" class="cta-button">Watch News</a>
+    <!-- Quotes Section -->
+    <section class="quotes-section">
+        <div class="container">
+            <div class="quotes-container">
+                <div class="quote-slide active" style="background-image: url('images/watchhorse.jpg');">
+                    <div class="quote-content">
+                        <p class="quote-text">"Cry aloud, spare not, lift up thy voice like a trumpet, and shew my people their transgression, and the house of Jacob their sins."</p>
+                        <p class="quote-author">- Isaiah 58:1</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('images/egw1.jpg');">
+                    <div class="quote-content">
+                        <p class="quote-text">"The Lord is soon to come, and we must be prepared to meet Him in peace. Let us be determined to do all in our power to impart light to those around us."</p>
+                        <p class="quote-author">- 8T 253.1</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('images/closedsunday.jpg');">
+                    <div class="quote-content">
+                        <p class="quote-text">"This is our work. The light that we have upon the third angel’s message is the true light. The mark of the beast is exactly what it has been proclaimed to be."</p>
+                        <p class="quote-author">- 8T 159.3</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('images/3angels1.jpg');">
+                    <div class="quote-content">
+                        <p class="quote-text">"The most solemn truths ever entrusted to mortals have been given to us to proclaim to the world. The proclamation of these truths is our work."</p>
+                        <p class="quote-author">- RH July 28, 1904. par. 1</p>
+                    </div>
+                </div>
+                
+                <div class="quote-slide" style="background-image: url('images/pioneers.jpg');">
+                    <div class="quote-content">
+                        <p class="quote-text">"We are to hold to the sure pillars of our faith. The principles of truth that God has revealed to us are our only true foundation. They have made us what we are."</p>
+                        <p class="quote-author">- 1SM 201.2</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-
-
-        <div class="view-all-container">
-            <a href="news/" class="cta-button">View All News Updates</a>
+            
+            <div class="quote-nav">
+                <div class="quote-dot active" data-index="0"></div>
+                <div class="quote-dot" data-index="1"></div>
+                <div class="quote-dot" data-index="2"></div>
+                <div class="quote-dot" data-index="3"></div>
+                <div class="quote-dot" data-index="4"></div>
+            </div>
         </div>
     </section>
 
@@ -174,145 +876,170 @@
     </section>
 
 
-
-    <!-- Glassmorphic Section -->
-    <section class="glass-section">
-            <h2 style="text-align:center; font-size:30px;">The Holy Spirit is Jesus not "God the Holy Spirit"</h2> 
-            <p>&nbsp</p>
-            <p>&nbsp</p>
-            <p>&nbsp</p>
-        <div class="container">
-            <div class="glass-content">
-
-
-                <div class="glass-text">
-                    <p><img src="images/comforter.jpg" alt="Jesus The Holy Spirit" style="width:100%; height:auto; border-radius:20px;"></p>
-
-                    <p>The dangerous doctrine of the Trinity has been widely adopted but majority of Christians, but little do they know it is a doctrine of the devil. The Holy Spirit is not a seperate God being from Jesus caled "God the Holy Ghost" but it is actually the Spirit of Jesus Christ Himself. <i> <b>Matthew 18:20 ...'For where two or three are gathered together in my name, </b><span class="highlight"><b>there am I in the midst of them.'</b></span> </i>
-
-</p>
-
-                    <p><i>2 Corinthians 3:17 ...<a href="https://www.youtube.com/watch?v=7D9_3xQzJjM" style="color: #8a2be2;"><span class="highlight"><b>'Now the Lord is that Spirit:</b></span></a> and where the Spirit of the Lord is, there is 
-liberty.'</i></p>
-
-                    <p><i>John 14:16-20 ...'And I will pray the Father, and he shall give you another Comforter, that he 
-may abide with you for ever; Even <span class="highlight">the Spirit of truth;</span> whom the world cannot receive, 
-because it seeth him not, neither knoweth him: <b>but ye know him; for he dwelleth with you,</b> 
-and shall be in you. <span class="highlight"><b>I will not leave you comfortless: I will come to you.</b></span> Yet a little while, and the world seeth me no more; but ye see me: because I live, ye shall live also. At that day ye 
-shall know that I am in my Father, and ye in me, and <span class="highlight"><b>I in you.'</b></span></i></p>
-
-
-<p> "The holy Spirit is the comforter, as the personal presence of Christ to the soul." <b>(Ellen G. 
-White, Review and Herald, November 29, 1892) </b></p>
-
-
-<p> <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius:20px;">
-    <iframe 
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-        src="https://www.youtube.com/embed/oNaqrlrCTYc"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-    </iframe>
-</div>
-</p>
-
-<p> </p>
+    <!-- Recommended Book Section -->
+    <section class="featured-book2">
+        <div class="container2">
+            <h2 class="section-title2">Essential Reading!</h2>
+            
+            <div class="book-feature2">
+                <div class="book-cover2">
+                    <div class="book-badge2">MUST READ</div>
+                    <img src="images/gc.jpg">
                 </div>
-
-                <div class="glass-text">
-                    <p>"When God's people take the position that they are the temple of <span class="highlight">THE HOLY GHOST, CHRIST HIMSELF abiding within,</span> they will so clearly reveal Him in spirit, words and actions, that there will be an unmistakable distinction between them and Satan's followers." <b>(E.White, Ms100, July 14, 1902, par. 24) </b></p>
-
-                    <p>"It is not safe to catch the spirit from another.<span class="highlight"> We want the Holy Spirit, which is Jesus Christ."</span><b> (E.White, Letter 66, April 10, 1894, par.17-18) .</b></p>
-
-
-                    <p>"When trials overshadow the soul, remember the words of Christ, remember that <span class="highlight">He is an unseen presence in the person of the Holy Spirit."</span> <b>(E.G. White, DG 185.2, 1897) </b></p>
-
-                    <p><span class="highlight">"CHRIST WALKS UNSEEN through our streets.</span> With messages of mercy He comes to our homes." <b>(Ellen G. White, The Ministry of Healing, p. 107) .</b></p>
                 
-
-<p>"we need to realize that <span class="highlight"> the Holy Spirit,</span> who is as much a person as God is a 
-person, <span class="highlight">is walking through these grounds."</span> <b>(MR, vol.7, par.299). </b> </p>
-
-<p> "How few realize that <span class="highlight"> JESUS, UNSEEN, is WALKING by their side!</span> How ashamed many 
-would be to hear His voice speaking to them, and to know that He heard all their foolish, 
-common talk!" <b>(Ellen G. White, 14 MR 125.3)</b>  </p>
-
-<p> <span class="highlight">"Jesus comes to you as the Spirit of truth;</span> study the mind of the Spirit, consult your Lord, follow His way."<b> (Ellen G. White, 2MR 337.1)</b> </p>
-
-
-<p> "As by faith we look to Jesus, our faith pierces the shadow, and we adore God for His 
-wondrous love <span class="highlight">in giving Jesus the Comforter."</span> <b>(E.White, Manuscript Releases 19, p. 297.3)</b> </p>
-
-<p><span class="highlight"> "The Saviour is our Comforter. This I have proved Him to be." </span><b>(E.White, Manuscript Releases, Vol.8, pgr 49)</b>  </p>
-
-
-<p> "The reasons why the churches are weak and sickly and ready to die is that the enemy has 
-brought influences of a discouraging nature to bear upon trembling souls. <span class="highlight"> He has sought to 
-shut Jesus from their view as the Comforter." </span><b>(Ellen G. White, Review and Herald, August 26, 1890)</b> </p>
-
-
-                  </div>
-            </div>
-<p>&nbsp</p>
-<p>&nbsp</p>
-<p>&nbsp</p>
-        </div>
-    </section>
-
-
-    <!-- Book recommendation section -->
-    <section class="book-recommendation">     
-            <h2 class="section-title">Recommended Book</h2>
-            <div class="book-card">
-                <img src="images/gc.jpg" alt="Book cover" class="book-image">
-                <h3 class="book-title">The Great Controversy (EGW)</h3>
-                <p class="book-description">I highly recommend you to read this book. Majority of the things written in here have happened and are happening with accuracy. Events that are soon to happen are all written in here.</p>
-                <a href="https://media2.egwwritings.org/pdf/en_GC.pdf" class="download-btn">Download Book</a>
+                <div class="book-info2">
+                    <h3 class="book-title2">The Great Controversy</h3>
+                    <p class="book-author2">by Ellen G. White</p>
+                    
+                    <p class="book-description2">This book aims to help the troubled soul to a right solution of all these problems we face in life. It was written by one who has found that God is good, and has learned in communion with God and the study of His word that the secret of the Lord is with them that fear Him, and that He will show them His covenant.</p>
+                    
+                    <div class="book-highlights2">
+                        <div class="highlight-item2">
+                            <div class="highlight-icon2">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <span>Unmasks the deceptions of Satan</span>
+                        </div>
+                        <div class="highlight-item2">
+                            <div class="highlight-icon2">
+                                <i class="fas fa-brain
+"></i>
+                            </div>
+                            <span>In-depth counsel and instruction vital for the salvation of souls</span>
+                        </div>
+                        <div class="highlight-item2">
+                            <div class="highlight-icon2">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <span>Amplified prophecies of the Bible concerning the end of all things</span>
+                        </div>
+                    </div>
+                    
+                    <div class="book-actions2">
+                        <a href="https://media2.egwwritings.org/pdf/en_GC.pdf" class="action-btn2 primary-btn2">
+                            <i class="fas fa-book"></i> Read / Download PDF
+                        </a>
+                        <a href="https://judgmenthour.org/product/the-great-controversy-between-christ-and-satan-volume-iv/" class="action-btn2 secondary-btn2">
+                            <i class="fas fa-shopping-cart"></i> Get the Book
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-
-
-
-<!-- Written Articles Section for Homepage -->
-<section class="written-articles-preview">
-    <div class="written-container">
-        <div class="written-section-header">
-            <h2>Published Articles</h2>
-            <p>Read articles, insights, stories and studies on end times, bible prophecy and world events.</p>
-        </div>
-        
-        <div class="written-featured">
-            <div class="written-featured-image">
-                <img src="images/trinity1.jpg">
+    
+    <!-- Articles Gateway Section -->
+    <section class="articles-gateway2">
+        <div class="gateway-container2">
+            <div class="gateway-header2">
+                <h3 class="gateway-title2">Read Previously Published Articles</h3>
+                <p class="gateway-subtitle2">Explore our archive of evidence-based research and critical analysis across various disciplines</p>
             </div>
-            <div class="written-featured-content">
+            
+            <div class="gateway-grid2">
+                <div class="gateway-card2">
+                    <h4 class="gateway-card-title2">The Replication Crisis in Modern Science</h4>
+                    <div class="gateway-card-meta2">
+                        <span>Research Methodology</span>
+                        <span>March 2023</span>
+                    </div>
+                    <a href="#" class="gateway-card-link2">
+                        Read Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
                 
-                <h3 class="written-title">A Warning To The SDA family!</h3>
-                <p class="written-excerpt">A solemn Warning to the Seventh Day Adventist church. Dangerous doctrine ALERT..</p>
-                <div class="written-tags">
-                    <span class="written-tag">The Godhead</span>
-                    <span class="written-tag">SDA</span>
-                    <span class="written-tag">Trinity False Doctrine</span>
-                </div>
-                <div class="written-actions">
-                    <a href="articles/sda/" class="written-read-btn">
-                        <i class="fas fa-book-open"></i>
-                        Read Article
+                <div class="gateway-card2">
+                    <h4 class="gateway-card-title2">Big Data Ethics: Privacy in the Information Age</h4>
+                    <div class="gateway-card-meta2">
+                        <span>Data Ethics</span>
+                        <span>January 2023</span>
+                    </div>
+                    <a href="#" class="gateway-card-link2">
+                        Read Article <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="articles/" class="written-view-all-btn">
-                        View All Articles
-                        <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="gateway-card2">
+                    <h4 class="gateway-card-title2">Cognitive Biases in Peer Review Processes</h4>
+                    <div class="gateway-card-meta2">
+                        <span>Psychology</span>
+                        <span>November 2022</span>
+                    </div>
+                    <a href="#" class="gateway-card-link2">
+                        Read Article <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
+            
+            <div class="gateway-footer2">
+                <a href="articles/" class="gateway-btn2">Browse All Articles</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+   
 
 
+    <!-- Short Study Section -->
+    <section class="short-study2">
+        <div class="container2">
+            <h2 class="section-title2">Featured Study</h2>
+            
+            <div class="study-content2">
+                <div class="study-text2">
+                    <h3 class="study-title2">"We want the Holy Spirit which is Jesus Christ" </h3>
+                    
+                    <div class="study-meta2">
+                        <div class="study-date2">
+                            <i class="far fa-calendar"></i>
+                            <span> Ellen G. White, Letter 66, April 10, 1894, par.17-18  </span>
+                        </div>
+                    </div>
+                    
+                    <div class="study-description2">
+                        <p>The dangerous doctrine of the Trinity has been widely adopted by majority of Christians, but little do they know it is a doctrine of the devil. The Holy Spirit is not a seperate God being from Jesus caled "God the Holy Ghost" but it is actually the Spirit of Jesus Christ Himself.</p>
+                        
+                        <p><i>"While Jesus ministers in the sanctuary above, <b>He is still by His Spirit the minister of the church on earth. <span class="highlight">He is withdrawn from the eye of sense,</span> but His parting promise is fulfilled, 'Lo, I am with you alway, even unto the end of the world.'</b> Matthew 28:20. While He delegates His power to inferior ministers, His energizing presence is still with His church." (DA 166.2)</i></p>
+                    </div>
+                    
+                    <div class="study-highlights2">
+                        <ul>
+                            <li>"When trials overshadow the soul, remember the words of Christ, remember that <span class="highlight">He is an unseen presence in the person of the Holy Spirit.</span>" (E.G. White, DG 185.2, 1897)
+</li>
+                            <li>"<span class="highlight">CHRIST WALKS UNSEEN through our streets.</span> With messages of mercy He comes to our homes." (Ellen G. White, The Ministry of Healing, p. 107)</li>
+                            <li>"When God's people take the position that they are the temple of THE HOLY GHOST, <span class="highlight">CHRIST HIMSELF abiding within,</span> they will so clearly reveal Him in spirit, words and actions, that there will be an unmistakable distinction between them and Satan's followers." (E.White, Ms100, July 14, 1902, par. 24)</li>
+                            <li>"we need to realize that the Holy Spirit, who is as much a person as God is a person, <span class="highlight">is walking through these grounds.</span>" (MR, vol.7, par.299)</li>
+                            <li>"<span class="highlight">The Saviour is our Comforter.</span> This I have proved Him to be." (E.White, Manuscript Releases, Vol.8, pgr 49)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="study-tags2">
+                        <span class="tag2">The Holy Spirit</span>
+                        <span class="tag2">Godhead</span>
+                        <span class="tag2">Trinity False Doctrine</span>
+                        <span class="tag2">Jesus</span>
+                        <span class="tag2">Non-Trinitarian</span>
+                    </div>
+                </div>
+                
+                <div class="study-media2">
+                    <div class="study-image2">
+                        <img src="images/comforter.jpg" alt="Jesus and the disciples gathered around Him.">
+                        <div class="image-caption2">"But ye know Him for He dwelleth with you, and shall be in you. - John 14</div>
+                    </div>
+                    
+                    <div class="video-container2">
+                        <iframe src="https://www.youtube.com/embed/oNaqrlrCTYc" title="Cognitive Biases Explained" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="study-actions2" style="margin-top: 1.5rem; text-align: center;">
+                        <a href="https://www.end-times-prophecy.org/holy-spirit-jesus.html" target="_blank" class="download-btn2" style="background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none;">
+                            <i class="fas fa-newspaper"></i> Read Full Article
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -379,9 +1106,68 @@ shut Jesus from their view as the Comforter." </span><b>(Ellen G. White, Review 
             }
         });
 
+
+ // Quotes rotation functionality
+        const quoteSlides = document.querySelectorAll('.quote-slide');
+        const quoteDots = document.querySelectorAll('.quote-dot');
+        let currentQuoteIndex = 0;
+        
+        function showQuote(index) {
+            // Hide all slides
+            quoteSlides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            quoteDots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show selected slide and activate corresponding dot
+            quoteSlides[index].classList.add('active');
+            quoteDots[index].classList.add('active');
+            
+            currentQuoteIndex = index;
+        }
+        
+        // Add click event to dots
+        quoteDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showQuote(index);
+                // Reset auto-rotation timer
+                clearInterval(rotationInterval);
+                startRotation();
+            });
+        });
+        
+        // Auto-rotation function
+        function rotateQuotes() {
+            let nextIndex = (currentQuoteIndex + 1) % quoteSlides.length;
+            showQuote(nextIndex);
+        }
+        
+        // Start auto-rotation
+        let rotationInterval = setInterval(rotateQuotes, 8000);
+        
+        function startRotation() {
+            rotationInterval = setInterval(rotateQuotes, 8000);
+        }
     </script>
 
-
+    <script>
+        // Simple animation enhancement
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookFeature = document.querySelector('.book-feature2');
+            
+            // Add subtle floating animation
+            setInterval(() => {
+                bookFeature.style.transform = 'translateY(-5px)';
+                setTimeout(() => {
+                    bookFeature.style.transform = 'translateY(-10px)';
+                }, 3000);
+            }, 6000);
+        });
+    </script>
 
 
 </body>
