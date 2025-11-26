@@ -248,6 +248,68 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
+
+
+        .download-btn2 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.4s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.download-btn2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.download-btn2:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+}
+
+.download-btn2:hover::before {
+  left: 100%;
+}
+
+.download-btn2:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
+.download-btn2 i {
+  font-size: 1.2rem !important;
+  transition: transform 0.3s ease !important;
+}
+
+.download-btn2:hover i {
+  transform: scale(1.1) rotate(-5deg) !important;
+}
+
+.study-actions2 {
+  margin-top: 2rem !important;
+  text-align: center !important;
+}
         
         /* Responsive Design */
         @media (max-width: 1024px) {
@@ -701,7 +763,257 @@
     box-shadow: 0 2px 8px rgba(138, 43, 226, 0.2);
 }
 </style>
+<style>
+        /* Recommended Book Section Styles */
+        .book-section {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+                    
+        .book-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/egwbooks2.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            opacity: 0.1;
+            z-index: 0;
+        }
 
+        
+        .book-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(74, 107, 147, 0.1) 0%, rgba(108, 91, 123, 0.1) 100%);
+            filter: blur(80px);
+            animation: pulse 8s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        .book-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .book-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .book-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #4a6b93, #6c5b7b);
+            border-radius: 2px;
+        }
+        
+        .book-card {
+            display: flex;
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .book-image-container {
+            flex: 0 0 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .book-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .book-card:hover .book-image {
+            transform: scale(1.05);
+        }
+        
+        .book-badge {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            color: white;
+            padding: 8px 15px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+        }
+        
+        .book-content {
+            flex: 1;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .book-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .book-author {
+            font-size: 1.1rem;
+            color: #6c5b7b;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .book-description {
+            color: #f7f7f7;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .book-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .book-stars {
+            color: #f39c12;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .book-rating-text {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .book-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+        
+        .primary-btn {
+            background: linear-gradient(to right, #4a6b93, #6c5b7b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(74, 107, 147, 0.3);
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 107, 147, 0.4);
+        }
+        
+        .secondary-btn {
+            background: white;
+            color: #4a6b93;
+            border: 2px solid #4a6b93;
+        }
+        
+        .secondary-btn:hover {
+            background: #4a6b93;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 107, 147, 0.3);
+        }
+        
+        .action-btn i {
+            margin-right: 8px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 900px) {
+            .book-card {
+                flex-direction: column;
+                max-width: 500px;
+            }
+            
+            .book-image-container {
+                flex: 0 0 250px;
+            }
+            
+            .book-content {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .book-section {
+                padding: 4rem 0;
+            }
+            
+            .book-title {
+                font-size: 2rem;
+            }
+            
+            .book-actions {
+                flex-direction: column;
+            }
+            
+            .book-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -882,50 +1194,31 @@
     </section>
 
 
+
     <!-- Recommended Book Section -->
-    <section class="featured-book2">
-        <div class="container2">
-            <h2 class="section-title2">Essential Reading!</h2>
-            
-            <div class="book-feature2">
-                <div class="book-cover2">
-                    <div class="book-badge2">MUST READ</div>
-                    <img src="images/gc.jpg" alt="The Great Controversy by Ellen White">
+    <section class="book-section">
+        <div class="book-container">
+            <h2 class="book-title">Highly Recommended Reading</h2>
+            <div class="book-card">
+                <div class="book-image-container">
+                    <img src="images/the-great-controversy-by-ellen-white.jpg" alt="The Great Controversy by Ellen White" class="book-image">
+                    <div class="book-badge">Must Read</div>
                 </div>
-                
-                <div class="book-info2">
-                    <h3 class="book-title2">The Great Controversy</h3>
-                    <p class="book-author2">by Ellen G. White</p>
-                    
-                    <p class="book-description2">This book aims to help the troubled soul to a right solution of all these problems we face in life. It was written by one who has found that God is good, and has learned in communion with God and the study of His word that the secret of the Lord is with them that fear Him, and that He will show them His covenant.</p>
-                    
-                    <div class="book-highlights2">
-                        <div class="highlight-item2">
-                            <div class="highlight-icon2">
-                                <i class="fas fa-eye"></i>
-                            </div>
-                            <span>Unmasks the deceptions of Satan</span>
-                        </div>
-                        <div class="highlight-item2">
-                            <div class="highlight-icon2">
-                                <i class="fas fa-brain
-"></i>
-                            </div>
-                            <span>In-depth counsel and instruction vital for the salvation of souls</span>
-                        </div>
-                        <div class="highlight-item2">
-                            <div class="highlight-icon2">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <span>Amplified prophecies of the Bible concerning the end of all things</span>
+                <div class="book-content">
+                    <div>
+                        <h3 class="book-name">The Great Controversy</h3>
+                        <p class="book-author">by Ellen G. White</p>
+                        <p class="book-description">Stressed out by the thought of the end of the world? Anxious about what might happen as the earth becomes more chaotic? The Great Controversy provides hope in troubled times, highlighting stories of incredible faith that will bring you encouragement and hope. Each chapter shares insights from the past that open mysteries key to the future. The book gives practical, direct principles for staying true to Christ even as it becomes harder and harder to do in a world filled with pain, depression, and death. </p>
+                        <div class="book-rating">
+                            <span class="book-stars">★★★★★</span>
+                            <span class="book-rating-text">5 Star rating on Amazon</span>
                         </div>
                     </div>
-                    
-                    <div class="book-actions2">
-                        <a href="https://media2.egwwritings.org/pdf/en_GC.pdf" class="action-btn2 primary-btn2">
+                    <div class="book-actions">
+                        <a href="https://media2.egwwritings.org/pdf/en_GC.pdf" class="action-btn primary-btn">
                             <i class="fas fa-book"></i> Read / Download PDF
                         </a>
-                        <a href="https://judgmenthour.org/product/the-great-controversy-between-christ-and-satan-volume-iv/" class="action-btn2 secondary-btn2">
+                        <a href="https://judgmenthour.org/product/the-great-controversy-between-christ-and-satan-volume-iv/" class="action-btn secondary-btn">
                             <i class="fas fa-shopping-cart"></i> Get the Book
                         </a>
                     </div>
@@ -933,6 +1226,8 @@
             </div>
         </div>
     </section>
+
+
     
     <!-- Articles Gateway Section -->
     <section class="articles-gateway2">
