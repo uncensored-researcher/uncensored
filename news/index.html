@@ -679,6 +679,53 @@
             padding: 0.6rem;
         }
     }
+
+        .cta-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.4s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
 </style>
 </style>
 
@@ -790,10 +837,10 @@
                     <img src="../images/melissa.jpg" alt="Hurricane Melissa Jamaica" class="article-image">
                     <div class="article-text">
                         <h3 class="article-title">Deadly Hurricane 'Melissa' slams into Jamaica as catastrophic Category 5 storm</h3>
-                        <p class="article-excerpt">  <a href="https://youtu.be/yu3z16OuuNA" style="color: #8a2be2; text-decoration: none;">Hurricane Melissa causes devastation in Jamaica, takes aim at Cuba</a>. Hurricane Melissa made landfall in New Hope, Jamaica as a powerful Category 5 storm. Melissa pummeled the island with 185 mile per hour winds and torrential rain. Officials say some 25,000 tourists are stranded in Jamaica. NBC News’ George Solis reports.  <a href="https://youtu.be/O3iONTmOjaI" style="color: #8a2be2; text-decoration: none;">Dozens killed as storm rips through Jamaica, Cuba and Haiti</a>.</p>
+                        <p class="article-excerpt">  <a href="https://youtu.be/yu3z16OuuNA" target="_blank" style="color: #8a2be2; text-decoration: none;">Hurricane Melissa causes devastation in Jamaica, takes aim at Cuba</a>. Hurricane Melissa made landfall in New Hope, Jamaica as a powerful Category 5 storm. Melissa pummeled the island with 185 mile per hour winds and torrential rain. Officials say some 25,000 tourists are stranded in Jamaica. NBC News’ George Solis reports.  <a href="https://youtu.be/O3iONTmOjaI" target="_blank" style="color: #8a2be2; text-decoration: none;">Dozens killed as storm rips through Jamaica, Cuba and Haiti</a>.</p>
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://youtu.be/p6AOHEXxMEM" class="cta-button">Watch News</a>
+                            <a href="https://youtu.be/p6AOHEXxMEM" target="_blank" class="cta-button">Watch News</a>
                         </div>
                     </div>
                 </div>
@@ -805,12 +852,12 @@
                     <img src="../images/ai-minister.jpg" alt="AI Safety Concerns" class="article-image">
                     <div class="article-text">
                         <h3 class="article-title">World's first AI Minister 'pregnant with 83 babies'. (Yes you read that Correctly!), <b>AI </b>Minister of Albania.</h3>
-                        <p class="article-excerpt">   Albania’s Prime Minister Edi Rama has announced that the country’s AI-generated government minister, Diella, is <a href="https://www.dexerto.com/entertainment/albanias-ai-minister-is-pregnant-with-83-digital-children-pm-announces-3274605/" style="color: #8a2be2; text-decoration: none;">“pregnant” </a>with 83 digital children, a bizarre next step in the world’s first experiment with an artificial government official. 
-<a href="https://timesofindia.indiatimes.com/technology/tech-news/meet-worlds-first-ai-minister-diella-giving-birth-to-83-ai-children-to-reshape-albanias-future/articleshow/124847640.cms" style="color: #8a2be2; text-decoration: none;">Read Full Article.</a> </p>
+                        <p class="article-excerpt">   Albania’s Prime Minister Edi Rama has announced that the country’s AI-generated government minister, Diella, is <a href="https://www.dexerto.com/entertainment/albanias-ai-minister-is-pregnant-with-83-digital-children-pm-announces-3274605/" style="color: #8a2be2; text-decoration: none;" target="_blank">“pregnant” </a>with 83 digital children, a bizarre next step in the world’s first experiment with an artificial government official. 
+<a href="https://timesofindia.indiatimes.com/technology/tech-news/meet-worlds-first-ai-minister-diella-giving-birth-to-83-ai-children-to-reshape-albanias-future/articleshow/124847640.cms" target="_blank" style="color: #8a2be2; text-decoration: none;">Read Full Article.</a> </p>
 </p>
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://youtu.be/frvzUZU6slo" class="cta-button">Watch News</a>
+                            <a href="https://youtu.be/frvzUZU6slo" target="_blank" class="cta-button">Watch News</a>
                         </div>
                     </div>
                 </div>
@@ -826,7 +873,7 @@
                         <p class="article-excerpt"> WARNING: AI could end humanity, and we’re completely unprepared. Dr. Roman Yampolskiy reveals how AI will take 99% of jobs, why Sam Altman is ignoring safety, and how we’re heading toward global collapse…or even World War III.</p>
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://youtu.be/UclrVWafRAI" class="cta-button">Watch Video</a>
+                            <a href="https://youtu.be/UclrVWafRAI" target="_blank" class="cta-button">Watch Video</a>
                         </div>
                     </div>
                 </div>
@@ -840,10 +887,10 @@
                     <div class="article-text">
                         <span class="article-tag">World News</span>
                         <h3 class="article-title">Brutal Persecution of Chinese Christians</h3>
-                        <p class="article-excerpt">  <a href="https://www.youtube.com/watch?v=EO_GefUQDJI" style="color: #8a2be2; text-decoration: none;">China’s War on Christianity Just Got Worse</a>. China arrested 30 Christians. Some fear it's the start of a bigger crackdown. <a href="https://www.bbc.com/news/articles/cx2pez2vg8wo" style="color: #8a2be2; text-decoration: none;">Read More</a> </p>
+                        <p class="article-excerpt">  <a href="https://www.youtube.com/watch?v=EO_GefUQDJI" style="color: #8a2be2; text-decoration: none;" target="_blank">China’s War on Christianity Just Got Worse</a>. China arrested 30 Christians. Some fear it's the start of a bigger crackdown. <a href="https://www.bbc.com/news/articles/cx2pez2vg8wo" target="_blank" style="color: #8a2be2; text-decoration: none;">Read More</a> </p>
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://www.youtube.com/watch?v=43p0rx_MFDM&t=54s" class="cta-button">Watch News</a>
+                            <a href="https://www.youtube.com/watch?v=43p0rx_MFDM&t=54s" target="_blank" class="cta-button">Watch News</a>
                         </div>
                     </div>
                 </div>
@@ -855,10 +902,10 @@
                     <div class="article-text">
                         <span class="article-tag">Ecumenism</span>
                         <h3 class="article-title">The joining of hands between the Catholic church and the Church of England.</h3>
-                        <p class="article-excerpt">  “One of the most significant things is that an English King has not prayed in the same place as a Pope since before the Reformation, <a href="https://www.vaticannews.va/en/vatican-city/news/2025-10/pope-leo-xiv-king-charles-iii-ecumenism-care-for-creation.html" style="color: #8a2be2; text-decoration: none;">since long before the separation of the Church of England from the Church of Rome,”</a> said Father Browne. The Royal Family X (formerly Twitter) post,<a href="https://x.com/RoyalFamily/status/1981332118044049916" style="color: #8a2be2; text-decoration: none;"> "The joining of hands between the Catholic Church and Church of England, in a <b>celebration of ecumenism.</b>"</a></p>
+                        <p class="article-excerpt">  “One of the most significant things is that an English King has not prayed in the same place as a Pope since before the Reformation, <a href="https://www.vaticannews.va/en/vatican-city/news/2025-10/pope-leo-xiv-king-charles-iii-ecumenism-care-for-creation.html" target="_blank" style="color: #8a2be2; text-decoration: none;">since long before the separation of the Church of England from the Church of Rome,”</a> said Father Browne. The Royal Family X (formerly Twitter) post,<a href="https://x.com/RoyalFamily/status/1981332118044049916" target="_blank" style="color: #8a2be2; text-decoration: none;"> "The joining of hands between the Catholic Church and Church of England, in a <b>celebration of ecumenism.</b>"</a></p>
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://youtu.be/3FvfqlqOPVw" class="cta-button">Watch News</a>
+                            <a href="https://youtu.be/3FvfqlqOPVw" target="_blank" class="cta-button">Watch News</a>
                         </div>
                     </div>
                 </div>
@@ -871,10 +918,10 @@
                     <img src="../images/sagay.jpg" class="article-image" alt="LGBTQ in South Africa">
                     <div class="article-text">
                         <h3 class="article-title">Cape Town; The Gay Capital of Africa | LGBTQ tourism in Cape Town</h3>
-                        <p class="article-excerpt">Cape town is now considered the "Gay Capital of Africa". <a href="https://allafrica.com/stories/202411110377.html" style="color: #8a2be2; text-decoration: none;">1. Cape Town Pride has officially won the bid to host WorldPride 2028.</a> Check out this article too:  <a href="https://www.mambaonline.com/2024/11/01/mayor-backs-cape-town-bid-to-host-gay-games-in-2030/" style="color: #8a2be2; text-decoration: none;"> 2. Cape Town Bid to Host the 2030 Gay Games.</a> </p>
+                        <p class="article-excerpt">Cape town is now considered the "Gay Capital of Africa". <a href="https://allafrica.com/stories/202411110377.html" target="_blank" style="color: #8a2be2; text-decoration: none;">1. Cape Town Pride has officially won the bid to host WorldPride 2028.</a> Check out this article too:  <a href="https://www.mambaonline.com/2024/11/01/mayor-backs-cape-town-bid-to-host-gay-games-in-2030/" target="_blank" style="color: #8a2be2; text-decoration: none;"> 2. Cape Town Bid to Host the 2030 Gay Games.</a> </p>
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://en.wikipedia.org/wiki/LGBTQ_tourism_in_Cape_Town" class="cta-button">Read More</a>
+                            <a href="https://en.wikipedia.org/wiki/LGBTQ_tourism_in_Cape_Town" target="_blank" class="cta-button">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -887,10 +934,10 @@
                     <div class="article-text">
                         <span class="article-tag">World News</span>
                         <h3 class="article-title">Christians in Nigeria are being persecuted | 15 Nigerian Christians Massacred by Terrorists</h3>
-                        <p class="article-excerpt">  <a href="https://youtu.be/s8iN35ZsuMY" style="color: #8a2be2; text-decoration: none;">Nigerian Christians face persecution from radical Islamist groups</a> . Another 15 Christians were reportedly slaughtered in Nigeria by Fulani terrorists in Barkin-Ladi and Bokkos counties in Plateau State on October 14th.</p>
+                        <p class="article-excerpt">  <a href="https://youtu.be/s8iN35ZsuMY" target="_blank" style="color: #8a2be2; text-decoration: none;">Nigerian Christians face persecution from radical Islamist groups</a> . Another 15 Christians were reportedly slaughtered in Nigeria by Fulani terrorists in Barkin-Ladi and Bokkos counties in Plateau State on October 14th.</p>
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://youtu.be/F7m3CvF06to" class="cta-button">Watch News</a>
+                            <a href="https://youtu.be/F7m3CvF06to" target="_blank" class="cta-button">Watch News</a>
                         </div>
                     </div>
                 </div>
@@ -902,11 +949,11 @@
                     <img src="../images/id2020.jpg" alt="Digital ID" class="article-image">
                     <div class="article-text">
                         <h3 class="article-title">Elon Musk Speaks On The Dangers of Digital ID</h3>
-                        <p class="article-excerpt"> With a recent announcement on the <a href="https://youtu.be/nTGnUa7Ng7g" style="color: #8a2be2; text-decoration: none;">mandatory digital ID</a> by the UK Prime Minister, Elon Musk just recently spoke on the dangers of adopting digital ID with a concern for privacy and control.</p>
+                        <p class="article-excerpt"> With a recent announcement on the <a href="https://youtu.be/nTGnUa7Ng7g" target="_blank" style="color: #8a2be2; text-decoration: none;">mandatory digital ID</a> by the UK Prime Minister, Elon Musk just recently spoke on the dangers of adopting digital ID with a concern for privacy and control.</p>
 
                         <div class="article-meta">
                             <span class="article-date">October 2025</span>
-                            <a href="https://youtu.be/RHCUV7bAAB4" class="cta-button">Watch Video</a>
+                            <a href="https://youtu.be/RHCUV7bAAB4" target="_blank" class="cta-button">Watch Video</a>
                         </div>
                     </div>
                 </div>
@@ -919,11 +966,11 @@
                     <div class="article-text">
                         <span class="article-tag">Bible Prophecy</span>
                         <h3 class="article-title">Pope Francis Announced the One World Religion</h3>
-                        <p class="article-excerpt">Pope Francis announced the <a href="#" style="color: #8a2be2; text-decoration: none;">ONE WORLD RELIGION</a> stating, "Every religion is a way to arrive at God.... We are all children of God...."</p>
+                        <p class="article-excerpt">Pope Francis announced the <a href="#" style="color: #8a2be2; text-decoration: none;" target="_blank">ONE WORLD RELIGION</a> stating, "Every religion is a way to arrive at God.... We are all children of God...."</p>
 
                         <div class="article-meta">
                             <span class="article-date">September 2024</span>
-                            <a href="https://youtu.be/9ciUnpSqiOQ" class="cta-button">Watch Video</a>
+                            <a href="https://youtu.be/9ciUnpSqiOQ" target="_blank" class="cta-button">Watch Video</a>
                         </div>
                     </div>
                 </div>
