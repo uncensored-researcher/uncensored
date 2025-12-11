@@ -1,715 +1,935 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles | Uncensored Researcher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Articles - Uncensored Researcher - In-Depth Analysis</title>
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-title" content="Uncensored Researcher">
+    <meta name="application-name" content="Uncensored Researcher">
+    <meta name="msapplication-TileColor" content="#2d2235">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="../images/icon.png">
     <style>
-        /* Base Styles */
         :root {
-            --primary: #0a0a0a;
-            --secondary: #1a1a1a;
-            --accent: #8a2be2;
-            --accent-glow: rgba(138, 43, 226, 0.4);
-            --text: #f0f0f0;
-            --text-dim: #a0a0a0;
-            --highlight: #ff6b6b;
+            /* Grape-themed dark palette - refined */
+            --color-1: #0c080d; /* Ultra-dark purple-black */
+            --color-2: #1a131f; /* Dark muted eggplant */
+            --color-3: #2d2235; /* Smoky purple-charcoal */
+            --color-4: #52425c; /* Dusty grape purple */
+            --color-5: #8a7096; /* Soft plum-lavender - brighter */
+            --color-accent: #a98bb5; /* Light accent */
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing */
+            --container-padding: 2rem;
+            --content-max-width: 1100px;
+            --section-spacing: 3rem;
+            --card-border-radius: 12px;
+            --transition-smooth: all 0.3s ease;
+            
+            /* App-like elements */
+            --header-height: 70px;
+            --bottom-nav-height: 60px;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            background-color: var(--primary);
-            color: var(--text);
+            font-family: var(--font-body);
+            font-weight: 400;
+            background-color: var(--color-1);
+            color: #f0e9f2;
+            line-height: 1.6;
+            min-height: 100vh;
             overflow-x: hidden;
         }
         
-        /* Navigation */
-        .nav-container {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .container {
+            max-width: var(--content-max-width);
+            width: 90%;
+            margin: 0 auto;
         }
-      
-        nav.scrolled {
-            background-color: rgba(10, 10, 10, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1.2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
+
+        .container {
+            max-width: var(--content-max-width);
+            width: 90%;
+            margin: 0 auto;
         }
         
-        .site-title {
+        /* Header */
+        header {
+            background-color: rgba(12, 8, 13, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 112, 150, 0.1);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--text);
+            color: #fff;
             text-decoration: none;
-            letter-spacing: 1px;
-            margin-left: 20px;
-        }
-        
-        .hamburger {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--secondary);
+            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 0 20px var(--accent-glow);
-            transition: all 0.3s ease;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--color-5);
+        }
+        
+        .logo-text {
+            font-weight: 800;
+        }
+        
+        .logo span {
+            color: var(--color-5);
+            font-weight: 600;
+        }
+        
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .desktop-nav a {
+            color: #e0d6e8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            padding: 0.5rem 0;
             position: relative;
-            z-index: 1001;
         }
         
-        .hamburger.active {
-            background: var(--accent);
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: var(--color-5);
         }
         
-        .hamburger:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px var(--accent-glow);
-        }
-        
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger span::before,
-        .hamburger span::after {
+        .desktop-nav a.active::after {
             content: '';
             position: absolute;
-            width: 24px;
-            height: 2px;
-            background: var(--text);
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger span::before {
-            top: -8px;
-        }
-        
-        .hamburger span::after {
-            top: 8px;
-        }
-        
-        .hamburger.active span {
-            background: transparent;
-        }
-        
-        .hamburger.active span::before {
-            transform: rotate(45deg);
-            top: 0;
-        }
-        
-        .hamburger.active span::after {
-            transform: rotate(-45deg);
-            top: 0;
-        }
-        
-        .nav-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
-            height: 100vh;
-            background: var(--secondary);
-            padding: 100px 30px 30px;
-            transition: all 0.5s ease;
-            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-        
-        .nav-menu.active {
-            right: 0;
-        }
-        
-        .nav-menu ul {
-            list-style: none;
-        }
-        
-        .nav-menu li {
-            margin-bottom: 20px;
-        }
-        
-        .nav-menu a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 500;
-            display: block;
-            padding: 10px 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .nav-menu a:hover {
-            color: var(--accent);
-            padding-left: 10px;
-        }
-        
-        .menu-overlay {
-            position: fixed;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            height: 2px;
+            background-color: var(--color-5);
+            border-radius: 1px;
         }
         
-        .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #f0e9f2;
+            font-size: 1.4rem;
+            cursor: pointer;
+            z-index: 101;
         }
         
-         /* Page Header */
-        .page-header {
-            padding: 120px 2rem 60px;
-            text-align: center;
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
-    url('../images/open-book.jpg') center/cover no-repeat;
-             color: #fff; 
+ /* Articles Header */
+.articles-header {
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
 }
 
+.articles-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/pile-of-books.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+}
+
+.articles-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(138, 112, 150, 0.12) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(12, 8, 13, 0.7), rgba(12, 8, 13, 0.85));
+    z-index: -1;
+}
 
         
-        .page-title {
-            font-size: 2.5rem;
+        .articles-header-content {
+            max-width: 800px;
+        }
+        
+        .articles-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 1rem;
+            color: #fff;
         }
         
-        .page-subtitle {
-            color: var(--text-dim);
+        .articles-header p {
+            font-size: 1.1rem;
             max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #d9cfe0;
+            font-weight: 300;
         }
         
-        /* Main Content Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .articles-count {
+            color: var(--color-5);
+            font-weight: 500;
+            font-size: 0.9rem;
         }
         
-        /* Section Styling */
-        .section {
-            padding: 5rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        /* Articles Grid - Horizontal Layout */
+        /* Simple Articles Grid */
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(3, 1fr); /* 2 per row on desktop */
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr; /* 1 per row on mobile */
+                gap: 1.5rem;
+            }
         }
         
         .article-card {
-            background: rgba(20, 30, 25, 0.7);
-            border-radius: 15px;
+            background-color: var(--color-2);
+            border-radius: var(--card-border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(138, 112, 150, 0.08);
+            height: 100%;
             display: flex;
-            height: 210px;
+            flex-direction: column;
         }
         
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
+            border-color: rgba(138, 112, 150, 0.2);
+            box-shadow: 0 10px 25px rgba(12, 8, 13, 0.5);
         }
         
         .article-image {
-            width: 150px;
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .article-image img {
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            flex-shrink: 0;
+            transition: transform 0.5s ease;
+        }
+        
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+        
+        .article-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(12, 8, 13, 0.8);
+            color: var(--color-5);
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
         }
         
         .article-content {
-            padding: 1.2rem;
-            flex: 1;
+            padding: 1.5rem;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+        }
+        
+        .article-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+            color: #fff;
+        }
+        
+        .article-excerpt {
+            color: #c9bdd4;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            flex-grow: 1;
         }
         
         .article-meta {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.8rem;
+            align-items: center;
+            color: #9e8fa9;
             font-size: 0.85rem;
-            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(138, 112, 150, 0.1);
         }
         
-        .article-date {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .article-read-time {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .article-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            line-height: 1.3;
-        }
-        
-        .article-description {
-            color: var(--text-dim);
-            line-height: 1.4;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .article-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .tag {
-            background: rgba(138, 43, 226, 0.2);
-            color: var(--accent);
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-        }
-        
+        /* Simple Read Button */
         .read-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 8px 16px;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--accent-glow);
-            width: fit-content;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+            gap: 0.4rem;
+            background-color: var(--color-5);
+            color: var(--color-1);
+            align-self: flex-start;
+            margin-top: auto;
         }
         
         .read-btn:hover {
+            background-color: var(--color-accent);
             transform: translateY(-2px);
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 4px 10px rgba(138, 112, 150, 0.3);
         }
         
-        /* Category Filters */
-        .filter-controls {
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: calc(var(--bottom-nav-height) + 20px);
+            right: 20px;
+            background-color: var(--color-5);
+            color: var(--color-1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .filter-btn {
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text);
-            border-radius: 30px;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition-smooth);
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 90;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
         }
         
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--accent);
-            border-color: var(--accent);
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
         
-
-
+        .back-to-top:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(138, 112, 150, 0.3);
+        }
+        
+        /* Mobile Navigation (Bottom) */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 19, 31, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(138, 112, 150, 0.1);
+            z-index: 99;
+            height: var(--bottom-nav-height);
+        }
+        
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #e0d6e8;
+            font-size: 0.75rem;
+            flex-grow: 1;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        
+        .mobile-nav-item.active,
+        .mobile-nav-item:hover {
+            color: var(--color-5);
+        }
+        
+        .mobile-nav-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(12, 8, 13, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 98;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-links {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu-links li {
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-menu-links a {
+            color: #f0e9f2;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: var(--transition-smooth);
+        }
+        
+        .mobile-menu-links a:hover,
+        .mobile-menu-links a.active {
+            color: var(--color-5);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: #f0e9f2;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
-            .page-title {
-                font-size: 2rem;
+            .container {
+                width: 100%;
+                padding: 0 1rem;
             }
             
-            .page-header {
-                padding: 100px 1rem 40px;
+            .desktop-nav {
+                display: none;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .mobile-menu-toggle {
+                display: block;
             }
             
-            .nav-menu {
-                width: 250px;
+            .mobile-bottom-nav {
+                display: block;
             }
             
-            .site-title {
-                font-size: 1.3rem;
+            .articles-header {
+                padding: 3rem 0 1.5rem;
+                padding-bottom: calc(1.5rem + var(--bottom-nav-height));
             }
             
-            .hamburger {
-                width: 45px;
-                height: 45px;
+            .articles-header h1 {
+                font-size: 2.2rem;
             }
             
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .article-card {
-                flex-direction: column;
-                height: auto;
+            .articles-header p {
+                font-size: 1rem;
             }
             
             .article-image {
-                width: 100%;
-                height: 120px;
+                height: 180px;
             }
             
-            .filter-controls {
-                flex-direction: column;
-                align-items: center;
+            .article-title {
+                font-size: 1.2rem;
             }
             
-            .filter-btn {
-                width: 200px;
+            .back-to-top {
+                bottom: calc(var(--bottom-nav-height) + 10px);
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            /* Adjust for bottom nav */
+            main {
+                padding-bottom: var(--bottom-nav-height);
             }
         }
         
-        @media (max-width: 576px) {
-            .section {
-                padding: 3rem 0;
+        @media (max-width: 480px) {
+            .articles-header h1 {
+                font-size: 1.9rem;
+            }
+            
+            .article-image {
+                height: 160px;
             }
         }
         
-        @media (min-width: 1200px) {
-            .articles-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (min-width: 769px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .mobile-bottom-nav {
+                display: none;
             }
         }
     </style>
-<style>
-    .back-to-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--accent, #8a2be2);
-        color: white;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        box-shadow: 0 4px 15px var(--accent-glow, rgba(138, 43, 226, 0.4));
-        transition: all 0.3s ease;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
-    }
-
-    .back-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .back-to-top:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px var(--accent-glow, rgba(138, 43, 226, 0.6));
-        background: var(--highlight, #ff6b6b);
-    }
-
-    /* Responsive design */
-    @media (max-width: 768px) {
-        .back-to-top {
-            bottom: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-        }
-    }
-
-
-      /* Footer */
-        footer {
-            background-color: var(--darker-bg);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: 2px;
-        }
-
-        .footer-description {
-            margin-bottom: 2rem;
-            color: var(--accent-light);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            color: var(--light-content);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            color: var(--highlight);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            color: var(--accent-light);
-        }
-</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-container">
-        <a href="../" class="site-title">Uncensored Researcher</a>
-        <div class="hamburger">
-            <span></span>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../" class="logo">
+                    <span class="logo-icon"><i class="fas fa-search"></i></span>
+                    <span class="logo-text">Uncensored<span>Researcher</span></span>
+                </a>
+                
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="../">Home</a></li>
+                        <li><a href="../news/">News</a></li>
+                        <li><a href="../podcast/">Podcast</a></li>
+                        <li><a href="#" class="active">Articles</a></li>
+                        <li><a href="../resources/">Resources</a></li>
+                        <li><a href="../about/">About</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
-        <div class="nav-menu">
-            <ul>
-                <li><a href="../">Home</a></li>
-                <li><a href="../news/">News Updates</a></li>
-                <li><a href="../more/">More</a></li>
-                <li><a href="../contact/">About & Contact</a></li>
-                <li><a href="../journals/">Audio Journals</a></li>
-            </ul>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../news/">News</a></li>
+            <li><a href="../podcast/">Podcast</a></li>
+            <li><a href="#" class="active">Articles</a></li>
+            <li><a href="../resources/">Resources</a></li>
+            <li><a href="../about/">About</a></li>
+        </ul>
+    </div>
+
+    <!-- Articles Header -->
+    <section class="articles-header">
+        <div class="container">
+            <div class="articles-header-content">
+                <h1>In-Depth Articles & Analysis</h1>
+                <p>Comprehensive research papers, investigative journalism, and deep analysis on politics, technology, society, and global affairs.</p>
+                <div class="articles-count">12 in-depth articles</div>
+            </div>
         </div>
-        <div class="menu-overlay"></div>
+    </section>
+
+    <!-- Articles Grid -->
+    <main class="container">
+        <div class="articles-grid">
+            <!-- Article 1 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1583339522870-0d9f28cef33f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="The Architecture of Modern Propaganda">
+                    <span class="article-category">MEDIA ANALYSIS</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">The Architecture of Modern Propaganda</h3>
+                    <p class="article-excerpt">How governments and corporations use sophisticated techniques to shape public opinion in the digital age.</p>
+                    <div class="article-meta">
+                        <span>15 min read</span>
+                        <span>March 20, 2024</span>
+                    </div>
+                    <a href="article-architecture-of-propaganda.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 2 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Data as the New Oil: The Surveillance Economy">
+                    <span class="article-category">TECHNOLOGY</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Data as the New Oil: The Surveillance Economy</h3>
+                    <p class="article-excerpt">Exploring how personal data became the most valuable commodity and who profits from it.</p>
+                    <div class="article-meta">
+                        <span>18 min read</span>
+                        <span>March 18, 2024</span>
+                    </div>
+                    <a href="article-data-new-oil.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 3 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="The Psychology of Compliance">
+                    <span class="article-category">PSYCHOLOGY</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">The Psychology of Compliance</h3>
+                    <p class="article-excerpt">Why people obey authority even against their own interests and moral judgments.</p>
+                    <div class="article-meta">
+                        <span>12 min read</span>
+                        <span>March 16, 2024</span>
+                    </div>
+                    <a href="article-psychology-compliance.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 4 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Financial Weapons of Mass Destruction">
+                    <span class="article-category">ECONOMICS</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Financial Weapons of Mass Destruction</h3>
+                    <p class="article-excerpt">How complex financial instruments and debt systems create global instability and inequality.</p>
+                    <div class="article-meta">
+                        <span>22 min read</span>
+                        <span>March 14, 2024</span>
+                    </div>
+                    <a href="article-financial-weapons.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 5 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="The Manufacturing of Consent in Education">
+                    <span class="article-category">EDUCATION</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">The Manufacturing of Consent in Education</h3>
+                    <p class="article-excerpt">How education systems are designed to produce compliant citizens rather than critical thinkers.</p>
+                    <div class="article-meta">
+                        <span>16 min read</span>
+                        <span>March 12, 2024</span>
+                    </div>
+                    <a href="article-education-consent.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 6 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Biopolitics: The Control of Human Life">
+                    <span class="article-category">SOCIETY</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Biopolitics: The Control of Human Life</h3>
+                    <p class="article-excerpt">Examining how states and corporations exercise control over populations through biological means.</p>
+                    <div class="article-meta">
+                        <span>20 min read</span>
+                        <span>March 10, 2024</span>
+                    </div>
+                    <a href="article-biopolitics.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 7 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="The Illusion of Digital Freedom">
+                    <span class="article-category">TECHNOLOGY</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">The Illusion of Digital Freedom</h3>
+                    <p class="article-excerpt">How digital platforms create the appearance of freedom while implementing sophisticated control mechanisms.</p>
+                    <div class="article-meta">
+                        <span>14 min read</span>
+                        <span>March 8, 2024</span>
+                    </div>
+                    <a href="article-digital-freedom.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 8 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Cognitive Warfare in the Information Age">
+                    <span class="article-category">GEOPOLITICS</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Cognitive Warfare in the Information Age</h3>
+                    <p class="article-excerpt">How information is weaponized to influence thoughts, beliefs, and behaviors on a mass scale.</p>
+                    <div class="article-meta">
+                        <span>19 min read</span>
+                        <span>March 6, 2024</span>
+                    </div>
+                    <a href="article-cognitive-warfare.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 9 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="The Pathology of Normalcy">
+                    <span class="article-category">PHILOSOPHY</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">The Pathology of Normalcy</h3>
+                    <p class="article-excerpt">Why what society considers 'normal' is often pathological and harmful to human flourishing.</p>
+                    <div class="article-meta">
+                        <span>17 min read</span>
+                        <span>March 4, 2024</span>
+                    </div>
+                    <a href="article-pathology-normalcy.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 10 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Energy Dominance as Geopolitical Strategy">
+                    <span class="article-category">GEOPOLITICS</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">Energy Dominance as Geopolitical Strategy</h3>
+                    <p class="article-excerpt">How control of energy resources is used as a tool for geopolitical influence and control.</p>
+                    <div class="article-meta">
+                        <span>21 min read</span>
+                        <span>March 2, 2024</span>
+                    </div>
+                    <a href="article-energy-dominance.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 11 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="The Algorithmic Panopticon">
+                    <span class="article-category">TECHNOLOGY</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">The Algorithmic Panopticon</h3>
+                    <p class="article-excerpt">How surveillance capitalism uses algorithms to predict and control human behavior at scale.</p>
+                    <div class="article-meta">
+                        <span>23 min read</span>
+                        <span>February 28, 2024</span>
+                    </div>
+                    <a href="article-algorithmic-panopticon.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Article 12 -->
+            <article class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="The Crisis of Meaning in Late Capitalism">
+                    <span class="article-category">PHILOSOPHY</span>
+                </div>
+                <div class="article-content">
+                    <h3 class="article-title">The Crisis of Meaning in Late Capitalism</h3>
+                    <p class="article-excerpt">How economic systems contribute to existential emptiness and spiritual crisis in modern society.</p>
+                    <div class="article-meta">
+                        <span>15 min read</span>
+                        <span>February 26, 2024</span>
+                    </div>
+                    <a href="article-crisis-meaning.html" class="read-btn">
+                        <i class="fas fa-book-open"></i> Read Article
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-nav-items">
+            <a href="../" class="mobile-nav-item">
+                <i class="fas fa-home mobile-nav-icon"></i>
+                <span>Home</span>
+            </a>
+            <a href="../news/" class="mobile-nav-item">
+                <i class="fas fa-globe mobile-nav-icon"></i> <!-- Updated to globe icon -->
+                <span>News</span>
+            </a>
+            <a href="../podcast/" class="mobile-nav-item">
+                <i class="fas fa-headphones mobile-nav-icon"></i>
+                <span>Podcast</span>
+            </a>
+            <a href="#" class="mobile-nav-item active">
+                <i class="fas fa-file-alt mobile-nav-icon"></i>
+                <span>Articles</span>
+            </a>
+        </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1 class="page-title">Articles</h1>
-        <p class="page-subtitle">Published articles, essays  and studies on end time events, present truth, bible prophecy and more.</p>
-    </section>
-
-    <!-- Main Content -->
-    <section class="section">
-        <div class="container">
-            <!-- Category Filters -->
-            <div class="filter-controls">
-                <button class="filter-btn active" data-filter="all">All Articles</button>
-                <button class="filter-btn" data-filter="Godhead">The Godhead</button>
-                <button class="filter-btn" data-filter="news">World News</button>
-                <button class="filter-btn" data-filter="prophecy">Bible Prophecy</button>
-                <button class="filter-btn" data-filter="health">Health</button>
-            </div>
-            
-            <!-- Articles Grid -->
-            <div class="articles-grid">
-                
-                
-                <!-- Article -->
-                <div class="article-card" data-category="Godhead">
-                    <img src="../images/trinity1.jpg" alt="Trinity False Doctrine" class="article-image">
-                    <div class="article-content">
-                        <div>
-                         <h3 class="article-title">A WARNING to the Adventist Family!</h3>
-                            <p class="article-description">A solemn Warning to the Seventh Day Adventist church. Dangerous doctrine ALERT.</p>
-                            <div class="article-tags">
-                                <span class="tag">One True God</span>
-                                <span class="tag">SDA Church</span>
-                            </div>
-                        </div>
-                        <a href="sda/" class="read-btn">
-                            <i class="fas fa-book-open"></i>
-                            Read Article
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">Uncensored Researcher</div>
-            <p class="footer-description">Unbiased news updates  and insightful articles on global biblical events.</p>
-            <div class="social-links">
-                <a href="../"><i class="fas fa-home"></i></a>
-                <a href="../news/"><i class="fas fa-newspaper"></i></a>
-                <a href="../more/"><i class="fas fa-ellipsis-h"></i></a>
-                <a href="../contact/"><i class="fas fa-envelope"></i></a>
-                <a href="../journals/"><i class="fas fa-volume-up"></i></a>        
-
-            </div>
-            <p class="copyright">&copy; 2025 Uncensored Researcher</p>
-        </div>
-    </footer>
-
-<!-- Back to Top Button -->
-<button id="backToTop" class="back-to-top" aria-label="Back to top">
-    <i class="fas fa-arrow-up"></i>
-</button>
-
-
     <script>
-        // Navigation functionality
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        const menuOverlay = document.querySelector('.menu-overlay');
+        // DOM elements
+        const backToTop = document.getElementById('backToTop');
         
-        hamburger.addEventListener('click', function() {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-        });
-        
-        menuOverlay.addEventListener('click', function() {
-            this.classList.remove('active');
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        });
-        
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-            });
-        });
-        
-        // Header scroll effect
+        // Back to top functionality
         window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
             } else {
-                nav.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
             }
         });
-        
-        // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const articleCards = document.querySelectorAll('.article-card');
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Filter articles
-                const filter = this.getAttribute('data-filter');
-                
-                articleCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
-    </script>
 
-<script>
-    // Back to Top functionality
-    const backToTopButton = document.getElementById('backToTop');
-    
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    });
-    
-    // Scroll to top when clicked
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+        // Mobile bottom nav active state
+        document.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+            });
         });
-    });
-</script>
 
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
 
+            if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.toggle('active');
+                    document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : 'auto';
+                });
+
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
 </body>
 </html>

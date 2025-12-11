@@ -8,15 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Theme Colors -->
-    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: dark)">
-    <meta name="apple-mobile-web-app-title" content="Uncensored Researcher">
-    <meta name="application-name" content="Uncensored Researcher">
-    <meta name="msapplication-TileColor" content="#2d2235">
-
-    <link rel="icon" href="images/icon.png">
     <style>
         :root {
             /* Grape-themed dark palette - refined */
@@ -163,39 +154,23 @@
             z-index: 101;
         }
         
-       /* Hero Section - Simple */
-.hero {
-    padding: 4rem 0 3rem;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/hero-image-home.jpeg');
-    background-size: cover;
-    background-position: center;
-    z-index: -2;
-}
-
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 30% 20%, rgba(138, 112, 150, 0.1) 0%, transparent 70%),
-        rgba(12, 8, 13, 0.65);
-    z-index: -1;
-}
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(138, 112, 150, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
         
         .hero-content {
             max-width: 800px;
@@ -740,7 +715,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: #e0d6e8;
+            color: #9e8fa9;
             font-size: 0.75rem;
             flex-grow: 1;
             height: 100%;
@@ -923,11 +898,10 @@
                 <nav class="desktop-nav">
                     <ul>
                         <li><a href="#" class="active">Home</a></li>
-                        <li><a href="news/">News</a></li>
-                        <li><a href="podcast/">Podcast</a></li>
-                        <li><a href="articles/">Articles</a></li>
-                        <li><a href="resources/">Resources</a></li>
-                        <li><a href="about/">About</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                        <li><a href="#audio">Audio</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                        <li><a href="#about">About</a></li>
                     </ul>
                 </nav>
                 
@@ -945,11 +919,10 @@
         </button>
         <ul class="mobile-menu-links">
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="news/">News</a></li>
-            <li><a href="podcast/">Podcast</a></li>
-            <li><a href="articles/">Articles</a></li>
-            <li><a href="resources/">Resources</a></li>
-            <li><a href="about/">About</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#audio">Audio</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+            <li><a href="#about">About</a></li>
         </ul>
     </div>
 
@@ -1204,57 +1177,44 @@
                 <i class="fas fa-home mobile-nav-icon"></i>
                 <span>Home</span>
             </a>
-            <a href="news/" class="mobile-nav-item">
-                <i class="fas fa-globe mobile-nav-icon"></i>
-                <span>News</span>
-            </a>
-            <a href="podcast/" class="mobile-nav-item">
-                <i class="fas fa-headphones mobile-nav-icon"></i>
-                <span>Podcast</span>
-            </a>
-            <a href="articles/" class="mobile-nav-item">
-                <i class="fas fa-file-alt mobile-nav-icon"></i>
+            <a href="#articles" class="mobile-nav-item">
+                <i class="fas fa-newspaper mobile-nav-icon"></i>
                 <span>Articles</span>
+            </a>
+            <a href="#audio" class="mobile-nav-item">
+                <i class="fas fa-headphones mobile-nav-icon"></i>
+                <span>Audio</span>
+            </a>
+            <a href="#newsletter" class="mobile-nav-item">
+                <i class="fas fa-envelope mobile-nav-icon"></i>
+                <span>Newsletter</span>
             </a>
         </div>
     </nav>
 
     <script>
         // Mobile menu functionality
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-mobileMenuToggle.addEventListener('click', () => {
-    // Toggle the active class instead of just adding it
-    mobileMenuOverlay.classList.toggle('active');
-    document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : 'auto';
-});
-
-mobileMenuClose.addEventListener('click', () => {
-    mobileMenuOverlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
-});
-
-// Close mobile menu when clicking a link
-document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    });
-});
-
-// Close menu when clicking outside of it
-document.addEventListener('click', (event) => {
-    const isClickInsideMenu = mobileMenuOverlay.contains(event.target);
-    const isClickOnHamburger = mobileMenuToggle.contains(event.target);
-    
-    if (!isClickInsideMenu && !isClickOnHamburger && mobileMenuOverlay.classList.contains('active')) {
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-});
-
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
         
         // Play button functionality
         document.querySelectorAll('.play-btn').forEach(button => {

@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Updates | Uncensored Researcher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="../images/icon.png">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #8a2be2;
+            --accent-glow: rgba(138, 43, 226, 0.4);
+            --text: #f0f0f0;
+            --text-dim: #a0a0a0;
+            --highlight: #ff6b6b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+      
+        nav.scrolled {
+            background-color: rgba(10, 10, 10, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 1px;
+            margin-left: 20px;
+        }
+        
+        .hamburger {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .hamburger.active {
+            background: var(--accent);
+        }
+        
+        .hamburger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before,
+        .hamburger span::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger span::before {
+            top: -8px;
+        }
+        
+        .hamburger span::after {
+            top: 8px;
+        }
+        
+        .hamburger.active span {
+            background: transparent;
+        }
+        
+        .hamburger.active span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        
+        .hamburger.active span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--secondary);
+            padding: 100px 30px 30px;
+            transition: all 0.5s ease;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        
+        .nav-menu.active {
+            right: 0;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-bottom: 20px;
+        }
+        
+        .nav-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent);
+            padding-left: 10px;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 120px 2rem 60px;
+            text-align: center;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
+    url('../images/time.jpg') center/cover no-repeat;
+  color: #fff; 
+}
+   
+
+        
+        .page-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-subtitle {
+            color: var(--text-dim);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Articles List */
+        .articles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .article-item {
+            background: rgba(20, 30, 25, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .article-content {
+            padding: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .article-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        
+        .article-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            align-self: flex-start;
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .article-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .article-date {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+        
+        /* Load More Button */
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+ /* Footer */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-description {
+            margin-bottom: 2rem;
+            color: var(--accent-light);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light-content);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--highlight);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .article-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .article-image {
+                width: 80px;
+                height: 80px;
+                align-self: flex-start;
+            }
+            
+            .article-text {
+                width: 100%;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .page-header {
+                padding: 100px 1rem 40px;
+            }
+            
+            .articles-container {
+                padding: 1rem;
+            }
+            
+            .article-title {
+                font-size: 1.2rem;
+            }
+            
+            .article-excerpt {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .article-content {
+                flex-direction: row;
+                gap: 1rem;
+            }
+            
+            .article-image {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .nav-menu {
+                width: 250px;
+            }
+            
+            .site-title {
+                font-size: 1.3rem;
+            }
+            
+            .hamburger {
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .article-content {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .article-image {
+                width: 100%;
+                height: 150px;
+                align-self: center;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            
+            .cta-button {
+                align-self: flex-start;
+            }
+        }
+    </style>
+<style>
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--accent, #8a2be2);
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 15px var(--accent-glow, rgba(138, 43, 226, 0.4));
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px var(--accent-glow, rgba(138, 43, 226, 0.6));
+        background: var(--highlight, #ff6b6b);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .back-to-top {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+        }
+    }
+
+
+<style>
+    .news-sources-tooltip {
+        padding: 1rem 0;
+        background: rgba(20, 30, 25, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 2rem;
+    }
+    
+    .sources-tooltip-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .sources-tooltip-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0.8rem;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .source-tooltip-card {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .source-tooltip-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 15px;
+    }
+    
+    .source-tooltip-link:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
+    }
+    
+    .source-tooltip-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: brightness(0.8);
+        transition: filter 0.3s ease;
+    }
+    
+    .source-tooltip-link:hover .source-tooltip-image {
+        filter: brightness(1);
+    }
+    
+    .source-tooltip {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+        background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.98) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1rem;
+        width: 200px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        text-align: center;
+    }
+    
+    .source-tooltip::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 8px solid transparent;
+        border-top-color: rgba(26, 26, 26, 0.98);
+    }
+    
+    .source-tooltip-card:hover .source-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-15px);
+    }
+    
+    .source-tooltip h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-weight: 600;
+    }
+    
+    .source-tooltip p {
+        font-size: 0.75rem;
+        color: var(--text-dim);
+        line-height: 1.3;
+        margin: 0;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .sources-tooltip-grid {
+            gap: 0.6rem;
+            max-width: 450px;
+        }
+        
+        .source-tooltip-link {
+            width: 70px;
+            height: 70px;
+            padding: 12px;
+        }
+        
+        .source-tooltip {
+            width: 180px;
+            padding: 0.8rem;
+        }
+        
+        .source-tooltip h4 {
+            font-size: 0.85rem;
+        }
+        
+        .source-tooltip p {
+            font-size: 0.7rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .sources-tooltip-grid {
+            gap: 0.4rem;
+            max-width: 400px;
+        }
+        
+        .source-tooltip-link {
+            width: 60px;
+            height: 60px;
+            padding: 10px;
+        }
+        
+        .source-tooltip {
+            width: 160px;
+            padding: 0.7rem;
+        }
+        
+        .source-tooltip h4 {
+            font-size: 0.8rem;
+        }
+        
+        .source-tooltip p {
+            font-size: 0.65rem;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        .sources-tooltip-grid {
+            gap: 0.3rem;
+        }
+        
+        .source-tooltip-link {
+            width: 55px;
+            height: 55px;
+            padding: 8px;
+        }
+        
+        .source-tooltip {
+            width: 150px;
+            padding: 0.6rem;
+        }
+    }
+
+        .cta-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.4s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4) !important;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
+</style>
+</style>
+
+
+</head>
+<body>
+   <!-- Navigation -->
+    <nav class="nav-container">
+        <a href="../" class="site-title">Uncensored Researcher</a>
+        <div class="hamburger">
+            <span></span>
+        </div>
+        <div class="nav-menu">
+            <ul>
+                <li><a href="../">Home</a></li>
+                <li><a href="../news/">News Updates</a></li>
+                <li><a href="../more/">More</a></li>
+                <li><a href="../contact/">About & Contact</a></li>
+                <li><a href="../journals/">Audio Journals</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay"></div>
+    </nav>
+
+
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1 class="page-title">News Updates</h1>
+        <p class="page-subtitle"> <i>"The agencies of evil are combining their forces and consolidating. They are strengthening for the last great crisis. Great changes are soon to take place in our world, and <b>the final movements will be rapid ones."</b>—Testimonies for the Church 9:11 (1909).</i></p>
+    </section>
+
+
+<p>&nbsp</p>
+
+<!-- News Sources with External Hover Tooltips -->
+<section class="news-sources-tooltip">
+    <div class="sources-tooltip-container">
+
+<p style="text-align:center; color: #8a2be2;">More News Sources<p>
+<p>&nbsp</p>
+        <div class="sources-tooltip-grid">
+            <!-- Jason A -->
+            <div class="source-tooltip-card" >
+                <a href="https://www.youtube.com/@JasonAChannel" class="source-tooltip-link" target="_blank" data-title="JasonA" data-desc="YouTube Persona Sharing Essential Updates on current events" style="background: url('../images/jasona.jpg'); border-radius:20px; background-size: cover;">
+                    
+                </a>
+                <div class="source-tooltip">
+                    <h4>Jason A</h4>
+                    <p>Daily Updates on current news and events</p>
+                </div>
+            </div>
+            
+            <!-- End-Times-Prophecy.Org -->
+            <div class="source-tooltip-card">
+                <a href="https://www.end-times-prophecy.org/end-times-news.html" class="source-tooltip-link" target="_blank" data-title="End-Times-Prophecy.Org" data-desc="UK Based Adventist Ministry sharing updated End Times News" style="background: url('../images/end-times.jpeg'); border-radius:20px; background-size: cover;">
+                  
+                </a>
+                <div class="source-tooltip">
+                    <h4>End-Times-Prophecy.Org</h4>
+                    <p>Tmely End times biblical news updates</p>
+                </div>
+            </div>
+            
+            <!-- Amazing World Ministries -->
+            <div class="source-tooltip-card">
+                <a href="https://www.youtube.com/@amazingwordministries1" class="source-tooltip-link" target="_blank" data-title="Amazing World Ministries" data-desc="Adventist Pastor Sharing Important News on Global Last Day News" style="background: url('../images/amazingworld.jpg'); border-radius:20px; background-size: cover;">
+                  
+                </a>
+                <div class="source-tooltip">
+                    <h4>Amazing World Ministries</h4>
+                    <p>Giving Last Day Events news prompty</p>
+                </div>
+            </div>
+            
+
+            <!-- Messangers Of Present Truth -->
+            <div class="source-tooltip-card">
+                <a href="https://www.youtube.com/@mopt_ministry" class="source-tooltip-link" target="_blank" data-title="Messangers Of Present Truth" data-desc="South African based Adventist Ministry sharing news on current events" style="background: url('../images/mopt.jpeg'); border-radius:20px; background-size: cover;">
+                   
+                </a>
+                <div class="source-tooltip">
+                    <h4>Messangers Of Present Truth</h4>
+                    <p>Timely news updates on biblical prophecy news</p>
+                </div>
+            </div>
+
+                     
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+    <!-- Articles List -->
+    <section class="articles-container">
+        <div class="articles-list" id="articlesList">
+     
+
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/melissa.jpg" alt="Hurricane Melissa Jamaica" class="article-image">
+                    <div class="article-text">
+                        <h3 class="article-title">Deadly Hurricane 'Melissa' slams into Jamaica as catastrophic Category 5 storm</h3>
+                        <p class="article-excerpt">  <a href="https://youtu.be/yu3z16OuuNA" target="_blank" style="color: #8a2be2; text-decoration: none;">Hurricane Melissa causes devastation in Jamaica, takes aim at Cuba</a>. Hurricane Melissa made landfall in New Hope, Jamaica as a powerful Category 5 storm. Melissa pummeled the island with 185 mile per hour winds and torrential rain. Officials say some 25,000 tourists are stranded in Jamaica. NBC News’ George Solis reports.  <a href="https://youtu.be/O3iONTmOjaI" target="_blank" style="color: #8a2be2; text-decoration: none;">Dozens killed as storm rips through Jamaica, Cuba and Haiti</a>.</p>
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://youtu.be/p6AOHEXxMEM" target="_blank" class="cta-button">Watch News</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/ai-minister.jpg" alt="AI Safety Concerns" class="article-image">
+                    <div class="article-text">
+                        <h3 class="article-title">World's first AI Minister 'pregnant with 83 babies'. (Yes you read that Correctly!), <b>AI </b>Minister of Albania.</h3>
+                        <p class="article-excerpt">   Albania’s Prime Minister Edi Rama has announced that the country’s AI-generated government minister, Diella, is <a href="https://www.dexerto.com/entertainment/albanias-ai-minister-is-pregnant-with-83-digital-children-pm-announces-3274605/" style="color: #8a2be2; text-decoration: none;" target="_blank">“pregnant” </a>with 83 digital children, a bizarre next step in the world’s first experiment with an artificial government official. 
+<a href="https://timesofindia.indiatimes.com/technology/tech-news/meet-worlds-first-ai-minister-diella-giving-birth-to-83-ai-children-to-reshape-albanias-future/articleshow/124847640.cms" target="_blank" style="color: #8a2be2; text-decoration: none;">Read Full Article.</a> </p>
+</p>
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://youtu.be/frvzUZU6slo" target="_blank" class="cta-button">Watch News</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/ai1.jpg" alt="AI Safety Concerns" class="article-image">
+                    <div class="article-text">
+                        <h3 class="article-title">WARNING: AI could end humanity, The AI Safety Expert: Dr. Roman Yampolskiy Speaks - </h3>
+                        <p class="article-excerpt"> WARNING: AI could end humanity, and we’re completely unprepared. Dr. Roman Yampolskiy reveals how AI will take 99% of jobs, why Sam Altman is ignoring safety, and how we’re heading toward global collapse…or even World War III.</p>
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://youtu.be/UclrVWafRAI" target="_blank" class="cta-button">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/cn-christians.webp" alt="Chinese Christian Brutality" class="article-image">
+                    <div class="article-text">
+                        <span class="article-tag">World News</span>
+                        <h3 class="article-title">Brutal Persecution of Chinese Christians</h3>
+                        <p class="article-excerpt">  <a href="https://www.youtube.com/watch?v=EO_GefUQDJI" style="color: #8a2be2; text-decoration: none;" target="_blank">China’s War on Christianity Just Got Worse</a>. China arrested 30 Christians. Some fear it's the start of a bigger crackdown. <a href="https://www.bbc.com/news/articles/cx2pez2vg8wo" target="_blank" style="color: #8a2be2; text-decoration: none;">Read More</a> </p>
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://www.youtube.com/watch?v=43p0rx_MFDM&t=54s" target="_blank" class="cta-button">Watch News</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/kingandpope.jpg" alt="The King of England Meets Pope Leo" class="article-image">
+                    <div class="article-text">
+                        <span class="article-tag">Ecumenism</span>
+                        <h3 class="article-title">The joining of hands between the Catholic church and the Church of England.</h3>
+                        <p class="article-excerpt">  “One of the most significant things is that an English King has not prayed in the same place as a Pope since before the Reformation, <a href="https://www.vaticannews.va/en/vatican-city/news/2025-10/pope-leo-xiv-king-charles-iii-ecumenism-care-for-creation.html" target="_blank" style="color: #8a2be2; text-decoration: none;">since long before the separation of the Church of England from the Church of Rome,”</a> said Father Browne. The Royal Family X (formerly Twitter) post,<a href="https://x.com/RoyalFamily/status/1981332118044049916" target="_blank" style="color: #8a2be2; text-decoration: none;"> "The joining of hands between the Catholic Church and Church of England, in a <b>celebration of ecumenism.</b>"</a></p>
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://youtu.be/3FvfqlqOPVw" target="_blank" class="cta-button">Watch News</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/sagay.jpg" class="article-image" alt="LGBTQ in South Africa">
+                    <div class="article-text">
+                        <h3 class="article-title">Cape Town; The Gay Capital of Africa | LGBTQ tourism in Cape Town</h3>
+                        <p class="article-excerpt">Cape town is now considered the "Gay Capital of Africa". <a href="https://allafrica.com/stories/202411110377.html" target="_blank" style="color: #8a2be2; text-decoration: none;">1. Cape Town Pride has officially won the bid to host WorldPride 2028.</a> Check out this article too:  <a href="https://www.mambaonline.com/2024/11/01/mayor-backs-cape-town-bid-to-host-gay-games-in-2030/" target="_blank" style="color: #8a2be2; text-decoration: none;"> 2. Cape Town Bid to Host the 2030 Gay Games.</a> </p>
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://en.wikipedia.org/wiki/LGBTQ_tourism_in_Cape_Town" target="_blank" class="cta-button">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/nig-persecution.jpg" alt="Nigerian Christian Persecution" class="article-image">
+                    <div class="article-text">
+                        <span class="article-tag">World News</span>
+                        <h3 class="article-title">Christians in Nigeria are being persecuted | 15 Nigerian Christians Massacred by Terrorists</h3>
+                        <p class="article-excerpt">  <a href="https://youtu.be/s8iN35ZsuMY" target="_blank" style="color: #8a2be2; text-decoration: none;">Nigerian Christians face persecution from radical Islamist groups</a> . Another 15 Christians were reportedly slaughtered in Nigeria by Fulani terrorists in Barkin-Ladi and Bokkos counties in Plateau State on October 14th.</p>
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://youtu.be/F7m3CvF06to" target="_blank" class="cta-button">Watch News</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/id2020.jpg" alt="Digital ID" class="article-image">
+                    <div class="article-text">
+                        <h3 class="article-title">Elon Musk Speaks On The Dangers of Digital ID</h3>
+                        <p class="article-excerpt"> With a recent announcement on the <a href="https://youtu.be/nTGnUa7Ng7g" target="_blank" style="color: #8a2be2; text-decoration: none;">mandatory digital ID</a> by the UK Prime Minister, Elon Musk just recently spoke on the dangers of adopting digital ID with a concern for privacy and control.</p>
+
+                        <div class="article-meta">
+                            <span class="article-date">October 2025</span>
+                            <a href="https://youtu.be/RHCUV7bAAB4" target="_blank" class="cta-button">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="article-item">
+                <div class="article-content">
+                    <img src="../images/owr1.jpg" alt="Pope Francis Ecumenism" class="article-image">
+                    <div class="article-text">
+                        <span class="article-tag">Bible Prophecy</span>
+                        <h3 class="article-title">Pope Francis Announced the One World Religion</h3>
+                        <p class="article-excerpt">Pope Francis announced the <a href="#" style="color: #8a2be2; text-decoration: none;" target="_blank">ONE WORLD RELIGION</a> stating, "Every religion is a way to arrive at God.... We are all children of God...."</p>
+
+                        <div class="article-meta">
+                            <span class="article-date">September 2024</span>
+                            <a href="https://youtu.be/9ciUnpSqiOQ" target="_blank" class="cta-button">Watch Video</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        
+        
+    </section>
+
+     <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Uncensored Researcher</div>
+            <p class="footer-description">Unbiased news updates  and insightful articles on global biblical events.</p>
+            <div class="social-links">
+                <a href="../"><i class="fas fa-home"></i></a>
+                <a href="../news/"><i class="fas fa-newspaper"></i></a>
+                <a href="../more/"><i class="fas fa-ellipsis-h"></i></a>
+                <a href="../contact/"><i class="fas fa-envelope"></i></a>
+                <a href="../journals/"><i class="fas fa-volume-up"></i></a>        
+
+            </div>
+            <p class="copyright">&copy; 2025 Uncensored Researcher</p>
+        </div>
+    </footer>
+
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+
+    <script>
+        // Navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+        
+        menuOverlay.addEventListener('click', function() {
+            this.classList.remove('active');
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+        
+        // Close menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Load more articles functionality (placeholder)
+        document.getElementById('loadMoreBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // In a real implementation, this would fetch more articles from a server
+            alert('More articles would be loaded here in a real implementation');
+        });
+    </script>
+
+<script>
+    // Back to Top functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+</body>
+</html>

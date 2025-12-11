@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>News - Uncensored Researcher - Unfiltered News & Analysis</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Theme Colors -->
+    <title>About - Uncensored Researcher - Our Mission</title>
     <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: dark)">
     <meta name="apple-mobile-web-app-title" content="Uncensored Researcher">
     <meta name="application-name" content="Uncensored Researcher">
     <meta name="msapplication-TileColor" content="#2d2235">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
     <link rel="icon" href="../images/icon.png">
     <style>
         :root {
@@ -68,6 +66,13 @@
             width: 90%;
             margin: 0 auto;
         }
+
+        .container2 {
+            max-width: 1100px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
         
         /* Header */
         header {
@@ -163,29 +168,29 @@
             z-index: 101;
         }
         
-/* News Header */
-.news-header {
+       /* Podcast Header */
+.about-header {
     padding: 4rem 0 2rem;
     position: relative;
     overflow: hidden;
-    z-index: 1; 
+    isolation: isolate; /* Creates new stacking context */
 }
 
-.news-header::before {
+.about-header::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../images/news.jpg'); /* Add your image path */
+    background-image: url('../images/uncensored-city-walking.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -2;
 }
 
-.news-header::after {
+.about-header::after {
     content: '';
     position: absolute;
     top: 0;
@@ -193,17 +198,16 @@
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(circle at 30% 20%, rgba(138, 112, 150, 0.1) 0%, transparent 70%),
-        linear-gradient(to bottom, rgba(12, 8, 13, 0.7), rgba(12, 8, 13, 0.9)); /* Purple overlay */
+        radial-gradient(circle at 30% 20%, rgba(138, 112, 150, 0.15) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(12, 8, 13, 0.75), rgba(12, 8, 13, 0.9));
     z-index: -1;
-    mix-blend-mode: multiply; /* Optional: blends colors nicely with background */
 }
         
-        .news-header-content {
+        .about-header-content {
             max-width: 800px;
         }
         
-        .news-header h1 {
+        .about-header h1 {
             font-family: var(--font-heading);
             font-size: 2.8rem;
             font-weight: 700;
@@ -212,7 +216,7 @@
             color: #fff;
         }
         
-        .news-header p {
+        .about-header p {
             font-size: 1.1rem;
             max-width: 600px;
             margin-bottom: 1rem;
@@ -220,129 +224,222 @@
             font-weight: 300;
         }
         
-        .news-count {
+        /* About Content Sections */
+        .about-section {
+            margin-bottom: 4rem;
+        }
+        
+        .about-section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .about-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-5);
+            border-radius: 2px;
+        }
+        
+        .about-text {
+            color: #c9bdd4;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-highlight {
             color: var(--color-5);
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
         }
         
-        /* News Grid */
-        .news-grid {
+        /* Mission Card */
+        .mission-card {
+            background: linear-gradient(135deg, rgba(138, 112, 150, 0.1) 0%, rgba(82, 66, 92, 0.1) 100%);
+            border-radius: var(--card-border-radius);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(138, 112, 150, 0.1);
+        }
+        
+        .mission-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .mission-text {
+            color: #d9cfe0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center;
+            font-style: italic;
+        }
+        
+        /* Values Grid */
+        .values-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 2 per row on desktop */
-            gap: 2rem;
-            padding-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0;
         }
         
-        .news-item {
+        .value-card {
             background-color: var(--color-2);
             border-radius: var(--card-border-radius);
-            overflow: hidden;
-            transition: var(--transition-smooth);
+            padding: 2rem;
             border: 1px solid rgba(138, 112, 150, 0.08);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            transition: var(--transition-smooth);
         }
         
-        .news-item:hover {
+        .value-card:hover {
             transform: translateY(-5px);
             border-color: rgba(138, 112, 150, 0.2);
             box-shadow: 0 10px 25px rgba(12, 8, 13, 0.5);
         }
         
-        .news-image {
-            height: 220px;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .news-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .news-item:hover .news-image img {
-            transform: scale(1.05);
-        }
-        
-        .news-category {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background-color: rgba(12, 8, 13, 0.8);
+        .value-icon {
+            background-color: rgba(138, 112, 150, 0.1);
             color: var(--color-5);
-            font-weight: 600;
-            font-size: 0.75rem;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            letter-spacing: 0.5px;
-        }
-        
-        .news-content {
-            padding: 1.5rem;
-            flex-grow: 1;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         
-        .news-title {
+        .value-title {
             font-family: var(--font-heading);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 0.8rem;
-            line-height: 1.3;
+            margin-bottom: 1rem;
             color: #fff;
         }
         
-        .news-excerpt {
+        .value-text {
             color: #c9bdd4;
-            margin-bottom: 1.5rem;
             font-size: 0.95rem;
-            font-weight: 300;
-            flex-grow: 1;
+            line-height: 1.6;
         }
         
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #9e8fa9;
-            font-size: 0.85rem;
-            margin-bottom: 1.2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(138, 112, 150, 0.1);
+        /* Team Section */
+        .team-section {
+            margin: 4rem 0;
         }
         
-        /* Small Read News Button */
-        .read-news-btn {
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        
+        .team-member {
+            background-color: var(--color-2);
+            border-radius: var(--card-border-radius);
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(138, 112, 150, 0.08);
+            transition: var(--transition-smooth);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 112, 150, 0.2);
+        }
+        
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--color-5);
+        }
+        
+        .member-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .member-role {
+            color: var(--color-5);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .member-bio {
+            color: #c9bdd4;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(138, 112, 150, 0.1) 0%, rgba(82, 66, 92, 0.1) 100%);
+            border-radius: var(--card-border-radius);
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(138, 112, 150, 0.1);
+            text-align: center;
+        }
+        
+        .contact-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        .contact-text {
+            color: #d9cfe0;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-email {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
+            gap: 0.8rem;
+            background-color: var(--color-2);
+            color: var(--color-5);
+            padding: 1rem 2rem;
+            border-radius: var(--card-border-radius);
             text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: var(--transition-smooth);
-            cursor: pointer;
-            border: none;
-            font-family: var(--font-body);
-            gap: 0.3rem;
-            background-color: var(--color-5);
-            color: var(--color-1);
-            width: auto;
-            align-self: flex-start;
-            margin-top: auto;
+            border: 1px solid rgba(138, 112, 150, 0.2);
+            margin-top: 1rem;
         }
         
-        .read-news-btn:hover {
-            background-color: var(--color-accent);
+        .contact-email:hover {
+            background-color: rgba(138, 112, 150, 0.1);
             transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(138, 112, 150, 0.3);
+            border-color: var(--color-5);
         }
         
         /* Back to Top Button */
@@ -379,29 +476,6 @@
             background-color: var(--color-accent);
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(138, 112, 150, 0.3);
-        }
-        
-        /* Loading Indicator */
-        .loading-indicator {
-            text-align: center;
-            padding: 2rem 0;
-            color: var(--color-5);
-            font-size: 0.9rem;
-            display: none;
-        }
-        
-        .loading-indicator.active {
-            display: block;
-        }
-        
-        .loading-indicator i {
-            margin-right: 0.5rem;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
         
         /* Mobile Navigation (Bottom) */
@@ -510,6 +584,11 @@
                 width: 100%;
                 padding: 0 1rem;
             }
+
+           .container2 {
+                width: 100%;
+                padding: 0 1rem;
+            }
             
             .desktop-nav {
                 display: none;
@@ -523,26 +602,33 @@
                 display: block;
             }
             
-            .news-header {
-                padding: 3rem 0 1.5rem;
-                padding-bottom: calc(1.5rem + var(--bottom-nav-height));
+            .about-header {
+                padding: 3rem 0 2rem;
+                padding-bottom: calc(2rem + var(--bottom-nav-height));
             }
             
-            .news-header h1 {
+            .about-header h1 {
                 font-size: 2.2rem;
             }
             
-            .news-header p {
-                font-size: 1rem;
+            .about-header p {
+                font-size: 1.1rem;
             }
             
-            .news-grid {
-                grid-template-columns: 1fr; /* 1 per row on mobile */
-                gap: 1.5rem;
+            .mission-card {
+                padding: 2rem 1.5rem;
             }
             
-            .news-image {
-                height: 180px;
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-section {
+                padding: 2rem 1.5rem;
             }
             
             .back-to-top {
@@ -560,16 +646,12 @@
         }
         
         @media (max-width: 480px) {
-            .news-header h1 {
+            .about-header h1 {
                 font-size: 1.9rem;
             }
             
-            .news-image {
-                height: 160px;
-            }
-            
-            .news-title {
-                font-size: 1.2rem;
+            .about-section-title {
+                font-size: 1.5rem;
             }
         }
         
@@ -583,27 +665,12 @@
                 display: none;
             }
         }
-
-.reference {
-    color: #9d8bf0; /* Purple-blue blend */
-    text-decoration: underline;
-    text-decoration-color: rgba(157, 139, 240, 0.4);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-    transition: all 0.2s ease;
-    font-weight: 500;
-}
-
-.reference:hover {
-    color: #b1a3ff;
-    text-decoration-color: #b1a3ff;
-}
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
+        <div class="container2">
             <div class="header-content">
                 <a href="../" class="logo">
                     <span class="logo-icon"><i class="fas fa-search"></i></span>
@@ -613,11 +680,11 @@
                 <nav class="desktop-nav">
                     <ul>
                         <li><a href="../">Home</a></li>
-                        <li><a href="../news/" class="active">News</a></li>
+                        <li><a href="../news/">News</a></li>
                         <li><a href="../podcast/">Podcast</a></li>
                         <li><a href="../articles/">Articles</a></li>
                         <li><a href="../resources/">Resources</a></li>
-                        <li><a href="../about/">About</a></li>
+                        <li><a href="#" class="active">About</a></li>
                     </ul>
                 </nav>
                 
@@ -635,139 +702,130 @@
         </button>
         <ul class="mobile-menu-links">
             <li><a href="../">Home</a></li>
-            <li><a href="../news/" class="active">News</a></li>
+            <li><a href="../news/">News</a></li>
             <li><a href="../podcast/">Podcast</a></li>
             <li><a href="../articles/">Articles</a></li>
             <li><a href="../resources/">Resources</a></li>
-            <li><a href="../about/">About</a></li>
+            <li><a href="#" class="active">About</a></li>
         </ul>
     </div>
 
-    <!-- News Header -->
-    <section class="news-header">
+    <!-- About Header -->
+    <section class="about-header">
         <div class="container">
-            <div class="news-header-content">
-                <h1>Latest News & Analysis</h1>
-                <p>Unfiltered reporting on current events, politics, technology, and society. Dive deep into the stories that matter without the mainstream filter.</p>
-
+            <div class="about-header-content">
+                <h1>Our Mission: Truth Without Filters</h1>
+                <p>Uncensored Researcher was born from a simple idea: that everyone deserves access to information free from corporate agendas, political bias, and algorithmic manipulation.</p>
             </div>
         </div>
     </section>
 
-    <!-- News Grid -->
     <main class="container">
+        <!-- Our Story -->
+        <section class="about-section">
+            <h2 class="about-section-title">Our Story</h2>
+            <p class="about-text">In an age where information is abundant but truth is increasingly scarce, <span class="about-highlight">Uncensored Researcher</span> emerged as a response to the growing censorship, bias, and corporate control of mainstream media. What started as a personal research project by a single investigator has evolved into a platform dedicated to authentic, unfiltered analysis.</p>
+            
+            <p class="about-text">We've watched as independent voices have been silenced, controversial topics have been buried, and complex issues have been reduced to simplistic narratives designed to provoke rather than inform. <span class="about-highlight">Uncensored Researcher</span> exists to fill that void—to provide depth where others offer soundbites, context where others offer confusion, and truth where others offer propaganda.</p>
+        </section>
 
-            <!-- News Item -->
-        <div class="news-grid" id="newsGrid">
-            <div class="news-image">
-                    <img src="../images/hurricane-melissa.jpg" alt="A deadly Hurricane" loading="lazy">
-                    <span class="news-category">Breaking News</span>
-                </div>
-                <div class="news-content">
-                    <h3 class="news-title">Deadly Hurricane 'Melissa' slams into Jamaica.</h3>
-                    <p class="news-excerpt"> Hurricane Melissa <a href="https://youtu.be/yu3z16OuuNA" target="_blank" class="reference">causes devastation in Jamaica,</a> takes aim at Cuba. Hurricane Melissa made landfall in New Hope, Jamaica as a powerful Category 5 storm.</p>
-                    <div class="news-meta">
-                        <span>October 2025</span>
-                    </div>
-                    <a href="https://youtu.be/p6AOHEXxMEM" target="_blank" class="read-news-btn">
-                        <i class="fab fa-youtube"></i> Watch
-                    </a>
-                </div>
+        <!-- Mission Statement -->
+        <div class="mission-card">
+            <h3 class="mission-title">Our Core Mission</h3>
+            <p class="mission-text">To cut through the noise, bypass the gatekeepers, and deliver research-driven analysis that challenges conventional narratives while remaining committed to factual accuracy and intellectual honesty—no matter how uncomfortable the truth may be.</p>
         </div>
 
-            <!-- News Item -->
-        <div class="news-grid" id="newsGrid">
-            <div class="news-image">
-                    <img src="../images/pope-leo-and-king-of-england.jpg" alt="Pope Leo and King Of England" loading="lazy">
-                    <span class="news-category">Breaking News</span>
-                </div>
-                <div class="news-content">
-                    <h3 class="news-title">The joining of hands between the Catholic church and the Church of England.</h3>
-                    <p class="news-excerpt"> “One of the most significant things is that an English King has not prayed in the same place as a Pope since before the Reformation, since long before the separation of the Church of England from the Church of Rome,” <a href="https://www.vaticannews.va/en/vatican-city/news/2025-10/pope-leo-xiv-king-charles-iii-ecumenism-care-for-creation.html" target="_blank" class="reference">said Father Browne.</a> </p>
-                    <div class="news-meta">
-                        <span>October 2025</span>
+        <!-- Our Values -->
+        <section class="about-section">
+            <h2 class="about-section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-balance-scale"></i>
                     </div>
-                    <a href="https://youtu.be/3FvfqlqOPVw" target="_blank" class="read-news-btn">
-                        <i class="fab fa-youtube"></i> Watch
-                    </a>
+                    <h3 class="value-title">Intellectual Integrity</h3>
+                    <p class="value-text">We follow the evidence wherever it leads, even when it contradicts our own assumptions or popular narratives. Our commitment is to truth, not to any ideology, political party, or corporate interest.</p>
                 </div>
-        </div>
-
-
-            <!-- News Item -->
-        <div class="news-grid" id="newsGrid">
-            <div class="news-image">
-                    <img src="../images/south-africa-homosexuality.jpg" alt="Homosexuality In South Africa" loading="lazy">
-                    <span class="news-category">Society</span>
-                </div>
-                <div class="news-content">
-                    <h3 class="news-title">Cape Town; The Gay Capital of Africa | LGBTQ tourism in Cape Town</h3>
-                    <p class="news-excerpt">Cape town is now considered the "Gay Capital of Africa".  1. Cape Town Pride has officially won the bid to <a href="https://allafrica.com/stories/202411110377.html" target="_blank" class="reference">host WorldPride 2028.</a> Check out this article too: 2. Cape Town Bid to Host <a href="https://www.mambaonline.com/2024/11/01/mayor-backs-cape-town-bid-to-host-gay-games-in-2030/" target="_blank" class="reference">the 2030 Gay Games.</a></p>
-                    <div class="news-meta">
-                        <span>October 2025</span>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-eye"></i>
                     </div>
-                    <a href="https://en.wikipedia.org/wiki/LGBTQ_tourism_in_Cape_Town" target="_blank" class="read-news-btn">
-                        <i class="fas fa-newspaper"></i> Read
-                    </a>
+                    <h3 class="value-title">Radical Transparency</h3>
+                    <p class="value-text">We show our work. Our sources are cited, our methodologies are explained, and our biases are acknowledged. When we make mistakes—and we will—we correct them publicly and promptly.</p>
                 </div>
-        </div>
-
-            <!-- News Item -->
-        <div class="news-grid" id="newsGrid">
-            <div class="news-image">
-                    <img src="../images/nig-persecution.jpg" alt="Christians In Nigeria Persecuted" loading="lazy">
-                    <span class="news-category">Breaking News</span>
-                </div>
-                <div class="news-content">
-                    <h3 class="news-title">Christians in Nigeria are being persecuted | 15 Nigerian Christians Massacred by Terrorists</h3>
-                    <p class="news-excerpt"> <a href="https://youtu.be/s8iN35ZsuMY" target="_blank" class="reference">Nigerian Christians face persecution from radical Islamist groups.</a> 15 Christians were reportedly slaughtered in Nigeria by Fulani terrorists on October 14th. </p>
-                    <div class="news-meta">
-                        <span>October 2025</span>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <a href="https://youtu.be/F7m3CvF06to" target="_blank" class="read-news-btn">
-                        <i class="fab fa-youtube"></i> Watch
-                    </a>
+                    <h3 class="value-title">Critical Thinking</h3>
+                    <p class="value-text">We don't tell you what to think—we show you how to think. Our goal is to equip you with the analytical tools to navigate the complex information landscape on your own terms.</p>
                 </div>
-        </div>
+            </div>
+        </section>
 
-            <!-- News Item -->
-        <div class="news-grid" id="newsGrid">
-            <div class="news-image">
-                    <img src="../images/elon-musk-digital.jpg" alt="Elon Musk On Digital ID" loading="lazy">
-                    <span class="news-category">Technology</span>
-                </div>
-                <div class="news-content">
-                    <h3 class="news-title">Elon Musk Speaks On The Dangers of Digital ID</h3>
-                    <p class="news-excerpt">With a recent announcement on the <a href="https://youtu.be/nTGnUa7Ng7g" target="_blank" class="reference">mandatory digital ID</a> by the UK Prime Minister, Elon Musk just recently spoke on the dangers of adopting digital ID.</p>
-                    <div class="news-meta">
-                        <span>October 2025</span>
-                    </div>
-                    <a href="https://youtu.be/RHCUV7bAAB4" target="_blank" class="read-news-btn">
-                        <i class="fab fa-youtube"></i> Watch
-                    </a>
-                </div>
-        </div>
+        <!-- What We Do -->
+        <section class="about-section">
+            <h2 class="about-section-title">What We Do Differently</h2>
+            <p class="about-text"><span class="about-highlight">Uncensored Researcher</span> approaches information differently. While mainstream outlets chase clicks and ratings, we prioritize depth over speed, context over controversy, and understanding over outrage.</p>
+            
+            <p class="about-text">Our research spans multiple disciplines—from geopolitics and economics to technology and psychology—because we recognize that today's most pressing issues can't be understood in isolation. We connect dots that others keep separate, revealing patterns and relationships that mainstream analysis often misses.</p>
+            
+            <p class="about-text">Whether through our investigative articles, news analysis, or audio journals, we provide the missing context, historical perspective, and interdisciplinary connections needed to make sense of our rapidly changing world.</p>
+        </section>
 
-            <!-- News Item -->
-            <div class="news-grid" id="newsGrid">
-            <div class="news-image">
-                    <img src="../images/one-world-religion.jpg" alt="Pope Francis at Religious Gathering" loading="lazy">
-                    <span class="news-category">Breaking News</span>
+        <!-- The Team -->
+        <section class="team-section">
+            <h2 class="about-section-title">The People Behind the Research</h2>
+            <p class="about-text">Currently, <span class="about-highlight">Uncensored Researcher</span> is a solo operation driven by a passion for truth and a commitment to independent journalism. But our team is growing—soon to include additional researchers, analysts, and support staff who share our mission.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80" alt="Lead Researcher" class="member-avatar">
+                    <h3 class="member-name">The Researcher</h3>
+                    <div class="member-role">Founder & Lead Investigator</div>
+                    <p class="member-bio">With a background spanning investigative journalism, data analysis, and academic research, our founder brings a multidisciplinary approach to every story. Their work has consistently challenged conventional wisdom and exposed uncomfortable truths.</p>
                 </div>
-                <div class="news-content">
-                    <h3 class="news-title">Pope Francis Announced The One World Religion</h3>
-                    <p class="news-excerpt">Pope Francis Just Announced the One World Religion saying "Every Religion is a way to arrive at God.</p>
-                    <div class="news-meta">
-                        <span>September 2024</span>
+                
+              <!--  <div class="team-member">
+                    <div class="member-avatar" style="background: linear-gradient(135deg, var(--color-4) 0%, var(--color-5) 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                        <i class="fas fa-user-plus"></i>
                     </div>
-                    <a href="pope-francis-announces-one-world-religion/" class="read-news-btn">
-                        <i class="fas fa-newspaper"></i> Read
-                    </a>
+                    <h3 class="member-name">Coming Soon</h3>
+                    <div class="member-role">Platform Manager & Editor</div>
+                    <p class="member-bio">Soon to be joined by his wife who will bring her expertise in media production, editorial oversight, and platform management to ensure <span class="about-highlight">Uncensored Researcher</span> continues to grow while maintaining its commitment to quality and integrity.</p>
                 </div>
-        </div>
-        
+            </div> -->
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2 class="contact-title">Get In Touch</h2>
+            <p class="contact-text">Have a story tip? Want to collaborate? Have feedback on our work? We value our relationship with our readers and welcome thoughtful engagement.</p>
+            <p class="contact-text">Whether you're a whistleblower with information the public needs to see, a researcher with complementary expertise, or simply a curious thinker with questions—we want to hear from you.</p>
+            
+            <a href="mailto:uncensored-researcher@gmail.com" class="contact-email">
+                <i class="fas fa-envelope"></i> uncensored-researcher@gmail.com
+            </a>
+            
+            <p class="contact-text" style="margin-top: 2rem; font-size: 0.9rem; color: #9e8fa9;">
+                <i class="fas fa-shield-alt"></i> Secure communication methods available upon request for sensitive inquiries.
+            </p>
+        </section>
+
+        <!-- Final Note -->
+        <section class="about-section" style="margin-top: 4rem;">
+            <h2 class="about-section-title">Join Us in Seeking Truth</h2>
+            <p class="about-text">In a world of increasing censorship, algorithmic manipulation, and corporate-controlled narratives, independent research and analysis have never been more important. <span class="about-highlight">Uncensored Researcher</span> represents a commitment to something increasingly rare: the pursuit of truth for its own sake.</p>
+            
+            <p class="about-text">We don't have all the answers—but we're committed to asking the right questions, following the evidence wherever it leads, and sharing what we find with those who value intellectual honesty over comfortable illusions.</p>
+            
+            <p class="about-text" style="font-style: italic; color: var(--color-5); margin-top: 2rem;">
+                "The truth will set you free, but first it will piss you off." — Gloria Steinem
+            </p>
+        </section>
     </main>
-    <p>&nbsp</p>
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop">
@@ -781,7 +839,7 @@
                 <i class="fas fa-home mobile-nav-icon"></i>
                 <span>Home</span>
             </a>
-            <a href="../news/" class="mobile-nav-item active">
+            <a href="../news/" class="mobile-nav-item">
                 <i class="fas fa-globe mobile-nav-icon"></i>
                 <span>News</span>
             </a>
@@ -797,85 +855,9 @@
     </nav>
 
     <script>
-
-    // Back to top functionality
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-        
-        // Check for infinite scroll
-        checkScroll();
-    });
-
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    // Read News button click handler
-    document.addEventListener('click', (e) => {
-        if (e.target.closest('.read-news-btn')) {
-            const button = e.target.closest('.read-news-btn');
-            const newsId = button.getAttribute('data-id');
-            const newsItem = sortedNewsData.find(item => item.id == newsId);
-            
-            if (newsItem) {
-                // In a real app, this would navigate to the news article page
-                alert(`Loading article: "${newsItem.title}"\n\nIn the actual app, this would navigate to the full article page.`);
-            }
-            
-            e.preventDefault();
-        }
-    });
-
-    // Mobile bottom nav active state
-    document.querySelectorAll('.mobile-nav-item').forEach(item => {
-        item.addEventListener('click', function() {
-            // Remove active class from all items
-            document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
-                navItem.classList.remove('active');
-            });
-            
-            // Add active class to clicked item
-            this.classList.add('active');
-        });
-    });
-
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
-        // Render initial news items
-        renderNewsItems(0, currentItems);
-        
-        // Initialize mobile menu from homepage
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-        if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
-            mobileMenuToggle.addEventListener('click', () => {
-                mobileMenuOverlay.classList.toggle('active');
-                document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : 'auto';
-            });
-
-            mobileMenuClose.addEventListener('click', () => {
-                mobileMenuOverlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        }
-        
-        // Check if we need to load more immediately (for short screens)
-        setTimeout(checkScroll, 500);
-    });
-</script>
-    <script>
         // DOM elements
         const backToTop = document.getElementById('backToTop');
-
+        
         // Back to top functionality
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -923,31 +905,7 @@
                     document.body.style.overflow = 'auto';
                 });
             }
-            
-            // Add subtle animation to images on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe all images
-            document.querySelectorAll('.image-float-right, .image-float-left, .image-full').forEach(img => {
-                img.style.opacity = '0';
-                img.style.transform = 'translateY(20px)';
-                img.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                imageObserver.observe(img);
-            });
         });
     </script>
-
 </body>
 </html>

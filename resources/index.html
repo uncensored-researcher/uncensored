@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resources - Uncensored Researcher - Research Tools & Materials</title>
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-title" content="Uncensored Researcher">
+    <meta name="application-name" content="Uncensored Researcher">
+    <meta name="msapplication-TileColor" content="#2d2235">
+    <link rel="icon" href="../images/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Grape-themed dark palette - refined */
+            --color-1: #0c080d; /* Ultra-dark purple-black */
+            --color-2: #1a131f; /* Dark muted eggplant */
+            --color-3: #2d2235; /* Smoky purple-charcoal */
+            --color-4: #52425c; /* Dusty grape purple */
+            --color-5: #8a7096; /* Soft plum-lavender - brighter */
+            --color-accent: #a98bb5; /* Light accent */
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing */
+            --container-padding: 2rem;
+            --content-max-width: 1100px;
+            --section-spacing: 3rem;
+            --card-border-radius: 12px;
+            --transition-smooth: all 0.3s ease;
+            
+            /* App-like elements */
+            --header-height: 70px;
+            --bottom-nav-height: 60px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            background-color: var(--color-1);
+            color: #f0e9f2;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: var(--content-max-width);
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(12, 8, 13, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 112, 150, 0.1);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--color-5);
+        }
+        
+        .logo-text {
+            font-weight: 800;
+        }
+        
+        .logo span {
+            color: var(--color-5);
+            font-weight: 600;
+        }
+        
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .desktop-nav a {
+            color: #e0d6e8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: var(--color-5);
+        }
+        
+        .desktop-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-5);
+            border-radius: 1px;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #f0e9f2;
+            font-size: 1.4rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+        
+       /* Podcast Header */
+.resources-header {
+    padding: 4rem 0 2rem;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate; /* Creates new stacking context */
+}
+
+.resources-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/resources.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+.resources-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 20%, rgba(138, 112, 150, 0.15) 0%, transparent 70%),
+        linear-gradient(to bottom, rgba(12, 8, 13, 0.75), rgba(12, 8, 13, 0.9));
+    z-index: -1;
+}
+      
+        
+        .resources-header-content {
+            max-width: 800px;
+        }
+        
+        .resources-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        .resources-header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 1rem;
+            color: #d9cfe0;
+            font-weight: 300;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Two columns: left (2/3) and right (1/3) */
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: relative;
+            height: fit-content;
+            max-height: calc(100vh - var(--header-height) - 4rem);
+        }
+        
+        /* Resource Cards */
+        .resource-card {
+            background-color: var(--color-2);
+            border-radius: var(--card-border-radius);
+            padding: 2rem;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(138, 112, 150, 0.08);
+            margin-bottom: 2rem;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 112, 150, 0.2);
+            box-shadow: 0 10px 25px rgba(12, 8, 13, 0.5);
+        }
+        
+        .resource-card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .resource-card h2 i {
+            color: var(--color-5);
+        }
+        
+        .resource-card p {
+            color: #c9bdd4;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Recommended Websites */
+        .websites-list {
+            list-style: none;
+        }
+        
+        .website-item {
+            background-color: var(--color-3);
+            border-radius: calc(var(--card-border-radius) - 4px);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1rem;
+            transition: var(--transition-smooth);
+            border-left: 3px solid var(--color-5);
+        }
+        
+        .website-item:hover {
+            background-color: rgba(45, 34, 53, 0.8);
+            transform: translateX(5px);
+        }
+        
+        .website-item a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: block;
+        }
+        
+        .website-item p {
+            color: #9e8fa9;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            margin-bottom: 0;
+        }
+        
+        /* Audio Tracks Grid */
+        .audio-tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .audio-track {
+            background-color: var(--color-3);
+            border-radius: calc(var(--card-border-radius) - 4px);
+            padding: 1.2rem;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(138, 112, 150, 0.1);
+        }
+        
+        .audio-track:hover {
+            background-color: rgba(45, 34, 53, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        .track-title {
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .track-meta {
+            color: #9e8fa9;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+            gap: 0.4rem;
+            background-color: var(--color-5);
+            color: var(--color-1);
+            width: 100%;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(138, 112, 150, 0.3);
+        }
+        
+        /* Research Materials */
+        .materials-list {
+            list-style: none;
+        }
+        
+        .material-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(138, 112, 150, 0.1);
+        }
+        
+        .material-item:last-child {
+            border-bottom: none;
+        }
+        
+        .material-icon {
+            background-color: var(--color-5);
+            color: var(--color-1);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .material-content {
+            flex-grow: 1;
+        }
+        
+        .material-title {
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .material-meta {
+            color: #9e8fa9;
+            font-size: 0.85rem;
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tool-card {
+            background-color: var(--color-3);
+            border-radius: calc(var(--card-border-radius) - 4px);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+        
+        .tool-card:hover {
+            background-color: rgba(45, 34, 53, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        .tool-icon {
+            background-color: var(--color-5);
+            color: var(--color-1);
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .tool-title {
+            font-weight: 600;
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-desc {
+            color: #9e8fa9;
+            font-size: 0.85rem;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: calc(var(--bottom-nav-height) + 20px);
+            right: 20px;
+            background-color: var(--color-5);
+            color: var(--color-1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 90;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(138, 112, 150, 0.3);
+        }
+        
+        /* Mobile Navigation (Bottom) */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 19, 31, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(138, 112, 150, 0.1);
+            z-index: 99;
+            height: var(--bottom-nav-height);
+        }
+        
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #e0d6e8;
+            font-size: 0.75rem;
+            flex-grow: 1;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        
+        .mobile-nav-item.active,
+        .mobile-nav-item:hover {
+            color: var(--color-5);
+        }
+        
+        .mobile-nav-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(12, 8, 13, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 98;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-links {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu-links li {
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-menu-links a {
+            color: #f0e9f2;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: var(--transition-smooth);
+        }
+        
+        .mobile-menu-links a:hover,
+        .mobile-menu-links a.active {
+            color: var(--color-5);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: #f0e9f2;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0 1rem;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .mobile-bottom-nav {
+                display: block;
+            }
+            
+            .resources-header {
+                padding: 4rem 0 2rem;
+                padding-bottom: calc(2rem + var(--bottom-nav-height));
+            }
+            
+            .resources-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .resources-header p {
+                font-size: 1rem;
+            }
+            
+            .resource-card {
+                padding: 1.5rem;
+            }
+            
+            .resource-card h2 {
+                font-size: 1.4rem;
+            }
+            
+            .sidebar {
+                position: static;
+                max-height: none;
+            }
+            
+            .back-to-top {
+                bottom: calc(var(--bottom-nav-height) + 10px);
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            /* Adjust for bottom nav */
+            main {
+                padding-bottom: var(--bottom-nav-height);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .resources-header h1 {
+                font-size: 1.9rem;
+            }
+            
+            .audio-tracks-grid,
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .mobile-bottom-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../" class="logo">
+                    <span class="logo-icon"><i class="fas fa-search"></i></span>
+                    <span class="logo-text">Uncensored<span>Researcher</span></span>
+                </a>
+                
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="../">Home</a></li>
+                        <li><a href="../news/">News</a></li>
+                        <li><a href="../podcast/">Podcast</a></li>
+                        <li><a href="../articles/">Articles</a></li>
+                        <li><a href="#" class="active">Resources</a></li>
+                        <li><a href="../about/">About</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="../">Home</a></li>
+            <li><a href="../news/">News</a></li>
+            <li><a href="../podcast/">Podcast</a></li>
+            <li><a href="../articles/">Articles</a></li>
+            <li><a href="#" class="active">Resources</a></li>
+            <li><a href="../about/">About</a></li>
+        </ul>
+    </div>
+
+    <!-- Resources Header -->
+    <section class="resources-header">
+        <div class="container">
+            <div class="resources-header-content">
+                <h1>Research Resources & Materials</h1>
+                <p>Tools, references, data sources, and materials for independent research and critical analysis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="resources-grid">
+            <!-- Left Column: Main Content -->
+            <div class="main-content">
+                <!-- Section 1: Research Tools -->
+                <section class="resource-card">
+                    <h2><i class="fas fa-tools"></i> Research Tools & Software</h2>
+                    <p>Essential tools and software for conducting independent research, data analysis, and secure communication.</p>
+                    
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="tool-title">Privacy Tools</h3>
+                            <p class="tool-desc">VPNs, secure browsers, encryption software</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3 class="tool-title">Data Analysis</h3>
+                            <p class="tool-desc">Statistical software and visualization tools</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3 class="tool-title">Investigation Tools</h3>
+                            <p class="tool-desc">OSINT resources and research databases</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="tool-icon">
+                                <i class="fas fa-archive"></i>
+                            </div>
+                            <h3 class="tool-title">Archival Resources</h3>
+                            <p class="tool-desc">Document archives and historical databases</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 2: Uncensored Researcher Materials -->
+                <section class="resource-card">
+                    <h2><i class="fas fa-box-open"></i> Uncensored Researcher Materials</h2>
+                    <p>Original research documents, data sets, and materials created by Uncensored Researcher for public use.</p>
+                    
+                    <ul class="materials-list">
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Global Propaganda Networks Report 2024</div>
+                                <div class="material-meta">PDF • 45 pages • 2.3 MB</div>
+                            </div>
+                        </li>
+                        
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Media Bias Dataset 2019-2024</div>
+                                <div class="material-meta">CSV • 15,000 entries • 4.7 MB</div>
+                            </div>
+                        </li>
+                        
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Economic Indicators Analysis Tool</div>
+                                <div class="material-meta">Excel • Interactive • 1.8 MB</div>
+                            </div>
+                        </li>
+                        
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Research Methodology Handbook</div>
+                                <div class="material-meta">PDF • 120 pages • 5.2 MB</div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                
+                <!-- Section 3: Audio Tracks -->
+                <section class="resource-card">
+                    <h2><i class="fas fa-music"></i> Soundtrack & Audio Library</h2>
+                    <p>Music and audio tracks used in Uncensored Researcher videos and podcasts. Free to use with attribution.</p>
+                    
+                    <div class="audio-tracks-grid">
+                        <div class="audio-track">
+                            <div class="track-title">Investigation Theme</div>
+                            <div class="track-meta">3:45 • Atmospheric • 8.2 MB</div>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i> Download MP3
+                            </button>
+                        </div>
+                        
+                        <div class="audio-track">
+                            <div class="track-title">Data Analysis Loop</div>
+                            <div class="track-meta">2:30 • Electronic • 5.7 MB</div>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i> Download MP3
+                            </button>
+                        </div>
+                        
+                        <div class="audio-track">
+                            <div class="track-title">Reveal Moment</div>
+                            <div class="track-meta">1:15 • Dramatic • 3.4 MB</div>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i> Download MP3
+                            </button>
+                        </div>
+                        
+                        <div class="audio-track">
+                            <div class="track-title">Background Research</div>
+                            <div class="track-meta">4:20 • Ambient • 9.8 MB</div>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i> Download MP3
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Section 4: External Resources -->
+                <section class="resource-card">
+                    <h2><i class="fas fa-external-link-alt"></i> External Research Databases</h2>
+                    <p>Curated collection of external databases, archives, and research institutions for further investigation.</p>
+                    
+                    <ul class="materials-list">
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Academic Databases</div>
+                                <div class="material-meta">Peer-reviewed journals and research papers</div>
+                            </div>
+                        </li>
+                        
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Government Archives</div>
+                                <div class="material-meta">Declassified documents and public records</div>
+                            </div>
+                        </li>
+                        
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Media Archives</div>
+                                <div class="material-meta">Historical news archives and databases</div>
+                            </div>
+                        </li>
+                        
+                        <li class="material-item">
+                            <div class="material-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="material-content">
+                                <div class="material-title">Statistical Databases</div>
+                                <div class="material-meta">Global economic and social data</div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            
+            <!-- Right Column: Sticky Sidebar -->
+            <div class="sidebar">
+                <!-- Recommended Websites Section -->
+                <section class="resource-card">
+                    <h2><i class="fas fa-star"></i> Recommended Websites</h2>
+                    <p>Essential websites for research, news, and alternative perspectives.</p>
+                    
+                    <ul class="websites-list">
+                        <li class="website-item">
+                            <a href="https://archive.org" target="_blank" rel="noopener">Internet Archive</a>
+                            <p>Digital library of Internet sites and cultural artifacts</p>
+                        </li>
+                        
+                        <li class="website-item">
+                            <a href="https://wikileaks.org" target="_blank" rel="noopener">WikiLeaks</a>
+                            <p>Public-interest journalism and leaked documents</p>
+                        </li>
+                        
+                        <li class="website-item">
+                            <a href="https://www.eff.org" target="_blank" rel="noopener">Electronic Frontier Foundation</a>
+                            <p>Digital rights and online privacy advocacy</p>
+                        </li>
+                        
+                        <li class="website-item">
+                            <a href="https://www.cia.gov/library" target="_blank" rel="noopener">CIA World Factbook</a>
+                            <p>Country profiles and statistical data</p>
+                        </li>
+                        
+                        <li class="website-item">
+                            <a href="https://www.un.org" target="_blank" rel="noopener">United Nations Data</a>
+                            <p>Global development indicators and statistics</p>
+                        </li>
+                        
+                        <li class="website-item">
+                            <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>
+                            <p>Free eBooks of public domain works</p>
+                        </li>
+                        
+                        <li class="website-item">
+                            <a href="https://www.loc.gov" target="_blank" rel="noopener">Library of Congress</a>
+                            <p>Historical documents and digital collections</p>
+                        </li>
+                        
+                        <li class="website-item">
+                            <a href="https://www.transparency.org" target="_blank" rel="noopener">Transparency International</a>
+                            <p>Global anti-corruption research and data</p>
+                        </li>
+                        
+                        <!-- Add more websites here -->
+                        <li class="website-item">
+                            <a href="#" target="_blank" rel="noopener">Your Website Here</a>
+                            <p>Description of the website</p>
+                        </li>
+                    </ul>
+                    
+                    <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #9e8fa9;">
+                        <i class="fas fa-plus-circle"></i> To add more websites, copy the website-item HTML structure above and paste it in the list.
+                    </p>
+                </section>
+                
+                <!-- Quick Links -->
+                <section class="resource-card">
+                    <h2><i class="fas fa-link"></i> Quick Links</h2>
+                    <ul class="websites-list">
+                        <li class="website-item">
+                            <a href="#"><i class="fas fa-download"></i> Download All Resources</a>
+                        </li>
+                        <li class="website-item">
+                            <a href="../articles/"><i class="fas fa-book-open"></i> Research Methodology</a>
+                        </li>
+                        <li class="website-item">
+                            <a href="../podcast/"><i class="fas fa-headphones"></i> Audio Resources</a>
+                        </li>
+                        <li class="website-item">
+                            <a href="#"><i class="fas fa-envelope"></i> Submit Resource</a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-nav-items">
+            <a href="../" class="mobile-nav-item">
+                <i class="fas fa-home mobile-nav-icon"></i>
+                <span>Home</span>
+            </a>
+            <a href="../news/" class="mobile-nav-item">
+                <i class="fas fa-globe mobile-nav-icon"></i>
+                <span>News</span>
+            </a>
+            <a href="../podcast/" class="mobile-nav-item">
+                <i class="fas fa-headphones mobile-nav-icon"></i>
+                <span>Podcast</span>
+            </a>
+            <a href="../articles/" class="mobile-nav-item">
+                <i class="fas fa-file-alt mobile-nav-icon"></i>
+                <span>Articles</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // DOM elements
+        const backToTop = document.getElementById('backToTop');
+        
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Download button functionality
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const trackTitle = this.closest('.audio-track').querySelector('.track-title').textContent;
+                alert(`Downloading: ${trackTitle}\n\nIn a real implementation, this would trigger a file download.`);
+            });
+        });
+
+        // Mobile bottom nav active state
+        document.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+            });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mobile menu
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+            if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.toggle('active');
+                    document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : 'auto';
+                });
+
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

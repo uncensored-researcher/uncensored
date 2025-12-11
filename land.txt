@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>News - Uncensored Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Grape-themed dark palette - matching homepage */
+            --color-1: #0c080d; /* Ultra-dark purple-black */
+            --color-2: #1a131f; /* Dark muted eggplant */
+            --color-3: #2d2235; /* Smoky purple-charcoal */
+            --color-4: #52425c; /* Dusty grape purple */
+            --color-5: #8a7096; /* Soft plum-lavender - brighter */
+            --color-accent: #a98bb5; /* Light accent */
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing */
+            --container-padding: 1rem;
+            --content-max-width: 800px; /* Narrower for news list */
+            --section-spacing: 2rem;
+            --card-border-radius: 12px;
+            --transition-smooth: all 0.3s ease;
+            
+            /* App-like elements */
+            --header-height: 70px;
+            --bottom-nav-height: 60px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            background-color: var(--color-1);
+            color: #f0e9f2;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: var(--bottom-nav-height); /* Space for bottom nav */
+        }
+        
+        /* App container - centered on desktop, full width on mobile */
+        .app-container {
+            max-width: var(--content-max-width);
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+        
+        /* Header - matching homepage */
+        header {
+            background-color: rgba(12, 8, 13, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 112, 150, 0.1);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: var(--content-max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--color-5);
+        }
+        
+        .logo-text {
+            font-weight: 800;
+        }
+        
+        .logo span {
+            color: var(--color-5);
+            font-weight: 600;
+        }
+        
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        .back-button {
+            background: none;
+            border: none;
+            color: var(--color-5);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition-smooth);
+        }
+        
+        .back-button:hover {
+            background-color: rgba(138, 112, 150, 0.1);
+        }
+        
+        /* News list styling */
+        .news-container {
+            padding: 1.5rem 0 3rem;
+        }
+        
+        .news-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(138, 112, 150, 0.1);
+        }
+        
+        .news-header h1 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .news-header p {
+            color: #c9bdd4;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+        
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .news-item {
+            background-color: var(--color-2);
+            border-radius: var(--card-border-radius);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(138, 112, 150, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(138, 112, 150, 0.2);
+            box-shadow: 0 8px 20px rgba(12, 8, 13, 0.4);
+        }
+        
+        .news-image {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-item:hover .news-image img {
+            transform: scale(1.03);
+        }
+        
+        .news-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: rgba(12, 8, 13, 0.85);
+            color: var(--color-5);
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+        
+        .news-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+            color: #fff;
+        }
+        
+        .news-excerpt {
+            color: #c9bdd4;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 300;
+            flex-grow: 1;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #9e8fa9;
+            font-size: 0.85rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(138, 112, 150, 0.1);
+        }
+        
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--color-5);
+        }
+        
+        .news-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            border-radius: calc(var(--card-border-radius) - 4px);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+            gap: 0.5rem;
+            flex-grow: 1;
+            text-align: center;
+            min-width: 110px;
+        }
+        
+        .action-btn i {
+            font-size: 0.9rem;
+        }
+        
+        .btn-read {
+            background-color: var(--color-5);
+            color: var(--color-1);
+        }
+        
+        .btn-read:hover {
+            background-color: var(--color-accent);
+        }
+        
+        .btn-watch {
+            background-color: rgba(138, 112, 150, 0.2);
+            color: var(--color-5);
+            border: 1px solid rgba(138, 112, 150, 0.3);
+        }
+        
+        .btn-watch:hover {
+            background-color: rgba(138, 112, 150, 0.3);
+        }
+        
+        .btn-listen {
+            background-color: rgba(138, 112, 150, 0.1);
+            color: var(--color-5);
+        }
+        
+        .btn-listen:hover {
+            background-color: rgba(138, 112, 150, 0.2);
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: calc(var(--bottom-nav-height) + 1rem);
+            right: 1rem;
+            background-color: var(--color-5);
+            color: var(--color-1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 90;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(138, 112, 150, 0.3);
+        }
+        
+        /* Mobile Bottom Navigation */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 19, 31, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(138, 112, 150, 0.1);
+            z-index: 99;
+            height: var(--bottom-nav-height);
+        }
+        
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #e0d6e8;
+            font-size: 0.75rem;
+            flex-grow: 1;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        
+        .mobile-nav-item.active,
+        .mobile-nav-item:hover {
+            color: var(--color-5);
+        }
+        
+        .mobile-nav-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #9e8fa9;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--color-4);
+        }
+        
+        .empty-state h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        /* Responsive Design - Mobile First */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 0;
+            }
+            
+            .news-container {
+                padding: 1rem 1rem 3rem;
+            }
+            
+            .news-item {
+                border-radius: 10px;
+                margin: 0 0.5rem;
+            }
+            
+            .news-image {
+                height: 180px;
+            }
+            
+            .news-content {
+                padding: 1.2rem;
+            }
+            
+            .news-title {
+                font-size: 1.2rem;
+            }
+            
+            .action-btn {
+                min-width: 100%;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+            
+            .news-actions {
+                flex-direction: column;
+            }
+            
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .back-to-top {
+                bottom: calc(var(--bottom-nav-height) + 0.5rem);
+                right: 0.5rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            body {
+                background-color: var(--color-1);
+            }
+            
+            .app-container {
+                background-color: var(--color-1);
+                min-height: calc(100vh - var(--header-height) - var(--bottom-nav-height));
+            }
+            
+            .news-item {
+                max-width: 100%;
+            }
+            
+            .news-actions {
+                justify-content: flex-start;
+            }
+            
+            .action-btn {
+                flex-grow: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .news-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .news-image {
+                height: 160px;
+            }
+            
+            .news-title {
+                font-size: 1.1rem;
+            }
+            
+            .page-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(138, 112, 150, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--color-5);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="land.html" class="back-button" aria-label="Go back">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <div class="page-title">News Feed</div>
+            <a href="land.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-search"></i></span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main News Content -->
+    <main class="app-container">
+        <div class="news-container">
+            <div class="news-header">
+                <h1>Latest News & Analysis</h1>
+                <p>Unfiltered reporting on current events, politics, technology, and society.</p>
+            </div>
+            
+            <div class="news-list" id="newsList">
+                <!-- News items will be loaded here -->
+            </div>
+            
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" style="text-align: center; padding: 2rem; color: var(--color-5); display: none;">
+                <div class="loading"></div> Loading more news...
+            </div>
+            
+            <!-- Empty state (hidden by default) -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class="fas fa-newspaper"></i>
+                <h3>No News Available</h3>
+                <p>Check back later for the latest updates.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-nav-items">
+            <a href="index.html" class="mobile-nav-item">
+                <i class="fas fa-home mobile-nav-icon"></i>
+                <span>Home</span>
+            </a>
+            <a href="news.html" class="mobile-nav-item active">
+                <i class="fas fa-newspaper mobile-nav-icon"></i>
+                <span>News</span>
+            </a>
+            <a href="podcast.html" class="mobile-nav-item">
+                <i class="fas fa-headphones mobile-nav-icon"></i>
+                <span>Podcast</span>
+            </a>
+            <a href="articles.html" class="mobile-nav-item">
+                <i class="fas fa-folder mobile-nav-icon"></i>
+                <span>Articles</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // News data - in a real app, this would come from an API
+        const newsData = [
+            {
+                id: 1,
+                title: "New Legislation Passed on Digital Privacy Rights",
+                excerpt: "A comprehensive analysis of the new digital privacy bill that passed yesterday, and what it means for individual rights versus corporate interests.",
+                category: "POLITICS",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                author: "Sarah Johnson",
+                authorAvatar: "https://images.unsplash.com/photo-1494790108755-2616b786d4d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                date: "March 17, 2024",
+                readLink: "#read",
+                watchLink: "#watch",
+                listenLink: "#listen"
+            },
+            {
+                id: 2,
+                title: "Breakthrough in Sustainable Energy Storage",
+                excerpt: "Researchers unveil a new battery technology that could revolutionize renewable energy storage and reduce dependence on fossil fuels.",
+                category: "SCIENCE",
+                image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                author: "Dr. Michael Chen",
+                authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                date: "March 16, 2024",
+                readLink: "#read",
+                watchLink: "#watch",
+                listenLink: null
+            },
+            {
+                id: 3,
+                title: "Central Bank Digital Currencies: The Future of Money?",
+                excerpt: "An in-depth look at the global push for CBDCs and the implications for financial sovereignty and privacy.",
+                category: "ECONOMICS",
+                image: "https://images.unsplash.com/photo-1633158829558-8e42d36db7e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                author: "David Rodriguez",
+                authorAvatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                date: "March 15, 2024",
+                readLink: "#read",
+                watchLink: null,
+                listenLink: "#listen"
+            },
+            {
+                id: 4,
+                title: "The Rise of Decentralized Social Media Platforms",
+                excerpt: "As users seek alternatives to mainstream platforms, decentralized networks are gaining traction. We examine the pros and cons.",
+                category: "TECHNOLOGY",
+                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                author: "Jamie Wilson",
+                authorAvatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                date: "March 14, 2024",
+                readLink: "#read",
+                watchLink: "#watch",
+                listenLink: "#listen"
+            },
+            {
+                id: 5,
+                title: "Climate Change Report: Dire Predictions & Missed Opportunities",
+                excerpt: "Analysis of the latest IPCC report and why governments continue to fall short on climate action despite clear warnings.",
+                category: "ENVIRONMENT",
+                image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                author: "Maria Gonzalez",
+                authorAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                date: "March 13, 2024",
+                readLink: "#read",
+                watchLink: "#watch",
+                listenLink: null
+            },
+            {
+                id: 6,
+                title: "Labor Movements Gain Momentum Across Industries",
+                excerpt: "From tech to manufacturing, workers are organizing for better conditions. We track the rise of new labor movements.",
+                category: "SOCIETY",
+                image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+                author: "Robert Kim",
+                authorAvatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
+                date: "March 12, 2024",
+                readLink: "#read",
+                watchLink: null,
+                listenLink: "#listen"
+            }
+        ];
+
+        // DOM elements
+        const newsList = document.getElementById('newsList');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const emptyState = document.getElementById('emptyState');
+        const backToTop = document.getElementById('backToTop');
+
+        // Function to render news items
+        function renderNewsItems(newsItems) {
+            if (newsItems.length === 0) {
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            newsItems.forEach(item => {
+                const newsItem = document.createElement('article');
+                newsItem.className = 'news-item';
+                newsItem.innerHTML = `
+                    <div class="news-image">
+                        <img src="${item.image}" alt="${item.title}" loading="lazy">
+                        <span class="news-category">${item.category}</span>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-title">${item.title}</h3>
+                        <p class="news-excerpt">${item.excerpt}</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <img src="${item.authorAvatar}" alt="${item.author}" class="author-avatar">
+                                <span>${item.author}</span>
+                            </div>
+                            <span>${item.date}</span>
+                        </div>
+                        <div class="news-actions">
+                            <a href="${item.readLink}" class="action-btn btn-read">
+                                <i class="fas fa-newspaper"></i> Read
+                            </a>
+                            ${item.watchLink ? `
+                            <a href="${item.watchLink}" class="action-btn btn-watch">
+                                <i class="fas fa-video"></i> Watch
+                            </a>
+                            ` : ''}
+                            ${item.listenLink ? `
+                            <a href="${item.listenLink}" class="action-btn btn-listen">
+                                <i class="fas fa-headphones"></i> Listen
+                            </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                newsList.appendChild(newsItem);
+            });
+        }
+
+        // Function to simulate loading more news
+        function loadMoreNews() {
+            loadingIndicator.style.display = 'block';
+            
+            // Simulate API delay
+            setTimeout(() => {
+                // In a real app, you would fetch more data from an API
+                loadingIndicator.style.display = 'none';
+                
+                // For demo purposes, we'll just show a message
+                if (newsList.children.length >= newsData.length) {
+                    loadingIndicator.innerHTML = '<p style="color: var(--color-5);">No more news to load</p>';
+                }
+            }, 800);
+        }
+
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+            
+            // Infinite scroll simulation
+            const scrollPosition = window.scrollY + window.innerHeight;
+            const pageHeight = document.documentElement.scrollHeight;
+            
+            if (scrollPosition >= pageHeight - 100) {
+                loadMoreNews();
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Action button click handlers
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.action-btn')) {
+                const button = e.target.closest('.action-btn');
+                const action = button.textContent.trim();
+                const newsTitle = button.closest('.news-item').querySelector('.news-title').textContent;
+                
+                // In a real app, this would navigate to the appropriate page
+                // For demo, we'll just show an alert
+                alert(`You selected "${action}" for "${newsTitle}". In the actual app, this would navigate to the content.`);
+                
+                // Prevent default link behavior for demo
+                e.preventDefault();
+            }
+        });
+
+        // Mobile bottom nav active state
+        document.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (this.href && !this.href.includes('#')) return; // Allow navigation
+                
+                // Remove active class from all items
+                document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+            });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render initial news items
+            renderNewsItems(newsData);
+            
+            // Add touch feedback for mobile
+            document.querySelectorAll('.news-item, .action-btn').forEach(element => {
+                element.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.8';
+                });
+                
+                element.addEventListener('touchend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+            
+            // Prevent pull-to-refresh on mobile (for app-like feel)
+            let touchStartY = 0;
+            document.addEventListener('touchstart', (e) => {
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', (e) => {
+                const touchY = e.touches[0].clientY;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // If at top of page and pulling down, prevent default to avoid refresh
+                if (scrollTop === 0 && touchY > touchStartY) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
+    </script>
+</body>
+</html>
