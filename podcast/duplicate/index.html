@@ -8,6 +8,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-title" content="Uncensored Researcher">
+    <meta name="application-name" content="Uncensored Researcher">
+    <meta name="msapplication-TileColor" content="#2d2235">
+
+    <link rel="icon" href="../../images/icon.png">
+
     <style>
         :root {
             /* Grape-themed dark palette - refined */
@@ -956,12 +966,12 @@
                 
                 <nav class="desktop-nav">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="podcast.html" class="active">Podcast</a></li>
-                        <li><a href="articles.html">Articles</a></li>
-                        <li><a href="#">Resources</a></li>
-                        <li><a href="#">About</a></li>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../../news/">News</a></li>
+            <li><a href="../../podcast/" class="active">Podcast</a></li>
+            <li><a href="../../articles/">Articles</a></li>
+            <li><a href="../../resources/">Resources</a></li>
+            <li><a href="../../about/">About</a></li>
                     </ul>
                 </nav>
                 
@@ -978,12 +988,12 @@
             <i class="fas fa-times"></i>
         </button>
         <ul class="mobile-menu-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="podcast.html" class="active">Podcast</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="#">Resources</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="../../">Home</a></li>
+            <li><a href="../../news/">News</a></li>
+            <li><a href="../../podcast/" class="active">Podcast</a></li>
+            <li><a href="../../articles/">Articles</a></li>
+            <li><a href="../../resources/">Resources</a></li>
+            <li><a href="../../about/">About</a></li>
         </ul>
     </div>
 
@@ -1053,21 +1063,9 @@
                         <i class="fas fa-backward"></i>
                         <span>-10 sec</span>
                     </div>
-                    <div class="nav-button" id="skipBack5">
-                        <i class="fas fa-step-backward"></i>
-                        <span>-5 sec</span>
-                    </div>
-                    <div class="nav-button" id="skipForward5">
-                        <i class="fas fa-step-forward"></i>
-                        <span>+5 sec</span>
-                    </div>
                     <div class="nav-button" id="skipForward10">
                         <i class="fas fa-forward"></i>
                         <span>+10 sec</span>
-                    </div>
-                    <div class="nav-button" id="skipForward30">
-                        <i class="fas fa-fast-forward"></i>
-                        <span>+30 sec</span>
                     </div>
                 </div>
 
@@ -1078,7 +1076,6 @@
         <div class="speed-option" data-speed="0.5">0.5x</div>
         <div class="speed-option" data-speed="0.75">0.75x</div>
         <div class="speed-option active" data-speed="1">1x</div>
-        <div class="speed-option" data-speed="1.25">1.25x</div>
         <div class="speed-option" data-speed="1.5">1.5x</div>
         <div class="speed-option" data-speed="2">2x</div>
     </div>
@@ -1111,7 +1108,7 @@
                 <p>Save this episode for offline listening or access the full transcript for reference.</p>
             </div>
             <div class="download-buttons">
-                <a href="../audios/sample.mp3" download class="download-btn mp3">
+                <a href="sample.mp3" download class="download-btn mp3">
                     <i class="fas fa-download"></i> Download MP3
                 </a>
                 <a href="#" class="download-btn transcript">
@@ -1121,6 +1118,11 @@
         </div>
     </section>
 
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+<p>&nbsp</p>
+
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
@@ -1129,366 +1131,351 @@
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-bottom-nav">
         <div class="mobile-nav-items">
-            <a href="index.html" class="mobile-nav-item">
+            <a href="../../" class="mobile-nav-item">
                 <i class="fas fa-home mobile-nav-icon"></i>
                 <span>Home</span>
             </a>
-            <a href="news.html" class="mobile-nav-item">
+            <a href="../../news/" class="mobile-nav-item">
                 <i class="fas fa-globe mobile-nav-icon"></i>
                 <span>News</span>
             </a>
-            <a href="podcast.html" class="mobile-nav-item active">
+            <a href="../../podcast/" class="mobile-nav-item active">
                 <i class="fas fa-headphones mobile-nav-icon"></i>
                 <span>Podcast</span>
             </a>
-            <a href="articles.html" class="mobile-nav-item">
+            <a href="../../articles/" class="mobile-nav-item">
                 <i class="fas fa-file-alt mobile-nav-icon"></i>
                 <span>Articles</span>
             </a>
         </div>
     </nav>
 
-    <script>
-        // Podcast data
-        const podcastInfo = {
-            title: "Conversation with a Whistleblower",
-            audioUrl: "sample.mp3", // Your local audio file path
-            chapters: [
-                { time: 0, title: "Introduction & Background" },
-                { time: 180, title: "The Initial Discovery" },
-                { time: 420, title: "Corporate Cover-up Tactics" },
-                { time: 720, title: "Government Complicity" },
-                { time: 1020, title: "The Whistleblower's Dilemma" },
-                { time: 1380, title: "Public vs. Private Sector Differences" },
-                { time: 1680, title: "Safety Mechanisms for Informants" },
-                { time: 1980, title: "Impact on Personal Life" },
-                { time: 2280, title: "Final Thoughts & Advice" }
-            ]
-        };
+   <script>
+    // Podcast data
+    const podcastInfo = {
+        title: "Conversation with a Whistleblower",
+        audioUrl: "sample.mp3", // Your local audio file path
+    };
 
-        // DOM elements
-        const playButton = document.getElementById('playButton');
-        const progressBar = document.getElementById('progressBar');
-        const progressBarContainer = document.getElementById('progressBarContainer');
-        const currentTimeEl = document.getElementById('currentTime');
-        const totalTimeEl = document.getElementById('totalTime');
-        const durationEl = document.getElementById('duration');
-        const playerStatus = document.getElementById('playerStatus');
-        const volumeSlider = document.getElementById('volumeSlider');
-        const volumeLevel = document.getElementById('volumeLevel');
-        const chaptersList = document.getElementById('chaptersList');
-        const backToTop = document.getElementById('backToTop');
+    // DOM elements
+    const playButton = document.getElementById('playButton');
+    const progressBar = document.getElementById('progressBar');
+    const progressBarContainer = document.getElementById('progressBarContainer');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalTimeEl = document.getElementById('totalTime');
+    const durationEl = document.getElementById('duration');
+    const playerStatus = document.getElementById('playerStatus');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const volumeLevel = document.getElementById('volumeLevel');
+    const chaptersList = document.getElementById('chaptersList');
+    const backToTop = document.getElementById('backToTop');
 
-        // Audio player variables
-        const audio = new Audio(podcastInfo.audioUrl);
-        let isPlaying = false;
-        let currentSpeed = 1;
-        let currentVolume = 0.8;
-        let isDraggingProgress = false;
+    // Audio player variables
+    const audio = new Audio(podcastInfo.audioUrl);
+    let isPlaying = false;
+    let currentSpeed = 1;
+    let currentVolume = 0.8;
+    let isDraggingProgress = false;
 
-        // Format time to MM:SS
-        function formatTime(seconds) {
-            if (isNaN(seconds) || seconds === Infinity) return "--:--";
-            
-            const mins = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    // Format time to MM:SS
+    function formatTime(seconds) {
+        if (isNaN(seconds) || seconds === Infinity) return "--:--";
+        
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // Update time display
+    function updateTimeDisplay() {
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+        progressBar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
+    }
+
+    // Update total duration when audio metadata is loaded
+    audio.addEventListener('loadedmetadata', () => {
+        totalTimeEl.textContent = formatTime(audio.duration);
+        durationEl.textContent = formatTime(audio.duration);
+    });
+
+    // Update time as audio plays
+    audio.addEventListener('timeupdate', () => {
+        if (!isDraggingProgress) {
+            updateTimeDisplay();
+            updateActiveChapter();
         }
+    });
 
-        // Update time display
-        function updateTimeDisplay() {
-            currentTimeEl.textContent = formatTime(audio.currentTime);
-            progressBar.style.width = `${(audio.currentTime / audio.duration) * 100}%`;
-        }
+    // When audio ends
+    audio.addEventListener('ended', () => {
+        isPlaying = false;
+        playButton.classList.remove('playing');
+        playButton.innerHTML = '<i class="fas fa-play"></i>';
+        playerStatus.textContent = 'Finished';
+    });
 
-        // Update total duration when audio metadata is loaded
-        audio.addEventListener('loadedmetadata', () => {
-            totalTimeEl.textContent = formatTime(audio.duration);
-            durationEl.textContent = formatTime(audio.duration);
-        });
+    // Initialize volume
+    audio.volume = currentVolume;
+    volumeLevel.style.width = `${currentVolume * 100}%`;
 
-        // Update time as audio plays
-        audio.addEventListener('timeupdate', () => {
-            if (!isDraggingProgress) {
-                updateTimeDisplay();
-                updateActiveChapter();
-            }
-        });
-
-        // When audio ends
-        audio.addEventListener('ended', () => {
+    // Play/Pause functionality
+    playButton.addEventListener('click', () => {
+        if (!isPlaying) {
+            // Start playing
+            audio.play();
+            isPlaying = true;
+            playButton.classList.add('playing');
+            playButton.innerHTML = '<i class="fas fa-pause"></i>';
+            playerStatus.textContent = 'Playing';
+        } else {
+            // Pause
+            audio.pause();
             isPlaying = false;
             playButton.classList.remove('playing');
             playButton.innerHTML = '<i class="fas fa-play"></i>';
-            playerStatus.textContent = 'Finished';
-        });
+            playerStatus.textContent = 'Paused';
+        }
+    });
 
-        // Initialize volume
-        audio.volume = currentVolume;
-        volumeLevel.style.width = `${currentVolume * 100}%`;
+    // Progress bar click to seek
+    progressBarContainer.addEventListener('click', (e) => {
+        const rect = progressBarContainer.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = percent * audio.duration;
+        updateTimeDisplay();
+        updateActiveChapter();
+    });
 
-        // Play/Pause functionality
-        playButton.addEventListener('click', () => {
-            if (!isPlaying) {
-                // Start playing
-                audio.play();
-                isPlaying = true;
-                playButton.classList.add('playing');
-                playButton.innerHTML = '<i class="fas fa-pause"></i>';
-                playerStatus.textContent = 'Playing';
-            } else {
-                // Pause
-                audio.pause();
-                isPlaying = false;
-                playButton.classList.remove('playing');
-                playButton.innerHTML = '<i class="fas fa-play"></i>';
-                playerStatus.textContent = 'Paused';
-            }
-        });
-
-        // Progress bar click to seek
-        progressBarContainer.addEventListener('click', (e) => {
+    // Progress bar drag functionality
+    progressBarContainer.addEventListener('mousedown', (e) => {
+        isDraggingProgress = true;
+        const handleMove = (moveEvent) => {
+            const rect = progressBarContainer.getBoundingClientRect();
+            let percent = (moveEvent.clientX - rect.left) / rect.width;
+            percent = Math.max(0, Math.min(1, percent));
+            progressBar.style.width = `${percent * 100}%`;
+            currentTimeEl.textContent = formatTime(percent * audio.duration);
+        };
+        
+        const handleUp = () => {
+            isDraggingProgress = false;
+            document.removeEventListener('mousemove', handleMove);
+            document.removeEventListener('mouseup', handleUp);
+            
+            // Update audio position
             const rect = progressBarContainer.getBoundingClientRect();
             const percent = (e.clientX - rect.left) / rect.width;
             audio.currentTime = percent * audio.duration;
-            updateTimeDisplay();
-            updateActiveChapter();
-        });
+        };
+        
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('mouseup', handleUp);
+    });
 
-        // Progress bar drag functionality
-        progressBarContainer.addEventListener('mousedown', (e) => {
-            isDraggingProgress = true;
-            const handleMove = (moveEvent) => {
-                const rect = progressBarContainer.getBoundingClientRect();
-                let percent = (moveEvent.clientX - rect.left) / rect.width;
-                percent = Math.max(0, Math.min(1, percent));
-                progressBar.style.width = `${percent * 100}%`;
-                currentTimeEl.textContent = formatTime(percent * audio.duration);
-            };
+    // Volume control
+    volumeSlider.addEventListener('click', (e) => {
+        const rect = volumeSlider.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        currentVolume = Math.max(0, Math.min(1, percent));
+        volumeLevel.style.width = `${currentVolume * 100}%`;
+        audio.volume = currentVolume;
+        
+        // Update volume slider handle position
+        volumeSlider.style.setProperty('--volume-handle-position', `${currentVolume * 100}%`);
+    });
+
+    // Quick navigation buttons - ONLY -10 and +10
+    document.getElementById('skipBack10').addEventListener('click', () => {
+        audio.currentTime = Math.max(0, audio.currentTime - 10);
+        updateTimeDisplay();
+        updateActiveChapter();
+    });
+
+    document.getElementById('skipForward10').addEventListener('click', () => {
+        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+        updateTimeDisplay();
+        updateActiveChapter();
+    });
+
+    // Speed control
+    document.querySelectorAll('.speed-option').forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove active class from all
+            document.querySelectorAll('.speed-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
             
-            const handleUp = () => {
-                isDraggingProgress = false;
-                document.removeEventListener('mousemove', handleMove);
-                document.removeEventListener('mouseup', handleUp);
+            // Add active class to clicked
+            option.classList.add('active');
+            
+            // Update speed
+            currentSpeed = parseFloat(option.dataset.speed);
+            audio.playbackRate = currentSpeed;
+            
+            playerStatus.textContent = `Playing at ${currentSpeed}x`;
+        });
+    });
+
+    // Create chapters list (you'll need to add chapters data to podcastInfo)
+    function createChaptersList() {
+        // Make sure podcastInfo.chapters exists
+        if (!podcastInfo.chapters) {
+            podcastInfo.chapters = [
+                { time: 0, title: "Introduction" },
+                { time: 60, title: "Background of the Whistleblower" },
+                { time: 180, title: "The Revelation" },
+                { time: 300, title: "Systemic Issues" },
+                { time: 450, title: "Conclusion" }
+            ];
+        }
+        
+        podcastInfo.chapters.forEach(chapter => {
+            const chapterItem = document.createElement('div');
+            chapterItem.className = 'chapter-item';
+            chapterItem.dataset.time = chapter.time;
+            chapterItem.innerHTML = `
+                <div class="chapter-time">${formatTime(chapter.time)}</div>
+                <div class="chapter-title">${chapter.title}</div>
+                <div class="chapter-play"><i class="fas fa-play-circle"></i></div>
+            `;
+            
+            chapterItem.addEventListener('click', () => {
+                audio.currentTime = chapter.time;
+                updateTimeDisplay();
+                updateActiveChapter();
                 
-                // Update audio position
-                const rect = progressBarContainer.getBoundingClientRect();
-                const percent = (e.clientX - rect.left) / rect.width;
-                audio.currentTime = percent * audio.duration;
-            };
+                if (!isPlaying) {
+                    playButton.click(); // Auto-play when clicking a chapter
+                }
+            });
             
-            document.addEventListener('mousemove', handleMove);
-            document.addEventListener('mouseup', handleUp);
+            chaptersList.appendChild(chapterItem);
         });
+    }
 
-        // Volume control
-        volumeSlider.addEventListener('click', (e) => {
-            const rect = volumeSlider.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            currentVolume = Math.max(0, Math.min(1, percent));
-            volumeLevel.style.width = `${currentVolume * 100}%`;
-            audio.volume = currentVolume;
+    // Update active chapter based on current time
+    function updateActiveChapter() {
+        // Make sure chapters exist
+        if (!podcastInfo.chapters) return;
+        
+        let activeChapterIndex = -1;
+        
+        // Find the current chapter
+        for (let i = podcastInfo.chapters.length - 1; i >= 0; i--) {
+            if (audio.currentTime >= podcastInfo.chapters[i].time) {
+                activeChapterIndex = i;
+                break;
+            }
+        }
+        
+        // Update UI
+        document.querySelectorAll('.chapter-item').forEach((item, index) => {
+            if (index === activeChapterIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    // Download button handlers
+    document.querySelector('.download-btn.transcript').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Transcript would open in a new tab. This would contain the full text of the podcast episode.');
+    });
+
+    // Back to top functionality
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Initialize chapters
+    createChaptersList();
+
+    // Mobile bottom nav active state
+    document.querySelectorAll('.mobile-nav-item').forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove active class from all items
+            document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
+                navItem.classList.remove('active');
+            });
             
-            // Update volume slider handle position
-            volumeSlider.style.setProperty('--volume-handle-position', `${currentVolume * 100}%`);
+            // Add active class to clicked item
+            this.classList.add('active');
         });
+    });
 
-        // Quick navigation buttons
-        document.getElementById('skipBack10').addEventListener('click', () => {
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize mobile menu
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenuOverlay.classList.toggle('active');
+                document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : 'auto';
+            });
+
+            mobileMenuClose.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // Space bar to play/pause
+        if (e.code === 'Space' && !e.target.matches('input, textarea, button, a')) {
+            e.preventDefault();
+            playButton.click();
+        }
+        
+        // Left arrow to rewind 10 seconds
+        if (e.code === 'ArrowLeft' && !e.target.matches('input, textarea')) {
+            e.preventDefault();
             audio.currentTime = Math.max(0, audio.currentTime - 10);
             updateTimeDisplay();
             updateActiveChapter();
-        });
-
-        document.getElementById('skipBack5').addEventListener('click', () => {
-            audio.currentTime = Math.max(0, audio.currentTime - 5);
-            updateTimeDisplay();
-            updateActiveChapter();
-        });
-
-        document.getElementById('skipForward5').addEventListener('click', () => {
-            audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
-            updateTimeDisplay();
-            updateActiveChapter();
-        });
-
-        document.getElementById('skipForward10').addEventListener('click', () => {
+        }
+        
+        // Right arrow to forward 10 seconds
+        if (e.code === 'ArrowRight' && !e.target.matches('input, textarea')) {
+            e.preventDefault();
             audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
             updateTimeDisplay();
             updateActiveChapter();
-        });
-
-        document.getElementById('skipForward30').addEventListener('click', () => {
-            audio.currentTime = Math.min(audio.duration, audio.currentTime + 30);
-            updateTimeDisplay();
-            updateActiveChapter();
-        });
-
-        // Speed control
-        document.querySelectorAll('.speed-option').forEach(option => {
-            option.addEventListener('click', () => {
-                // Remove active class from all
-                document.querySelectorAll('.speed-option').forEach(opt => {
-                    opt.classList.remove('active');
-                });
-                
-                // Add active class to clicked
-                option.classList.add('active');
-                
-                // Update speed
-                currentSpeed = parseFloat(option.dataset.speed);
-                audio.playbackRate = currentSpeed;
-                
-                playerStatus.textContent = `Playing at ${currentSpeed}x`;
-            });
-        });
-
-        // Create chapters list
-        function createChaptersList() {
-            podcastInfo.chapters.forEach(chapter => {
-                const chapterItem = document.createElement('div');
-                chapterItem.className = 'chapter-item';
-                chapterItem.dataset.time = chapter.time;
-                chapterItem.innerHTML = `
-                    <div class="chapter-time">${formatTime(chapter.time)}</div>
-                    <div class="chapter-title">${chapter.title}</div>
-                    <div class="chapter-play"><i class="fas fa-play-circle"></i></div>
-                `;
-                
-                chapterItem.addEventListener('click', () => {
-                    audio.currentTime = chapter.time;
-                    updateTimeDisplay();
-                    updateActiveChapter();
-                    
-                    if (!isPlaying) {
-                        playButton.click(); // Auto-play when clicking a chapter
-                    }
-                });
-                
-                chaptersList.appendChild(chapterItem);
-            });
         }
-
-        // Update active chapter based on current time
-        function updateActiveChapter() {
-            let activeChapterIndex = -1;
-            
-            // Find the current chapter
-            for (let i = podcastInfo.chapters.length - 1; i >= 0; i--) {
-                if (audio.currentTime >= podcastInfo.chapters[i].time) {
-                    activeChapterIndex = i;
-                    break;
-                }
-            }
-            
-            // Update UI
-            document.querySelectorAll('.chapter-item').forEach((item, index) => {
-                if (index === activeChapterIndex) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-        }
-
-        // Download button handlers
-        document.querySelector('.download-btn.transcript').addEventListener('click', (e) => {
+        
+        // Up arrow to increase volume
+        if (e.code === 'ArrowUp' && !e.target.matches('input, textarea')) {
             e.preventDefault();
-            alert('Transcript would open in a new tab. This would contain the full text of the podcast episode.');
-        });
-
-        // Back to top functionality
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Initialize chapters
-        createChaptersList();
-
-        // Mobile bottom nav active state
-        document.querySelectorAll('.mobile-nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove active class from all items
-                document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
-                    navItem.classList.remove('active');
-                });
-                
-                // Add active class to clicked item
-                this.classList.add('active');
-            });
-        });
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize mobile menu
-            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-            const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-            if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
-                mobileMenuToggle.addEventListener('click', () => {
-                    mobileMenuOverlay.classList.toggle('active');
-                    document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : 'auto';
-                });
-
-                mobileMenuClose.addEventListener('click', () => {
-                    mobileMenuOverlay.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            }
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            // Space bar to play/pause
-            if (e.code === 'Space' && !e.target.matches('input, textarea, button, a')) {
-                e.preventDefault();
-                playButton.click();
-            }
-            
-            // Left arrow to rewind 5 seconds
-            if (e.code === 'ArrowLeft' && !e.target.matches('input, textarea')) {
-                e.preventDefault();
-                audio.currentTime = Math.max(0, audio.currentTime - 5);
-                updateTimeDisplay();
-                updateActiveChapter();
-            }
-            
-            // Right arrow to forward 5 seconds
-            if (e.code === 'ArrowRight' && !e.target.matches('input, textarea')) {
-                e.preventDefault();
-                audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
-                updateTimeDisplay();
-                updateActiveChapter();
-            }
-            
-            // Up arrow to increase volume
-            if (e.code === 'ArrowUp' && !e.target.matches('input, textarea')) {
-                e.preventDefault();
-                currentVolume = Math.min(1, currentVolume + 0.05);
-                volumeLevel.style.width = `${currentVolume * 100}%`;
-                audio.volume = currentVolume;
-            }
-            
-            // Down arrow to decrease volume
-            if (e.code === 'ArrowDown' && !e.target.matches('input, textarea')) {
-                e.preventDefault();
-                currentVolume = Math.max(0, currentVolume - 0.05);
-                volumeLevel.style.width = `${currentVolume * 100}%`;
-                audio.volume = currentVolume;
-            }
-        });
-    </script>
+            currentVolume = Math.min(1, currentVolume + 0.05);
+            volumeLevel.style.width = `${currentVolume * 100}%`;
+            audio.volume = currentVolume;
+        }
+        
+        // Down arrow to decrease volume
+        if (e.code === 'ArrowDown' && !e.target.matches('input, textarea')) {
+            e.preventDefault();
+            currentVolume = Math.max(0, currentVolume - 0.05);
+            volumeLevel.style.width = `${currentVolume * 100}%`;
+            audio.volume = currentVolume;
+        }
+    });
+</script>
 </body>
 </html>

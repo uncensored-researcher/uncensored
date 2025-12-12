@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Conversation with a Whistleblower - Uncensored Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Remove SoundTouchJS and include Pizzicato for better audio processing -->
+    <script src="https://cdn.jsdelivr.net/npm/pizzicato@0.6.4/dist/Pizzicato.min.js"></script>
+
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#2d2235" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-title" content="Uncensored Researcher">
+    <meta name="application-name" content="Uncensored Researcher">
+    <meta name="msapplication-TileColor" content="#2d2235">
+
+    <link rel="icon" href="../../images/icon.png">
+
+    <style>
+        :root {
+            /* Grape-themed dark palette - refined */
+            --color-1: #0c080d;
+            --color-2: #1a131f;
+            --color-3: #2d2235;
+            --color-4: #52425c;
+            --color-5: #8a7096;
+            --color-accent: #a98bb5;
+            --color-accent-2: #8e6aa8;
+            --color-warning: #ff6b8b;
+            --color-success: #4CAF50;
+            
+            /* Typography */
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing */
+            --container-padding: 2rem;
+            --content-max-width: 1100px;
+            --section-spacing: 3rem;
+            --card-border-radius: 16px;
+            --transition-smooth: all 0.3s ease;
+            --transition-fast: all 0.15s ease;
+            
+            /* App-like elements */
+            --header-height: 70px;
+            --bottom-nav-height: 60px;
+            --player-height: 120px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-weight: 400;
+            background-color: var(--color-1);
+            color: #f0e9f2;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: var(--content-max-width);
+            width: 90%;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(12, 8, 13, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 112, 150, 0.1);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            color: var(--color-5);
+        }
+        
+        .logo-text {
+            font-weight: 800;
+        }
+        
+        .logo span {
+            color: var(--color-5);
+            font-weight: 600;
+        }
+        
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .desktop-nav a {
+            color: #e0d6e8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .desktop-nav a:hover,
+        .desktop-nav a.active {
+            color: var(--color-5);
+        }
+        
+        .desktop-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-5);
+            border-radius: 1px;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #f0e9f2;
+            font-size: 1.4rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+        
+        /* Podcast Hero */
+        .podcast-hero {
+            padding: 4rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .podcast-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(138, 112, 150, 0.15) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        .hero-image {
+            border-radius: var(--card-border-radius);
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(12, 8, 13, 0.6);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: var(--transition-smooth);
+        }
+        
+        .hero-image:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-info {
+            padding: 1rem 0;
+        }
+        
+        .podcast-category {
+            display: inline-block;
+            background-color: var(--color-5);
+            color: var(--color-1);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .podcast-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        .podcast-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #d9cfe0;
+            font-weight: 300;
+        }
+        
+        .podcast-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        
+        .meta-label {
+            color: #9e8fa9;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .meta-value {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Advanced Player Container */
+        .player-container {
+            background-color: var(--color-2);
+            border-radius: var(--card-border-radius);
+            padding: 2.5rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(138, 112, 150, 0.1);
+            box-shadow: 0 15px 35px rgba(12, 8, 13, 0.4);
+        }
+        
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .player-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .player-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-5);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--color-5);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* Main Player Controls */
+        .player-main {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .player-main {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+        
+        .play-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-5), var(--color-accent-2));
+            color: var(--color-1);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 8px 20px rgba(138, 112, 150, 0.3);
+            flex-shrink: 0;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(138, 112, 150, 0.4);
+        }
+        
+        .play-button.playing {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+        
+        /* Progress Bar */
+        .progress-section {
+            flex-grow: 1;
+            width: 100%;
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: #9e8fa9;
+        }
+        
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background-color: rgba(138, 112, 150, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--color-5), var(--color-accent));
+            border-radius: 4px;
+            position: relative;
+            transition: width 0.1s linear;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-color: var(--color-5);
+            border-radius: 50%;
+            border: 3px solid var(--color-1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Quick Navigation Buttons */
+        .quick-nav {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(138, 112, 150, 0.1);
+            border: 1px solid rgba(138, 112, 150, 0.2);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: #e0d6e8;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            min-width: 100px;
+        }
+        
+        .nav-button:hover {
+            background-color: rgba(138, 112, 150, 0.2);
+            transform: translateY(-3px);
+            border-color: var(--color-5);
+        }
+        
+        .nav-button i {
+            font-size: 1.2rem;
+            color: var(--color-5);
+        }
+        
+        .nav-button span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Speed Control */
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: rgba(138, 112, 150, 0.05);
+            border-radius: 12px;
+            flex-wrap: wrap;
+        }
+
+        .speed-label {
+            color: #9e8fa9;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .speed-options {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .speed-option {
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            background-color: rgba(138, 112, 150, 0.1);
+            color: #c9bdd4;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .speed-option:hover {
+            background-color: rgba(138, 112, 150, 0.2);
+        }
+
+        .speed-option.active {
+            background-color: var(--color-5);
+            color: var(--color-1);
+            font-weight: 600;
+        }
+
+        /* Pitch Control - NEW SECTION */
+        .pitch-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: rgba(255, 107, 139, 0.05);
+            border-radius: 12px;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255, 107, 139, 0.1);
+        }
+
+        .pitch-label {
+            color: #ff6b8b;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .pitch-options {
+            display: flex;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .pitch-option {
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            background-color: rgba(255, 107, 139, 0.1);
+            color: #ffa7ba;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .pitch-option:hover {
+            background-color: rgba(255, 107, 139, 0.2);
+        }
+
+        .pitch-option.active {
+            background-color: var(--color-warning);
+            color: var(--color-1);
+            font-weight: 600;
+        }
+
+        .pitch-value-display {
+            margin-left: auto;
+            color: #ff6b8b;
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* Combined Control Label */
+        .audio-processing-label {
+            color: var(--color-5);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .audio-processing-label i {
+            color: var(--color-accent);
+        }
+
+        .experimental-badge {
+            background-color: var(--color-warning);
+            color: var(--color-1);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .speed-control,
+            .pitch-control {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            
+            .speed-options,
+            .pitch-options {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .speed-option,
+            .pitch-option {
+                flex: 1;
+                text-align: center;
+                padding: 0.6rem 0.4rem;
+                font-size: 0.8rem;
+            }
+            
+            .pitch-value-display {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .speed-options,
+            .pitch-options {
+                gap: 0.2rem;
+            }
+            
+            .speed-option,
+            .pitch-option {
+                padding: 0.5rem 0.3rem;
+                font-size: 0.75rem;
+                min-width: 45px;
+            }
+        }
+        
+        /* Speech-to-Text Section */
+        .transcription-section {
+            background-color: var(--color-3);
+            border-radius: var(--card-border-radius);
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid rgba(76, 175, 80, 0.2);
+        }
+
+        .transcription-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .transcription-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .transcription-title i {
+            color: var(--color-success);
+        }
+
+        .transcription-controls {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .transcription-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            background-color: var(--color-success);
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .transcription-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .transcription-btn.inactive {
+            background-color: var(--color-4);
+            color: #c9bdd4;
+        }
+
+        .transcription-btn.inactive:hover {
+            background-color: var(--color-4);
+            transform: none;
+            cursor: not-allowed;
+        }
+
+        .transcription-status {
+            color: #9e8fa9;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .transcription-status i {
+            color: var(--color-success);
+        }
+
+        .transcription-text {
+            background-color: rgba(12, 8, 13, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e0d6e8;
+            border: 1px solid rgba(76, 175, 80, 0.1);
+        }
+
+        .transcription-text.empty {
+            color: #9e8fa9;
+            font-style: italic;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .current-word {
+            background-color: rgba(76, 175, 80, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        /* Scrollbar styling */
+        .transcription-text::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .transcription-text::-webkit-scrollbar-track {
+            background: rgba(138, 112, 150, 0.1);
+            border-radius: 4px;
+        }
+
+        .transcription-text::-webkit-scrollbar-thumb {
+            background: var(--color-5);
+            border-radius: 4px;
+        }
+
+        .transcription-text::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent);
+        }
+        
+        /* Timestamps/Chapters */
+        .chapters-section {
+            margin-top: 3rem;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        
+        .chapters-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .chapter-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background-color: rgba(138, 112, 150, 0.05);
+            border-radius: 10px;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .chapter-item:hover {
+            background-color: rgba(138, 112, 150, 0.1);
+            border-left-color: var(--color-5);
+            transform: translateX(5px);
+        }
+        
+        .chapter-item.active {
+            background-color: rgba(138, 112, 150, 0.15);
+            border-left-color: var(--color-accent);
+        }
+        
+        .chapter-time {
+            background-color: var(--color-3);
+            color: var(--color-5);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            min-width: 70px;
+            text-align: center;
+        }
+        
+        .chapter-title {
+            flex-grow: 1;
+            font-weight: 500;
+            color: #e0d6e8;
+        }
+        
+        .chapter-play {
+            color: var(--color-5);
+            font-size: 1.1rem;
+            opacity: 0.7;
+            transition: var(--transition-fast);
+        }
+        
+        .chapter-item:hover .chapter-play {
+            opacity: 1;
+        }
+        
+        /* Volume Control */
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(138, 112, 150, 0.1);
+        }
+        
+        .volume-icon {
+            color: var(--color-5);
+            font-size: 1.1rem;
+        }
+        
+        .volume-slider {
+            flex-grow: 1;
+            height: 6px;
+            background-color: rgba(138, 112, 150, 0.2);
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .volume-level {
+            height: 100%;
+            width: 80%;
+            background: linear-gradient(90deg, var(--color-5), var(--color-accent));
+            border-radius: 3px;
+        }
+        
+        .volume-slider::after {
+            content: '';
+            position: absolute;
+            right: 20%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            background-color: var(--color-5);
+            border-radius: 50%;
+            border: 2px solid var(--color-1);
+        }
+        
+        /* Download Section */
+        .download-section {
+            background-color: var(--color-3);
+            border-radius: var(--card-border-radius);
+            padding: 2rem;
+            margin-top: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .download-info h3 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        
+        .download-info p {
+            color: #c9bdd4;
+            font-size: 0.95rem;
+        }
+        
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+        }
+        
+        .download-btn.mp3 {
+            background-color: var(--color-5);
+            color: var(--color-1);
+        }
+        
+        .download-btn.mp3:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+        
+        .download-btn.transcript {
+            background-color: transparent;
+            color: var(--color-5);
+            border: 1.5px solid var(--color-5);
+        }
+        
+        .download-btn.transcript:hover {
+            background-color: rgba(138, 112, 150, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: calc(var(--bottom-nav-height) + 20px);
+            right: 20px;
+            background-color: var(--color-5);
+            color: var(--color-1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 90;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(138, 112, 150, 0.3);
+        }
+        
+        /* Mobile Navigation (Bottom) */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 19, 31, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(138, 112, 150, 0.1);
+            z-index: 99;
+            height: var(--bottom-nav-height);
+        }
+        
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #e0d6e8;
+            font-size: 0.75rem;
+            flex-grow: 1;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        
+        .mobile-nav-item.active,
+        .mobile-nav-item:hover {
+            color: var(--color-5);
+        }
+        
+        .mobile-nav-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(12, 8, 13, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 98;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-menu-links {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-menu-links li {
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-menu-links a {
+            color: #f0e9f2;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: var(--font-heading);
+            transition: var(--transition-smooth);
+        }
+        
+        .mobile-menu-links a:hover,
+        .mobile-menu-links a.active {
+            color: var(--color-5);
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: #f0e9f2;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0 1rem;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .mobile-bottom-nav {
+                display: block;
+            }
+            
+            .podcast-hero {
+                padding: 3rem 0 2rem;
+                padding-bottom: calc(2rem + var(--bottom-nav-height));
+            }
+            
+            .podcast-title {
+                font-size: 2rem;
+            }
+            
+            .podcast-description {
+                font-size: 1rem;
+            }
+            
+            .player-container {
+                padding: 1.5rem;
+            }
+            
+            .player-main {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .quick-nav {
+                gap: 1rem;
+            }
+            
+            .nav-button {
+                min-width: 80px;
+                padding: 0.8rem 1rem;
+            }
+            
+            .transcription-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .transcription-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .download-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .download-buttons {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .back-to-top {
+                bottom: calc(var(--bottom-nav-height) + 10px);
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            
+            /* Adjust for bottom nav */
+            main {
+                padding-bottom: var(--bottom-nav-height);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .podcast-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-image img {
+                height: 250px;
+            }
+            
+            .podcast-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .mobile-bottom-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="land.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-search"></i></span>
+                    <span class="logo-text">Uncensored<span>Researcher</span></span>
+                </a>
+                
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="podcast.html" class="active">Podcast</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="podcast.html" class="active">Podcast</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+
+    <!-- Podcast Hero Section -->
+    <section class="podcast-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Conversation with a Whistleblower">
+                </div>
+                <div class="hero-info">
+                    <span class="podcast-category">EXCLUSIVE INTERVIEW</span>
+                    <h1 class="podcast-title">Conversation with a Whistleblower</h1>
+                    <p class="podcast-description">An anonymous interview with an insider who reveals what's really happening behind closed doors in major corporations and government agencies. This whistleblower shares unprecedented insights into systemic issues that are deliberately hidden from the public eye.</p>
+                    
+                    <div class="podcast-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Duration</span>
+                            <span class="meta-value" id="duration">--:--</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Released</span>
+                            <span class="meta-value">March 14, 2024</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">File Size</span>
+                            <span class="meta-value">38.7 MB</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Listeners</span>
+                            <span class="meta-value">12,847</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Player Container -->
+            <div class="player-container">
+                <div class="player-header">
+                    <h3 class="player-title">Now Playing</h3>
+                    <div class="player-status">
+                        <div class="status-indicator"></div>
+                        <span id="playerStatus">Ready to play</span>
+                    </div>
+                </div>
+
+                <!-- Main Player Controls -->
+                <div class="player-main">
+                    <button class="play-button" id="playButton">
+                        <i class="fas fa-play"></i>
+                    </button>
+
+                    <div class="progress-section">
+                        <div class="time-display">
+                            <span id="currentTime">0:00</span>
+                            <span id="totalTime">--:--</span>
+                        </div>
+                        <div class="progress-bar-container" id="progressBarContainer">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Navigation Buttons -->
+                <div class="quick-nav">
+                    <div class="nav-button" id="skipBack10">
+                        <i class="fas fa-backward"></i>
+                        <span>-10 sec</span>
+                    </div>
+                    <div class="nav-button" id="skipForward10">
+                        <i class="fas fa-forward"></i>
+                        <span>+10 sec</span>
+                    </div>
+                </div>
+
+                <!-- Audio Processing Header -->
+                <div class="audio-processing-label">
+                    <i class="fas fa-sliders-h"></i>
+                    Audio Processing
+                    <span class="experimental-badge">EXPERIMENTAL</span>
+                </div>
+
+                <!-- Speed Control -->
+                <div class="speed-control">
+                    <span class="speed-label">Speed:</span>
+                    <div class="speed-options">
+                        <div class="speed-option" data-speed="0.5">0.5x</div>
+                        <div class="speed-option" data-speed="0.75">0.75x</div>
+                        <div class="speed-option active" data-speed="1">1x</div>
+                        <div class="speed-option" data-speed="1.25">1.25x</div>
+                        <div class="speed-option" data-speed="1.5">1.5x</div>
+                        <div class="speed-option" data-speed="2">2x</div>
+                    </div>
+                </div>
+
+                <!-- Pitch Control - FIXED -->
+                <div class="pitch-control">
+                    <span class="pitch-label">Pitch:</span>
+                    <div class="pitch-options">
+                        <div class="pitch-option" data-pitch="0.5">Low</div>
+                        <div class="pitch-option" data-pitch="0.75">Medium Low</div>
+                        <div class="pitch-option active" data-pitch="1">Normal</div>
+                        <div class="pitch-option" data-pitch="1.25">Medium High</div>
+                        <div class="pitch-option" data-pitch="1.5">High</div>
+                    </div>
+                    <div class="pitch-value-display" id="pitchValue">1.00x</div>
+                </div>
+
+                <!-- Volume Control -->
+                <div class="volume-control">
+                    <i class="fas fa-volume-up volume-icon"></i>
+                    <div class="volume-slider" id="volumeSlider">
+                        <div class="volume-level" id="volumeLevel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speech-to-Text Transcription Section - NEW -->
+    <section class="container">
+        <div class="transcription-section">
+            <div class="transcription-header">
+                <h3 class="transcription-title">
+                    <i class="fas fa-microphone-alt"></i>
+                    Live Transcription
+                </h3>
+                <div class="transcription-controls">
+                    <button class="transcription-btn" id="startTranscriptionBtn">
+                        <i class="fas fa-play-circle"></i>
+                        Start Transcription
+                    </button>
+                    <button class="transcription-btn inactive" id="stopTranscriptionBtn">
+                        <i class="fas fa-stop-circle"></i>
+                        Stop
+                    </button>
+                    <div class="transcription-status" id="transcriptionStatus">
+                        <i class="fas fa-info-circle"></i>
+                        Ready to transcribe
+                    </div>
+                </div>
+            </div>
+            <div class="transcription-text empty" id="transcriptionText">
+                Transcription will appear here as you listen. Click "Start Transcription" to begin.
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters/Timestamps Section -->
+    <section class="container">
+        <div class="chapters-section">
+            <h2 class="section-title">Episode Chapters</h2>
+            <div class="chapters-list" id="chaptersList">
+                <!-- Chapters will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <div class="download-info">
+                <h3>Download This Episode</h3>
+                <p>Save this episode for offline listening or access the full transcript for reference.</p>
+            </div>
+            <div class="download-buttons">
+                <a href="sample.mp3" download class="download-btn mp3">
+                    <i class="fas fa-download"></i> Download MP3
+                </a>
+                <a href="#" class="download-btn transcript">
+                    <i class="fas fa-file-alt"></i> View Transcript
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-nav-items">
+            <a href="index.html" class="mobile-nav-item">
+                <i class="fas fa-home mobile-nav-icon"></i>
+                <span>Home</span>
+            </a>
+            <a href="news.html" class="mobile-nav-item">
+                <i class="fas fa-globe mobile-nav-icon"></i>
+                <span>News</span>
+            </a>
+            <a href="podcast.html" class="mobile-nav-item active">
+                <i class="fas fa-headphones mobile-nav-icon"></i>
+                <span>Podcast</span>
+            </a>
+            <a href="articles.html" class="mobile-nav-item">
+                <i class="fas fa-file-alt mobile-nav-icon"></i>
+                <span>Articles</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Podcast data
+        const podcastInfo = {
+            title: "Conversation with a Whistleblower",
+            audioUrl: "sample.mp3", // Your local audio file path
+            chapters: [
+                { time: 0, title: "Introduction" },
+                { time: 60, title: "Background of the Whistleblower" },
+                { time: 180, title: "The Revelation" },
+                { time: 300, title: "Systemic Issues" },
+                { time: 450, title: "Conclusion" }
+            ]
+        };
+
+        // DOM elements
+        const playButton = document.getElementById('playButton');
+        const progressBar = document.getElementById('progressBar');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        const currentTimeEl = document.getElementById('currentTime');
+        const totalTimeEl = document.getElementById('totalTime');
+        const durationEl = document.getElementById('duration');
+        const playerStatus = document.getElementById('playerStatus');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeLevel = document.getElementById('volumeLevel');
+        const chaptersList = document.getElementById('chaptersList');
+        const backToTop = document.getElementById('backToTop');
+        const pitchValue = document.getElementById('pitchValue');
+        
+        // Speech-to-text elements
+        const startTranscriptionBtn = document.getElementById('startTranscriptionBtn');
+        const stopTranscriptionBtn = document.getElementById('stopTranscriptionBtn');
+        const transcriptionStatus = document.getElementById('transcriptionStatus');
+        const transcriptionText = document.getElementById('transcriptionText');
+
+        // Audio player variables
+        let audio = null;
+        let sound = null; // Pizzicato sound object
+        let isPlaying = false;
+        let currentSpeed = 1;
+        let currentPitch = 1;
+        let currentVolume = 0.8;
+        let isDraggingProgress = false;
+
+        // Speech recognition variables
+        let recognition = null;
+        let isTranscribing = false;
+        let transcription = '';
+        let lastTranscriptionTime = 0;
+
+        // Initialize audio with Pizzicato
+        function initializeAudio() {
+            try {
+                // Create audio element for fallback
+                audio = new Audio(podcastInfo.audioUrl);
+                
+                // Initialize with Pizzicato if available
+                if (typeof Pizzicato !== 'undefined') {
+                    sound = new Pizzicato.Sound({
+                        source: 'file',
+                        options: { 
+                            path: podcastInfo.audioUrl,
+                            volume: currentVolume
+                        }
+                    }, function() {
+                        console.log('Pizzicato audio loaded');
+                        playerStatus.textContent = 'Ready to play';
+                    });
+                } else {
+                    console.log('Pizzicato not available, using basic audio');
+                }
+                
+                // Set up audio event listeners
+                setupAudioListeners();
+                
+                // Initialize volume
+                volumeLevel.style.width = `${currentVolume * 100}%`;
+                
+                console.log('Audio initialized');
+            } catch (error) {
+                console.error('Error initializing audio:', error);
+                // Fallback to simple audio element
+                audio = new Audio(podcastInfo.audioUrl);
+                audio.volume = currentVolume;
+                volumeLevel.style.width = `${currentVolume * 100}%`;
+                setupAudioListeners();
+                playerStatus.textContent = 'Basic audio mode';
+            }
+        }
+
+        // Setup audio event listeners
+        function setupAudioListeners() {
+            const audioElement = sound ? sound : audio;
+            
+            // Update total duration when audio metadata is loaded
+            if (sound) {
+                // Pizzicato doesn't have loadedmetadata event, so we'll use a timeout
+                setTimeout(() => {
+                    if (audio.duration) {
+                        totalTimeEl.textContent = formatTime(audio.duration);
+                        durationEl.textContent = formatTime(audio.duration);
+                    }
+                }, 500);
+            } else {
+                audio.addEventListener('loadedmetadata', () => {
+                    totalTimeEl.textContent = formatTime(audio.duration);
+                    durationEl.textContent = formatTime(audio.duration);
+                });
+            }
+
+            // Update time as audio plays
+            setInterval(() => {
+                if (!isDraggingProgress && (sound || audio)) {
+                    updateTimeDisplay();
+                    updateActiveChapter();
+                }
+            }, 100);
+
+            // When audio ends
+            if (sound) {
+                sound.on('end', () => {
+                    isPlaying = false;
+                    playButton.classList.remove('playing');
+                    playButton.innerHTML = '<i class="fas fa-play"></i>';
+                    playerStatus.textContent = 'Finished';
+                    stopTranscription();
+                });
+            } else {
+                audio.addEventListener('ended', () => {
+                    isPlaying = false;
+                    playButton.classList.remove('playing');
+                    playButton.innerHTML = '<i class="fas fa-play"></i>';
+                    playerStatus.textContent = 'Finished';
+                    stopTranscription();
+                });
+            }
+        }
+
+        // Format time to MM:SS
+        function formatTime(seconds) {
+            if (isNaN(seconds) || seconds === Infinity) return "--:--";
+            
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Update time display
+        function updateTimeDisplay() {
+            const audioElement = sound ? sound : audio;
+            if (!audioElement) return;
+            
+            const currentTime = sound ? sound.currentTime : audio.currentTime;
+            const duration = sound ? sound.duration : audio.duration;
+            
+            currentTimeEl.textContent = formatTime(currentTime);
+            progressBar.style.width = duration ? `${(currentTime / duration) * 100}%` : '0%';
+        }
+
+        // Apply pitch shift using Pizzicato effects
+        function applyPitchShift() {
+            if (!sound || typeof Pizzicato === 'undefined') {
+                console.log('Pizzicato not available, cannot apply pitch shift');
+                if (audio) {
+                    audio.playbackRate = currentSpeed;
+                    playerStatus.textContent = `Playing at ${currentSpeed}x (pitch not available)`;
+                }
+                return;
+            }
+
+            try {
+                // Remove existing effects
+                sound.effects = [];
+                
+                // Apply pitch shifting effect
+                if (currentPitch !== 1) {
+                    // Create a custom pitch effect (simplified)
+                    // Note: True pitch shifting requires complex DSP, this is a simplified version
+                    if (currentPitch > 1) {
+                        // For higher pitch, we can combine speed with a filter
+                        sound.playbackRate = currentSpeed * (currentPitch * 0.9);
+                        playerStatus.textContent = `Playing at ${currentSpeed.toFixed(2)}x speed, ${currentPitch.toFixed(2)}x pitch`;
+                    } else if (currentPitch < 1) {
+                        // For lower pitch
+                        sound.playbackRate = currentSpeed * (currentPitch * 1.1);
+                        playerStatus.textContent = `Playing at ${currentSpeed.toFixed(2)}x speed, ${currentPitch.toFixed(2)}x pitch`;
+                    }
+                } else {
+                    // Normal pitch
+                    sound.playbackRate = currentSpeed;
+                    playerStatus.textContent = `Playing at ${currentSpeed}x`;
+                }
+                
+                console.log('Pitch applied:', currentPitch, 'Speed:', currentSpeed);
+                
+            } catch (error) {
+                console.error('Error applying pitch shift:', error);
+                // Fallback to basic speed control
+                if (sound) {
+                    sound.playbackRate = currentSpeed;
+                } else if (audio) {
+                    audio.playbackRate = currentSpeed;
+                }
+                playerStatus.textContent = `Playing at ${currentSpeed}x (pitch error)`;
+            }
+        }
+
+        // Play/Pause functionality
+        playButton.addEventListener('click', () => {
+            if (!isPlaying) {
+                // Start playing
+                if (sound) {
+                    sound.play();
+                } else if (audio) {
+                    audio.play();
+                    startTranscriptionIfEnabled();
+                }
+                isPlaying = true;
+                playButton.classList.add('playing');
+                playButton.innerHTML = '<i class="fas fa-pause"></i>';
+                playerStatus.textContent = `Playing at ${currentSpeed}x`;
+            } else {
+                // Pause
+                if (sound) {
+                    sound.pause();
+                } else if (audio) {
+                    audio.pause();
+                    stopTranscription();
+                }
+                isPlaying = false;
+                playButton.classList.remove('playing');
+                playButton.innerHTML = '<i class="fas fa-play"></i>';
+                playerStatus.textContent = 'Paused';
+            }
+        });
+
+        // Progress bar click to seek
+        progressBarContainer.addEventListener('click', (e) => {
+            const audioElement = sound ? sound : audio;
+            if (!audioElement) return;
+            
+            const rect = progressBarContainer.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            const duration = sound ? sound.duration : audio.duration;
+            
+            if (sound) {
+                sound.seek(percent * duration);
+            } else {
+                audio.currentTime = percent * duration;
+            }
+            updateTimeDisplay();
+            updateActiveChapter();
+        });
+
+        // Progress bar drag functionality
+        progressBarContainer.addEventListener('mousedown', (e) => {
+            isDraggingProgress = true;
+            const handleMove = (moveEvent) => {
+                const rect = progressBarContainer.getBoundingClientRect();
+                let percent = (moveEvent.clientX - rect.left) / rect.width;
+                percent = Math.max(0, Math.min(1, percent));
+                progressBar.style.width = `${percent * 100}%`;
+                
+                const audioElement = sound ? sound : audio;
+                if (audioElement) {
+                    const duration = sound ? sound.duration : audio.duration;
+                    currentTimeEl.textContent = formatTime(percent * duration);
+                }
+            };
+            
+            const handleUp = () => {
+                isDraggingProgress = false;
+                document.removeEventListener('mousemove', handleMove);
+                document.removeEventListener('mouseup', handleUp);
+                
+                // Update audio position
+                const audioElement = sound ? sound : audio;
+                if (audioElement) {
+                    const rect = progressBarContainer.getBoundingClientRect();
+                    const percent = (e.clientX - rect.left) / rect.width;
+                    const duration = sound ? sound.duration : audio.duration;
+                    
+                    if (sound) {
+                        sound.seek(percent * duration);
+                    } else {
+                        audio.currentTime = percent * duration;
+                    }
+                }
+            };
+            
+            document.addEventListener('mousemove', handleMove);
+            document.addEventListener('mouseup', handleUp);
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('click', (e) => {
+            const rect = volumeSlider.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            currentVolume = Math.max(0, Math.min(1, percent));
+            volumeLevel.style.width = `${currentVolume * 100}%`;
+            
+            if (sound) {
+                sound.volume = currentVolume;
+            } else if (audio) {
+                audio.volume = currentVolume;
+            }
+        });
+
+        // Quick navigation buttons
+        document.getElementById('skipBack10').addEventListener('click', () => {
+            const audioElement = sound ? sound : audio;
+            if (!audioElement) return;
+            
+            const currentTime = sound ? sound.currentTime : audio.currentTime;
+            const newTime = Math.max(0, currentTime - 10);
+            
+            if (sound) {
+                sound.seek(newTime);
+            } else {
+                audio.currentTime = newTime;
+            }
+            updateTimeDisplay();
+            updateActiveChapter();
+        });
+
+        document.getElementById('skipForward10').addEventListener('click', () => {
+            const audioElement = sound ? sound : audio;
+            if (!audioElement) return;
+            
+            const currentTime = sound ? sound.currentTime : audio.currentTime;
+            const duration = sound ? sound.duration : audio.duration;
+            const newTime = Math.min(duration, currentTime + 10);
+            
+            if (sound) {
+                sound.seek(newTime);
+            } else {
+                audio.currentTime = newTime;
+            }
+            updateTimeDisplay();
+            updateActiveChapter();
+        });
+
+        // Speed control
+        document.querySelectorAll('.speed-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove active class from all
+                document.querySelectorAll('.speed-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                // Add active class to clicked
+                option.classList.add('active');
+                
+                // Update speed
+                currentSpeed = parseFloat(option.dataset.speed);
+                
+                // Apply pitch shift
+                applyPitchShift();
+            });
+        });
+
+        // Pitch control
+        document.querySelectorAll('.pitch-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove active class from all
+                document.querySelectorAll('.pitch-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                
+                // Add active class to clicked
+                option.classList.add('active');
+                
+                // Update pitch
+                currentPitch = parseFloat(option.dataset.pitch);
+                pitchValue.textContent = `${currentPitch.toFixed(2)}x`;
+                
+                // Apply pitch shift
+                applyPitchShift();
+            });
+        });
+
+        // Initialize speech recognition
+        function initializeSpeechRecognition() {
+            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                recognition = new SpeechRecognition();
+                
+                recognition.continuous = true;
+                recognition.interimResults = true;
+                recognition.lang = 'en-US';
+                
+                recognition.onstart = function() {
+                    console.log('Speech recognition started');
+                    isTranscribing = true;
+                    startTranscriptionBtn.classList.add('inactive');
+                    stopTranscriptionBtn.classList.remove('inactive');
+                    transcriptionStatus.innerHTML = '<i class="fas fa-circle" style="color:#4CAF50"></i> Transcribing in real-time...';
+                };
+                
+                recognition.onresult = function(event) {
+                    let interimTranscript = '';
+                    let finalTranscript = '';
+                    
+                    for (let i = event.resultIndex; i < event.results.length; ++i) {
+                        const transcript = event.results[i][0].transcript;
+                        if (event.results[i].isFinal) {
+                            finalTranscript += transcript + ' ';
+                            
+                            // Add timestamp every 10 seconds
+                            const currentTime = sound ? sound.currentTime : audio.currentTime;
+                            if (currentTime - lastTranscriptionTime > 10) {
+                                transcription += `\n[${formatTime(currentTime)}] `;
+                                lastTranscriptionTime = currentTime;
+                            }
+                            
+                            transcription += transcript + ' ';
+                        } else {
+                            interimTranscript += transcript;
+                        }
+                    }
+                    
+                    // Update transcription text
+                    updateTranscriptionText(transcription, interimTranscript);
+                };
+                
+                recognition.onerror = function(event) {
+                    console.error('Speech recognition error:', event.error);
+                    transcriptionStatus.innerHTML = `<i class="fas fa-exclamation-circle" style="color:#ff6b8b"></i> Error: ${event.error}`;
+                    stopTranscription();
+                };
+                
+                recognition.onend = function() {
+                    console.log('Speech recognition ended');
+                    isTranscribing = false;
+                    startTranscriptionBtn.classList.remove('inactive');
+                    stopTranscriptionBtn.classList.add('inactive');
+                    transcriptionStatus.innerHTML = '<i class="fas fa-info-circle"></i> Transcription stopped';
+                };
+                
+                return true;
+            } else {
+                console.warn('Speech recognition not supported in this browser');
+                transcriptionStatus.innerHTML = '<i class="fas fa-exclamation-triangle" style="color:#ff6b8b"></i> Speech recognition not supported';
+                startTranscriptionBtn.disabled = true;
+                stopTranscriptionBtn.disabled = true;
+                return false;
+            }
+        }
+
+        // Start transcription
+        function startTranscription() {
+            if (!recognition && !initializeSpeechRecognition()) {
+                alert('Speech recognition is not supported in your browser. Try using Chrome or Edge.');
+                return;
+            }
+            
+            if (!isTranscribing && recognition) {
+                try {
+                    recognition.start();
+                    transcription = '';
+                    lastTranscriptionTime = 0;
+                    transcriptionText.classList.remove('empty');
+                    transcriptionText.textContent = 'Starting transcription...';
+                } catch (error) {
+                    console.error('Error starting transcription:', error);
+                    transcriptionStatus.innerHTML = '<i class="fas fa-exclamation-circle" style="color:#ff6b8b"></i> Could not start transcription';
+                }
+            }
+        }
+
+        // Stop transcription
+        function stopTranscription() {
+            if (recognition && isTranscribing) {
+                recognition.stop();
+            }
+        }
+
+        // Auto-start transcription if audio is playing
+        function startTranscriptionIfEnabled() {
+            if (isTranscribing) {
+                // If already transcribing, do nothing
+                return;
+            }
+            
+            // Check if user has previously enabled auto-transcription
+            const autoTranscribe = localStorage.getItem('autoTranscribe') === 'true';
+            if (autoTranscribe) {
+                startTranscription();
+            }
+        }
+
+        // Update transcription text display
+        function updateTranscriptionText(finalText, interimText) {
+            if (!transcriptionText) return;
+            
+            let displayText = finalText;
+            if (interimText) {
+                displayText += `<span class="current-word">${interimText}</span>`;
+            }
+            
+            transcriptionText.innerHTML = displayText || 'No transcription yet. Speak clearly into your microphone.';
+            
+            // Scroll to bottom
+            transcriptionText.scrollTop = transcriptionText.scrollHeight;
+        }
+
+        // Transcription button handlers
+        startTranscriptionBtn.addEventListener('click', () => {
+            startTranscription();
+        });
+
+        stopTranscriptionBtn.addEventListener('click', () => {
+            stopTranscription();
+        });
+
+        // Create chapters list
+        function createChaptersList() {
+            podcastInfo.chapters.forEach(chapter => {
+                const chapterItem = document.createElement('div');
+                chapterItem.className = 'chapter-item';
+                chapterItem.dataset.time = chapter.time;
+                chapterItem.innerHTML = `
+                    <div class="chapter-time">${formatTime(chapter.time)}</div>
+                    <div class="chapter-title">${chapter.title}</div>
+                    <div class="chapter-play"><i class="fas fa-play-circle"></i></div>
+                `;
+                
+                chapterItem.addEventListener('click', () => {
+                    const audioElement = sound ? sound : audio;
+                    if (!audioElement) return;
+                    
+                    if (sound) {
+                        sound.seek(chapter.time);
+                    } else {
+                        audio.currentTime = chapter.time;
+                    }
+                    updateTimeDisplay();
+                    updateActiveChapter();
+                    
+                    if (!isPlaying) {
+                        playButton.click(); // Auto-play when clicking a chapter
+                    }
+                });
+                
+                chaptersList.appendChild(chapterItem);
+            });
+        }
+
+        // Update active chapter based on current time
+        function updateActiveChapter() {
+            const audioElement = sound ? sound : audio;
+            if (!audioElement) return;
+            
+            const currentTime = sound ? sound.currentTime : audio.currentTime;
+            let activeChapterIndex = -1;
+            
+            // Find the current chapter
+            for (let i = podcastInfo.chapters.length - 1; i >= 0; i--) {
+                if (currentTime >= podcastInfo.chapters[i].time) {
+                    activeChapterIndex = i;
+                    break;
+                }
+            }
+            
+            // Update UI
+            document.querySelectorAll('.chapter-item').forEach((item, index) => {
+                if (index === activeChapterIndex) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Download button handlers
+        document.querySelector('.download-btn.transcript').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Transcript would open in a new tab. This would contain the full text of the podcast episode.');
+        });
+
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Initialize chapters
+        createChaptersList();
+
+        // Mobile bottom nav active state
+        document.querySelectorAll('.mobile-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                document.querySelectorAll('.mobile-nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+            });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize audio system
+            initializeAudio();
+            
+            // Initialize speech recognition
+            initializeSpeechRecognition();
+            
+            // Initialize mobile menu
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+            if (mobileMenuToggle && mobileMenuOverlay && mobileMenuClose) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.toggle('active');
+                    document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : 'auto';
+                });
+
+                mobileMenuClose.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Space bar to play/pause
+            if (e.code === 'Space' && !e.target.matches('input, textarea, button, a')) {
+                e.preventDefault();
+                playButton.click();
+            }
+            
+            // Left arrow to rewind 10 seconds
+            if (e.code === 'ArrowLeft' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                const audioElement = sound ? sound : audio;
+                if (!audioElement) return;
+                
+                const currentTime = sound ? sound.currentTime : audio.currentTime;
+                const newTime = Math.max(0, currentTime - 10);
+                
+                if (sound) {
+                    sound.seek(newTime);
+                } else {
+                    audio.currentTime = newTime;
+                }
+                updateTimeDisplay();
+                updateActiveChapter();
+            }
+            
+            // Right arrow to forward 10 seconds
+            if (e.code === 'ArrowRight' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                const audioElement = sound ? sound : audio;
+                if (!audioElement) return;
+                
+                const currentTime = sound ? sound.currentTime : audio.currentTime;
+                const duration = sound ? sound.duration : audio.duration;
+                const newTime = Math.min(duration, currentTime + 10);
+                
+                if (sound) {
+                    sound.seek(newTime);
+                } else {
+                    audio.currentTime = newTime;
+                }
+                updateTimeDisplay();
+                updateActiveChapter();
+            }
+            
+            // Up arrow to increase volume
+            if (e.code === 'ArrowUp' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                currentVolume = Math.min(1, currentVolume + 0.05);
+                volumeLevel.style.width = `${currentVolume * 100}%`;
+                
+                if (sound) {
+                    sound.volume = currentVolume;
+                } else if (audio) {
+                    audio.volume = currentVolume;
+                }
+            }
+            
+            // Down arrow to decrease volume
+            if (e.code === 'ArrowDown' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                currentVolume = Math.max(0, currentVolume - 0.05);
+                volumeLevel.style.width = `${currentVolume * 100}%`;
+                
+                if (sound) {
+                    sound.volume = currentVolume;
+                } else if (audio) {
+                    audio.volume = currentVolume;
+                }
+            }
+            
+            // T key to toggle transcription
+            if (e.code === 'KeyT' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                if (isTranscribing) {
+                    stopTranscription();
+                } else {
+                    startTranscription();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
